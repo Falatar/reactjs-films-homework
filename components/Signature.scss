@@ -1,0 +1,9 @@
+$default-font: 3em Helvetica, sans-serif;
+$default-color: aqua;
+
+.Signature {
+    h3 {
+        font: $default-font $default-color;
+    }
+}
+
