@@ -1,12 +1,8 @@
-import _ from 'lodash';
-import Signature from '../components/Signature';
+const express = require("express");
+const app = express();
 
-function component() {
-    const element = document.createElement('div');
+app.get("/", function(request, response){
+    response.send("<h2>Hello world</h2>");
+});
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-
-    return <Signature name="Igor Kozitsky"/>;
-}
-
-document.body.appendChild(component());
+app.listen(3000);
