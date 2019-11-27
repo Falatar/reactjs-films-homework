@@ -1,8 +1,15 @@
-const express = require("express");
-const app = express();
+import React from 'react';
+import 'babel-polyfill';
+import { render } from 'react-dom';
+import App from '../components/App';
 
-app.get("/", function(request, response){
-    response.send("<h2>Hello world</h2>");
-});
+render(
+  <App />
+)
 
-app.listen(3000);
+
+
+
+
+
+module.hot.accept();
