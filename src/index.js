@@ -1,13 +1,12 @@
 import React from 'react';
 import 'babel-polyfill';
 import { render } from 'react-dom';
-import App from '../components/App';
+import Signature from '../components/Signature.jsx';
 
 render(
-  <App />
+  <Signature name="Falatar" />,
+  document.getElementById('root')
 )
-
-
 
 
 

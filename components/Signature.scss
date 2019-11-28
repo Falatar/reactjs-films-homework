@@ -1,9 +1,10 @@
 $default-font: 3em Helvetica, sans-serif;
-$default-color: aqua;
+$default-color: #1e84d8;
 
-.Signature {
+.userName {
     h3 {
-        font: $default-font $default-color;
+        font: $default-font;
+        color: $default-color;
     }
 }
 
