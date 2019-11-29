@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import "./Signature.scss";
+import './Signature.scss';
 
-export default class Signature extends React.Component {
-    render() {
-        return (
-            <div className = "userName">
-                <h3>{this.props.name}</h3>
-            </div>
-        )
-    }
+function Signature({ name }) {
+  return (
+    <div className="userName">
+      <h3>{name}</h3>
+    </div>
+  );
 }
+
+Signature.defaultProps = {
+  name: 'Can\'t find property "name"',
+};
 
 Signature.propTypes = {
-    name: PropTypes.string
-}
+  name: PropTypes.string,
+};
+
+export default Signature;
