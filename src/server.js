@@ -14,7 +14,7 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output
 app.use(webpackHotMiddleware(compiler))
 
 app.get("/", function(request, response){
-    response.sendFile(__dirname + "/index.html");
+    response.sendFile(__dirname + "/pages/Page1/Page1.html");
 });
 
 app.listen(3000);

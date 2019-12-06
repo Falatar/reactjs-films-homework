@@ -81,7 +81,7 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
     'babel-polyfill',
-    './src/index.jsx',
+    './src/pages/Page1/Page1.jsx',
   ],
   output: {
     filename: 'js/main.js',
