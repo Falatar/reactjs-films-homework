@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Signature.scss';
+import style from './Signature.scss';
 
 function Signature({ name }) {
   return (
-    <div className="userName">
+    <div className={style.userName}>
       <h3>{name}</h3>
     </div>
   );

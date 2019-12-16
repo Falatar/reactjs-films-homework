@@ -2,7 +2,7 @@ module.exports = {
   verbose: true,
   collectCoverage: true,
   collectCoverageFrom: [
-    "src/*.{js,jsx}",
+    // "src/*.{js,jsx}",
     "src/pages/Page1*.{js,jsx}",
     "src/components/*.{js,jsx}",
     "!**/node_modules/**",
