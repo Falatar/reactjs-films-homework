@@ -8,7 +8,7 @@ module.exports = {
   entry: [
     'webpack-hot-middleware/client',
     'babel-polyfill',
-    './src/pages/Page1/Page1.jsx',
+    './src/index.jsx',
   ],
   output: {
     filename: 'js/main.js',

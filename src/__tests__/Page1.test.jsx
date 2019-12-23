@@ -1,7 +1,7 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
-import Signature from '../../../components/Signature';
-import TestComponent from '../../../components/TestComponent';
+import Signature from '../components/Signature';
+import TestComponent from '../components/TestComponent';
 
 const signature = TestRenderer.create(<Signature name="Igor" />);
 

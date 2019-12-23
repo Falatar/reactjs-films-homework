@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --config jest.config.js",
     "test-coverage": "jest --coverage --config jest.config.js",
-    "start": "cross-env node src/server.js --config webpack.dev.config.js",
+    "start": "cross-env node server.js --config webpack.dev.config.js",
     "build": "webpack --config webpack.prod.config.js",
     "lint": "eslint \"**/*.jsx\" --fix --ignore-pattern node_modules/ --ignore-pattern __tests__/"
   },
