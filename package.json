@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest --config jest.config.js",
     "test-coverage": "jest --coverage --config jest.config.js",
-    "start": "cross-env node server.js --config webpack.dev.config.js",
+    "start": "cross-env NODE_ENV=development node server.js",
     "build": "webpack --config webpack.prod.config.js",
-    "lint": "eslint \"**/*.jsx\" --fix --ignore-pattern node_modules/ --ignore-pattern __tests__/"
+    "lint": "eslint \"**/*.jsx\" --fix --ignore-pattern node_modules/"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "babel-jest": "^24.9.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0",
+    "eslint-plugin-jest": "^23.3.0",
     "express": "^4.17.1",
     "identity-obj-proxy": "^3.0.0",
     "lodash": "^4.17.15",
@@ -31,6 +32,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-hot-loader": "^4.12.18",
     "react-test-renderer": "^16.12.0"
   },
   "devDependencies": {
@@ -65,7 +67,6 @@
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "now": "^16.7.0",
-    "react-hot-loader": "^4.12.18",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",

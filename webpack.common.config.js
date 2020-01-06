@@ -5,11 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 module.exports = {
-  entry: [
-    'webpack-hot-middleware/client',
-    'babel-polyfill',
-    './src/index.jsx',
-  ],
   output: {
     filename: 'js/main.js',
     path: path.resolve(__dirname, 'build'),
@@ -33,9 +28,16 @@ module.exports = {
           path.resolve(__dirname, 'src'),
           path.resolve(__dirname, 'components'),
         ],
-        use:
-                ['babel-loader'],
-
+        exclude: path.resolve(__dirname, 'node_modules'),
+        use: [
+          'babel-loader',
+          {
+            loader: 'eslint-loader',
+            options: {
+              fix: true,
+            },
+          },
+        ], 
       },
       {
         test: /\.scss$/,
@@ -62,14 +64,6 @@ module.exports = {
               },
               'sass-loader',
             ],
-      },
-      {
-        test: /\.js/,
-        exclude: path.resolve(__dirname, 'node_modules'),
-        loader: 'eslint-loader',
-        options: {
-          fix: true,
-        },
       },
     ],
   },

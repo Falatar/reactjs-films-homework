@@ -1,3 +1,4 @@
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './TestComponent.scss';
@@ -6,27 +7,27 @@ function TestComponent({ x, y, z }) {
   return (
     <div className={style.math}>
       <u>
-         X =
-        {' '}
+        `X =
         {x}
+`
         <br />
       </u>
       <u>
-         Y =
-        {' '}
+        `Y =
         {y}
+`
         <br />
       </u>
       <u>
-         Z =
-        {' '}
+        `Z =
         {z}
+`
         <br />
       </u>
       <h3>
-        (X + Y) / Z =
-        {' '}
+        `(X + Y) / Z =
         {(x + y) / z}
+`
       </h3>
     </div>
   );
