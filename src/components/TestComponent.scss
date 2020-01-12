@@ -1,0 +1,14 @@
+$default-font: 0.8em Helvetica, sans-serif;
+$default-color: #dd14bc;
+
+.math {
+    h3 {
+        font: 2em Helvetica, sans-serif;
+        color: #36d30e;
+    }
+    u {
+        font: $default-font;
+        color: $default-color;
+    }
+}
+
