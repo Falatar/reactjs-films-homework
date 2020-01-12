@@ -24,6 +24,6 @@ const calc = TestRenderer.create(<TestComponent x={574} y={314} z={6} />);
 describe('test TestComponent', () => {
   test('is calculation correct', () => {
     const testName = calc.root.findByType('h3');
-    expect(testName.children).toStrictEqual(['(X + Y) / Z =', ' ', '148']);
+    expect(testName.children).toStrictEqual(['`(X + Y) / Z =', '148', '`']);
   });
 });
