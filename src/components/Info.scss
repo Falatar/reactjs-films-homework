@@ -1,0 +1,28 @@
+div.info {
+    display: flex;
+    flex-direction: row;
+    border: 0;
+    padding: 0;
+    margin: 3vh 6vw 0 0;
+}
+
+.info {
+    button {
+        height: 40px;
+        width: 120px;
+        color: white;
+        border-radius: 5px;
+    }
+
+    :first-child {
+        border: 0;
+        background-color: deepskyblue;
+
+    }
+
+    :last-child {
+        border: 1px solid;
+        background-color: transparent;
+        margin-left: 0.6vw;
+    }
+}
