@@ -9,7 +9,7 @@ module.exports = {
   output: {
     filename: 'js/main.js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/static/',
+    //publicPath: '/static/',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
