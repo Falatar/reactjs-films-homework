@@ -7,7 +7,7 @@
     "test": "jest --config jest.config.js",
     "test-coverage": "jest --coverage --config jest.config.js",
     "start": "cross-env NODE_ENV=development node server.js",
-    "build": "webpack --config webpack.prod.config.js --output public",
+    "build": "webpack --config webpack.prod.config.js --output-public-path public",
     "lint": "eslint \"**/*.jsx\" --fix --ignore-pattern node_modules/"
   },
   "repository": {
