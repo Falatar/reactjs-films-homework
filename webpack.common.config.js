@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
@@ -18,6 +19,11 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Output Management',
+      filename: 'index.html',
+      template: 'src/index.html',
     }),
   ],
   module: {
