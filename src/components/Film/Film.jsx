@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './Film.scss';
+import Rate from '../Rate/Rate';
 
 function Film({
   name, genrePtime, rating,
@@ -9,7 +10,10 @@ function Film({
     <div className={style.film}>
       <big>{name}</big>
       <h1>{genrePtime}</h1>
-      <h1>{rating}</h1>
+      <div className={style.rate}>
+        <Rate rating={rating} />
+        <h1>{rating}</h1>
+      </div>
     </div>
   );
 }

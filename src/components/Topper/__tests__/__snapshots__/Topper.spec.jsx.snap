@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="topper"
+  id="space"
+>
+  <div
+    className="searchLine"
+  >
+    <big>
+      FILMS
+    </big>
+    <div
+      className="search"
+    >
+      <form>
+        <input
+          placeholder="Search here..."
+          type="text"
+        />
+        <button
+          id="push"
+          type="submit"
+        >
+          ⌕
+        </button>
+      </form>
+    </div>
+  </div>
+  <div
+    className="filmData"
+  >
+    <div
+      className="film"
+    >
+      <big>
+        THE JUNGLE BOOK
+      </big>
+      <h1>
+        Adventure Drama Family Fantasy | 1h 46m
+      </h1>
+      <div
+        className="rate"
+      >
+        <div
+          className="rate"
+        >
+          <span
+            className="star"
+          />
+          <span
+            className="star"
+          />
+          <span
+            className="star"
+          />
+          <span
+            className="star"
+          />
+          <span
+            className="star"
+          />
+        </div>
+        <h1>
+          4.8
+        </h1>
+      </div>
+    </div>
+    <div
+      className="info"
+    >
+      <button
+        id="watch"
+        type="button"
+      >
+        Watch now
+      </button>
+      <button
+        id="check"
+        type="button"
+      >
+        View info
+      </button>
+    </div>
+  </div>
+</div>
+`;

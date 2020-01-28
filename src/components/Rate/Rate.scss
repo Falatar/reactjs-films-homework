@@ -1,0 +1,30 @@
+div.rate {
+    display: flex;
+    flex-direction: row;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.rate {
+    span.star:before {
+        content: '★';
+    }
+
+    span.voidStar:before {
+        content: '☆';
+    }
+
+    span {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 0;
+        padding: 0;
+        margin: 0;
+        color: deepskyblue;
+        font-size: 1.7em;
+        text-align: center;
+        height: 1.7em;
+    }
+}

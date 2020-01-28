@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="film"
+>
+  <big>
+    nemo
+  </big>
+  <h1>
+    empty
+  </h1>
+  <div
+    className="rate"
+  >
+    <div
+      className="rate"
+    >
+      <span
+        className="voidStar"
+      />
+      <span
+        className="voidStar"
+      />
+      <span
+        className="voidStar"
+      />
+      <span
+        className="voidStar"
+      />
+      <span
+        className="voidStar"
+      />
+    </div>
+    <h1>
+      0
+    </h1>
+  </div>
+</div>
+`;

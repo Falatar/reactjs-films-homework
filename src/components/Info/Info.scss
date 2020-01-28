@@ -4,6 +4,7 @@ div.info {
     border: 0;
     padding: 0;
     margin: 3vh 6vw 0 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .info {
@@ -12,6 +13,7 @@ div.info {
         width: 120px;
         color: white;
         border-radius: 5px;
+        outline:none;
     }
 
     :first-child {

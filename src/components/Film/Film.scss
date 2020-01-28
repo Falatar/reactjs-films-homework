@@ -1,0 +1,46 @@
+div.film {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    border: 0;
+    padding: 0;
+    margin: 0 0 1vh 6vw;
+}
+
+.film {
+    big {
+        width: 100%;
+        font-size: 2em;
+        color: white;
+        font-weight: bold;
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 1em;
+        color: white;
+        margin: 0 0 1vh 0;
+        font-weight: lighter;
+    }
+
+    div.rate {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        border: 0;
+        padding: 0;
+        margin: 0;
+    }
+
+    .rate {
+        h1 {
+            height: 1.1em;
+            width: 2em;
+            margin: 0 0 0 1em;
+            padding: 0;
+            border: 1px solid;
+            border-color: deepskyblue;
+            text-align: center;
+        }
+    }
+}

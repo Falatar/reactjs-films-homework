@@ -1,8 +1,8 @@
 import React from 'react';
 import style from './Topper.scss';
-import Search from './Search';
-import Film from './Film';
-import Info from './Info';
+import Search from '../Search/Search';
+import Film from '../Film/Film';
+import Info from '../Info/Info';
 
 function Topper() {
   const text = 'Adventure Drama Family Fantasy | 1h 46m';

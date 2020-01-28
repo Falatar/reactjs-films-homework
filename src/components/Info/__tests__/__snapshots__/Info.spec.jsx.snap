@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="info"
+>
+  <button
+    id="watch"
+    type="button"
+  >
+    Watch now
+  </button>
+  <button
+    id="check"
+    type="button"
+  >
+    View info
+  </button>
+</div>
+`;
