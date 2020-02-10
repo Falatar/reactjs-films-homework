@@ -1,0 +1,11 @@
+div.List {
+    height: 100vh;
+    width: 100%;
+    background-color: lightgrey;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
