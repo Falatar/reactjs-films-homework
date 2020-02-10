@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import style from './MoviewList.scss';
-import FilmData from '../FilmData/FilmData';
-import setFilm from './actions';
+import FilmData from '../FilmData';
+import setFilmAction from './actions';
 
 
 class MoviewList extends Component {
@@ -12,6 +13,7 @@ class MoviewList extends Component {
   }
 
   componentDidMount() {
+    const { setFilm } = this.props;
     setFilm();
   }
 
@@ -29,7 +31,7 @@ const mapStateToProps = (store) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setFilm: dispatch(setFilm()),
+  setFilm: () => dispatch(setFilmAction()),
 });
 
 export default connect(
