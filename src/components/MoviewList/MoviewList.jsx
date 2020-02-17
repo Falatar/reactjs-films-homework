@@ -31,6 +31,11 @@ class MoviewList extends Component {
           tagList={base.results[i].poster_path}
         />);
       }
+      return (
+        <div className={style.List}>
+          {output}
+        </div>
+      );
     }
     return (
       <div className={style.List}>
