@@ -9,15 +9,12 @@ import setFilmAction from './actions';
 class MoviewList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
-
-  componentDidMount() {
     const { setFilm } = this.props;
     setFilm();
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className={style.List}>
         <FilmData />
