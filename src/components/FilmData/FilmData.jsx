@@ -7,7 +7,7 @@ function FilmData({
 }) {
   return (
     <div className={style.FilmData}>
-      <img src={imgURL} alt="" />
+      <img src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt="" />
       <div className={style.FilmText}>
         <div className={style.Name}>
           <h3>{name}</h3>

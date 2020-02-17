@@ -12,28 +12,23 @@ class MoviewList extends Component {
     const { setFilm, loadList } = this.props;
     loadList();
     setFilm();
-    this.state = {
-      output: [],
-    };
   }
 
   render() {
     const { base, genList } = this.props;
-    const { output } = this.state;
     console.log(base);
     console.log(genList);
-    if (base !== {} && base !== undefined) {
-      for (let i = 0; i < (base.total_results < 8 ? base.total_results : 8); i += 1) {
-        output.push(<FilmData
-          name={base.results[i].title}
-          imgURL={base.results[i].poster_path}
-          rating={base.results[i].vote_average / 2}
-          tagList={base.results[i].poster_path}
-        />);
-      }
+    if (base.results !== undefined) {
       return (
         <div className={style.List}>
-          {output}
+          {base.results.slice(0, 8).map((item) => (
+            <FilmData
+              name={item.title}
+              imgURL={item.poster_path}
+              rating={item.vote_average / 2}
+              tagList={item.poster_path}
+            />
+          ))}
         </div>
       );
     }
@@ -46,8 +41,8 @@ class MoviewList extends Component {
 }
 
 const mapStateToProps = (store) => ({
-  base: store.base,
-  genList: store.genList,
+  base: store.moviewReducer.base,
+  genList: store.moviewReducer.genList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
