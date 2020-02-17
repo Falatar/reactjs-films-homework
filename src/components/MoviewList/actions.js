@@ -1,5 +1,6 @@
 const setFilm = () => async (dispatch) => {
-  const url = 'https://api.themoviedb.org/3/movie/latest?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US';
+  // const url = 'https://api.themoviedb.org/3/movie/latest?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US';
+  const url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US&page=1';
   const promise = await fetch(url);
   const film = await promise.json();
   return dispatch({

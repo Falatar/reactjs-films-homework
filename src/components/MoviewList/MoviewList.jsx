@@ -9,7 +9,8 @@ import setFilmAction from './actions';
 class MoviewList extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { /* base: props.base */ };
+    console.log(props);
   }
 
   componentDidMount() {
