@@ -1,12 +1,8 @@
-export const initialState = {
-  base: JSON.stringify({}),
-};
+import { combineReducers } from 'redux';
+import { filmReducer } from './filmReducer';
+import { moviewReducer } from './moviewReducer';
 
-export function rootReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'FORM_MOVIE_LIST':
-      return { ...state, base: action.payload };
-
-    default: return state;
-  }
-}
+export default combineReducers({
+  filmReducer,
+  moviewReducer,
+});

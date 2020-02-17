@@ -48,7 +48,7 @@ module.exports = {
               fix: true,
             },
           },
-        ], 
+        ],
       },
       {
         test: /\.scss$/,
