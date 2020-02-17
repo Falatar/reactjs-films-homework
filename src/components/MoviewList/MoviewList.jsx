@@ -22,7 +22,7 @@ class MoviewList extends Component {
     const { output } = this.state;
     console.log(base);
     console.log(genList);
-    if (base !== {}) {
+    if (base !== {} && base !== undefined) {
       for (let i = 0; i < (base.total_results < 8 ? base.total_results : 8); i += 1) {
         output.push(<FilmData
           name={base.results[i].title}
@@ -47,7 +47,7 @@ const mapStateToProps = (store) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   setFilm: () => dispatch(setFilmAction()),
-  load: () => dispatch(loadGenres()),
+  loadList: () => dispatch(loadGenres()),
 });
 
 export default connect(
