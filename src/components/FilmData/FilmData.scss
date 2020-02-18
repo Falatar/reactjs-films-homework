@@ -1,22 +1,81 @@
 div.FilmData {
-    width: 20vw;
-    height: 40%;
+    width: 21%;
+    height: 55vh;
     background-color: white;
-    margin: 4%;
+    margin: 2%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .FilmData {
-    img {
+
+    div.control {
         width: 100%;
-        height: 60%;
-        background-size: cover;
+        height: 80%;
         margin: 0;
         padding: 0;
         border: 0;
     }
 
+    .control {
+
+        img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            z-index: 100;
+        }
+
+        img:hover {
+            z-index: 1;
+        }
+
+        div.hidden {
+            background-color: black;
+            opacity: 0.6;
+            width: 100%;
+            height: 100%;
+            top: -101%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            position: relative;
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hidden {
+
+            button {
+                z-index: inherit;
+                color: white;
+                background-color: deepskyblue;
+                opacity: 1;
+                height: 5vw;
+                width: 5vw;
+                border: 0;
+                border-radius: 2.5vw;
+                font-size: 3em;
+                rotate: 90deg;
+            }
+        }
+    }
+
     h3 {
-        font-size: 2em;
+        width: 100%;
+        text-transform: uppercase;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-weight: 600;
+        font-size: 1.6em;
         color: black;
         margin: 0;
         padding: 0;
@@ -24,6 +83,12 @@ div.FilmData {
     }
 
     h2 {
+        text-transform: uppercase;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        font-size: 1em;
+        width: 100%;
         color: deepskyblue;
         margin: 0;
         padding: 0;
@@ -33,20 +98,32 @@ div.FilmData {
     h1 {
         height: 1.1em;
         width: 2em;
-        margin: 0 0 0 1em;
+        font-size: 1.4em;
+        margin: 0 0 0 0.5em;
         padding: 0;
         border: 1px solid;
+        color: deepskyblue;
         border-color: deepskyblue;
         text-align: center;
     }
 
     div.FilmText {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        height: 20%;
         display: flex;
         flex-direction: row;
+        align-items: center;
     }
 
     div.Name {
+        width: 75%;
+        margin-left: 5%;
+        padding: 0;
+        border: 0;
         display: flex;
         flex-direction: column;
+        justify-content: center;
     }
 }

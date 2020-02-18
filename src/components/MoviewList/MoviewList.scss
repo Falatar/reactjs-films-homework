@@ -1,11 +1,17 @@
 div.List {
-    height: 100vh;
+    height: 200vh;
     width: 100%;
     background-color: lightgrey;
-    padding: 0;
+    padding-top: 1%;
     margin: 0;
     border: 0;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+}
+
+.List {
+    ::selection {
+        background-color: dimgray;
+    }
 }
