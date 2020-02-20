@@ -8,7 +8,7 @@ module.exports = {
   output: {
     filename: 'js/main.js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: '/',
+    publicPath: '../',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -23,6 +23,7 @@ module.exports = {
       title: 'Output Management',
       filename: 'index.html',
       template: 'src/index.html',
+      inject: false,
     }),
   ],
   module: {
