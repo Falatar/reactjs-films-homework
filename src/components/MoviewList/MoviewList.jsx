@@ -40,6 +40,7 @@ class MoviewList extends Component {
               imgURL={item.poster_path}
               rating={item.vote_average / 2}
               tagList={this.genGenreString(genList.genres, item.genre_ids)}
+              overview={item.overview}
             />
           ))}
         </div>

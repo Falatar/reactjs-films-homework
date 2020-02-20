@@ -1,27 +1,64 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import style from './FilmData.scss';
 
-function FilmData({
-  id, name, imgURL, rating, tagList,
-}) {
-  return (
-    <div className={style.FilmData}>
-      <div className={style.control}>
-        <img src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt={id} />
-        <div className={style.hidden}>
-          <button type="button">▶</button>
+class FilmData extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      detailsMode: false,
+    };
+    this.switchMode = this.switchMode.bind(this);
+  }
+
+  switchMode = () => {
+    this.setState((state) => ({
+      detailsMode: !state.detailsMode,
+    }));
+  }
+
+  render() {
+    const {
+      imgURL, id, name, tagList, rating, overview,
+    } = this.props;
+    const { detailsMode } = this.state;
+    const detailsStyle = detailsMode ? style.onTop : style.onBottom;
+    return (
+      <div className={style.FilmData}>
+        <div className={style.BasicMode}>
+          <div className={style.control}>
+            <img src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt={id} />
+            <div className={style.hidden}>
+              <button type="button" className={style.Play}>▶</button>
+              <p>Watch Now</p>
+              <button type="button" className={style.Info} onClick={this.switchMode}>View Info</button>
+            </div>
+          </div>
+          <div className={style.FilmText}>
+            <div className={style.Name}>
+              <h3>{name}</h3>
+              <h2>{tagList}</h2>
+            </div>
+            <h1>{rating.toFixed(1)}</h1>
+          </div>
         </div>
-      </div>
-      <div className={style.FilmText}>
-        <div className={style.Name}>
-          <h3>{name}</h3>
-          <h2>{tagList}</h2>
+        <div className={classNames({ [detailsStyle]: true, [style.DetailsMode]: true })}>
+          <button type="button" className={style.Close}>✕</button>
+          <div className={style.DetailsFilmText}>
+            <div className={style.DetailsName}>
+              <h3>{name}</h3>
+              <h2>{tagList}</h2>
+            </div>
+            <h1>{rating.toFixed(1)}</h1>
+          </div>
+          <p>{overview}</p>
+          <button type="button" className={style.DetailsPlay}>Watch Now</button>
         </div>
-        <h1>{rating.toFixed(1)}</h1>
+        <img src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt={id} className={detailsStyle} />
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 FilmData.defaultProps = {
@@ -30,6 +67,7 @@ FilmData.defaultProps = {
   imgURL: '',
   rating: 0,
   tagList: 'Can\'t find property "tagList"',
+  overview: 'Can\'t find property "overview"',
 };
 
 FilmData.propTypes = {
@@ -38,6 +76,7 @@ FilmData.propTypes = {
   imgURL: PropTypes.string,
   rating: PropTypes.number,
   tagList: PropTypes.string,
+  overview: PropTypes.string,
 };
 
 export default FilmData;
