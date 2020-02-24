@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import style from './FilmData.scss';
 
 class FilmData extends Component {
@@ -23,10 +22,9 @@ class FilmData extends Component {
       imgURL, id, name, tagList, rating, overview,
     } = this.props;
     const { detailsMode } = this.state;
-    const detailsStyle = detailsMode ? style.onTop : style.onBottom;
-    return (
-      <div className={style.FilmData}>
-        <div className={style.BasicMode}>
+    if (!detailsMode) {
+      return (
+        <div className={style.FilmData}>
           <div className={style.control}>
             <img src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt={id} />
             <div className={style.hidden}>
@@ -43,19 +41,20 @@ class FilmData extends Component {
             <h1>{rating.toFixed(1)}</h1>
           </div>
         </div>
-        <div className={classNames({ [detailsStyle]: true, [style.DetailsMode]: true })}>
-          <button type="button" className={style.Close}>✕</button>
-          <div className={style.DetailsFilmText}>
-            <div className={style.DetailsName}>
-              <h3>{name}</h3>
-              <h2>{tagList}</h2>
-            </div>
-            <h1>{rating.toFixed(1)}</h1>
+      );
+    }
+    return (
+      <div className={style.FilmData} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${imgURL})` }}>
+        <button type="button" className={style.Close} onClick={this.switchMode}>✕</button>
+        <div className={style.DetailsFilmText}>
+          <div className={style.DetailsName}>
+            <h3>{name}</h3>
+            <h2>{tagList}</h2>
           </div>
-          <p>{overview}</p>
-          <button type="button" className={style.DetailsPlay}>Watch Now</button>
+          <h1>{rating.toFixed(1)}</h1>
         </div>
-        <img src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt={id} className={detailsStyle} />
+        <p>{overview}</p>
+        <button type="button" className={style.DetailsPlay}>Watch Now</button>
       </div>
     );
   }
