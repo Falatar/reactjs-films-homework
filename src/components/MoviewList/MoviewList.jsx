@@ -28,8 +28,6 @@ class MoviewList extends Component {
 
   render() {
     const { base, genList } = this.props;
-    console.log(base);
-    console.log(genList);
     if (base.results !== undefined && genList.genres !== undefined) {
       return (
         <div className={style.List}>
