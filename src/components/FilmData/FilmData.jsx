@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import style from './FilmData.scss';
 
 class FilmData extends Component {
@@ -44,7 +45,10 @@ class FilmData extends Component {
       );
     }
     return (
-      <div className={style.FilmData} style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${imgURL})` }}>
+      <div
+        className={classNames(style.FilmData, style.Dark)}
+        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${imgURL})` }}
+      >
         <button type="button" className={style.Close} onClick={this.switchMode}>✕</button>
         <div className={style.DetailsFilmText}>
           <div className={style.DetailsName}>
