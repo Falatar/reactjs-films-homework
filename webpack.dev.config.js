@@ -12,7 +12,7 @@ module.exports = merge(common, {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     hotOnly: true,
-    contentBase: './build',
+    contentBase: './public',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
