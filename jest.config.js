@@ -3,8 +3,6 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     './src/**/*.{js,jsx}',
-    // "src/pages/Page1*.{js,jsx}",
-    // "src/components/*.{js,jsx}",
     '!./src/App.jsx',
     '!./src/index.jsx',
     '!**/node_modules/**',

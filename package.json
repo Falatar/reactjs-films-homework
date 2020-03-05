@@ -8,7 +8,7 @@
     "test-coverage": "jest --coverage --config jest.config.js",
     "start": "cross-env NODE_ENV=development node server.js",
     "build": "webpack --config webpack.prod.config.js",
-    "lint": "eslint \"**/*.js\" --fix --ignore-pattern node_modules/"
+    "lint": "eslint \"**/*.js\" --fix"
   },
   "repository": {
     "type": "git",
@@ -41,6 +41,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "semantic-ui-react": "^0.88.2",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.9",
     "webpack-dev-middleware": "^3.7.2",

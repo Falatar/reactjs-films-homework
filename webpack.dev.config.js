@@ -1,6 +1,5 @@
 const merge = require('webpack-merge');
 const webpack = require('webpack');
-const path = require('path');
 const common = require('./webpack.common.config.js');
 
 module.exports = merge(common, {
@@ -13,7 +12,7 @@ module.exports = merge(common, {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     hotOnly: true,
-    contentBase: './build',
+    contentBase: './public',
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

@@ -83,6 +83,16 @@ exports[`renders correctly 1`] = `
         View info
       </button>
     </div>
+    <button
+      className="ui button"
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onMouseEnter={[Function]}
+      onMouseLeave={[Function]}
+    >
+      Show Modal
+    </button>
   </div>
 </div>
 `;

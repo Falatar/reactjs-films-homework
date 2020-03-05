@@ -3,6 +3,7 @@ import style from './Topper.scss';
 import Search from '../Search/Search';
 import Film from '../Film/Film';
 import Info from '../Info/Info';
+import ModalWindow from '../ModalWindow/ModalWindow';
 
 function Topper() {
   const text = 'Adventure Drama Family Fantasy | 1h 46m';
@@ -16,6 +17,7 @@ function Topper() {
       <div className={style.filmData}>
         <Film name="THE JUNGLE BOOK" genrePtime={text} rating={rate} />
         <Info />
+        <ModalWindow />
       </div>
     </div>
   );
