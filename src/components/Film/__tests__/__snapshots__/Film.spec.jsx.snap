@@ -1,17 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders correctly 1`] = `
+exports[`Film renders correctly 1`] = `
 <div
-  className="film"
+  className="Film"
 >
-  <big>
+  <big
+    className="Name"
+  >
     nemo
   </big>
-  <h1>
+  <h1
+    className="Genres"
+  >
     empty
   </h1>
   <div
-    className="rate"
+    className="RatePanel"
   >
     <div
       className="rate"
@@ -32,7 +36,9 @@ exports[`renders correctly 1`] = `
         className="voidStar"
       />
     </div>
-    <h1>
+    <h1
+      className="Rate"
+    >
       0
     </h1>
   </div>

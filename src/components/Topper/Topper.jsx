@@ -10,7 +10,7 @@ function Topper() {
   return (
     <div className={style.topper} id="space">
       <div className={style.searchLine}>
-        <big>FILMS</big>
+        <big className={style.Title}>FILMS</big>
         <Search />
       </div>
       <div className={style.filmData}>

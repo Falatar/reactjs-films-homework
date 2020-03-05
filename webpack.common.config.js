@@ -81,6 +81,11 @@ module.exports = {
               'sass-loader',
             ],
       },
+      {
+        test: /\.(js|jsx)$/,
+        use: 'react-hot-loader/webpack',
+        include: /node_modules/,
+      },
     ],
   },
 };
