@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { connect } from 'react-redux';
 import style from './FilmData.scss';
+import showTrailer, { updatePath } from './actions';
 
 class FilmData extends Component {
   constructor(props) {
@@ -18,6 +20,12 @@ class FilmData extends Component {
     }));
   }
 
+  callModal = (id) => {
+    const { openModal, setTrailer } = this.props;
+    setTrailer(id);
+    openModal();
+  }
+
   render() {
     const {
       imgURL, id, name, tagList, rating, overview,
@@ -27,19 +35,19 @@ class FilmData extends Component {
       return (
         <div className={style.FilmData}>
           <div className={style.control}>
-            <img src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt={id} />
+            <img className={style.Wall} src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt={id} />
             <div className={style.hidden}>
-              <button type="button" className={style.Play}>▶</button>
-              <p>Watch Now</p>
+              <button type="button" className={style.Play} onClick={this.callModal(id)}>▶</button>
+              <p className={style.WatchNow}>Watch Now</p>
               <button type="button" className={style.Info} onClick={this.switchMode}>View Info</button>
             </div>
           </div>
           <div className={style.FilmText}>
             <div className={style.Name}>
-              <h3>{name}</h3>
-              <h2>{tagList}</h2>
+              <h3 className={style.NameText}>{name}</h3>
+              <h2 className={style.TagsText}>{tagList}</h2>
             </div>
-            <h1>{rating.toFixed(1)}</h1>
+            <h1 className={style.RateText}>{rating.toFixed(1)}</h1>
           </div>
         </div>
       );
@@ -52,13 +60,13 @@ class FilmData extends Component {
         <button type="button" className={style.Close} onClick={this.switchMode}>✕</button>
         <div className={style.DetailsFilmText}>
           <div className={style.DetailsName}>
-            <h3>{name}</h3>
-            <h2>{tagList}</h2>
+            <h3 className={style.DetailsNameText}>{name}</h3>
+            <h2 className={style.DetailsTagsText}>{tagList}</h2>
           </div>
-          <h1>{rating.toFixed(1)}</h1>
+          <h1 className={style.DetailsRateText}>{rating.toFixed(1)}</h1>
         </div>
-        <p>{overview}</p>
-        <button type="button" className={style.DetailsPlay}>Watch Now</button>
+        <p className={style.Overview}>{overview}</p>
+        <button type="button" className={style.DetailsPlay} onClick={this.callModal(id)}>Watch Now</button>
       </div>
     );
   }
@@ -71,6 +79,8 @@ FilmData.defaultProps = {
   rating: 0,
   tagList: 'Can\'t find property "tagList"',
   overview: 'Can\'t find property "overview"',
+  openModal: () => {},
+  setTrailer: () => {},
 };
 
 FilmData.propTypes = {
@@ -80,6 +90,16 @@ FilmData.propTypes = {
   rating: PropTypes.number,
   tagList: PropTypes.string,
   overview: PropTypes.string,
+  openModal: PropTypes.func,
+  setTrailer: PropTypes.func,
 };
 
-export default FilmData;
+const mapDispatchToProps = (dispatch) => ({
+  openModal: () => dispatch(showTrailer()),
+  setTrailer: (path) => dispatch(updatePath(path)),
+});
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(FilmData);

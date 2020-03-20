@@ -1,17 +1,4 @@
-div.FilmData {
-    width: 21%;
-    height: 55vh;
-    background-color: white;
-    margin: 2%;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-}
-
-div.Dark::before {
+.Dark::before {
     content: '';
     position: absolute;
     top: 0;
@@ -24,17 +11,26 @@ div.Dark::before {
 
 .FilmData {
 
-    div.control {
+    width: 19%;
+    height: 55vh;
+    background-color: white;
+    margin: 2%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+
+    .control {
+
         width: 100%;
         height: 80%;
         margin: 0;
         padding: 0;
         border: 0;
-    }
 
-    .control {
-
-        img {
+        .Wall {
             width: 100%;
             height: 100%;
             background-size: cover;
@@ -45,11 +41,16 @@ div.Dark::before {
             position: relative;
         }
 
-        img:hover {
+        .Wall:hover {
             z-index: 1;
         }
 
-        div.hidden {
+        .hidden:hover {
+            z-index: 101;
+        }
+
+        .hidden {
+
             background-color: rgba(0, 0, 0, 0.664);
             width: 100%;
             height: 100%;
@@ -63,15 +64,8 @@ div.Dark::before {
             flex-direction: column;
             align-items: center;
             justify-content: center;
-        }
 
-        div.hidden:hover {
-            z-index: 101;
-        }
-
-        .hidden {
-
-            button.Play {
+            .Play {
                 z-index: inherit;
                 color: white;
                 background-color: deepskyblue;
@@ -85,13 +79,13 @@ div.Dark::before {
                 margin-top: 10%;
             }
 
-            p {
+            .WatchNow {
                 color: white;
                 font-weight: 500;
                 font-size: 1.15em;
             }
 
-            button.Info {
+            .Info {
                 margin-top: 5%;
                 background: transparent;
                 color: white;
@@ -104,7 +98,7 @@ div.Dark::before {
         }
     }
 
-    h3 {
+    .NameText {
         width: 100%;
         text-transform: uppercase;
         text-overflow: ellipsis;
@@ -118,7 +112,7 @@ div.Dark::before {
         border: 0;
     }
 
-    h2 {
+    .TagsText {
         text-transform: uppercase;
         text-overflow: ellipsis;
         overflow: hidden;
@@ -131,7 +125,7 @@ div.Dark::before {
         border: 0;
     }
 
-    h1 {
+    .RateText {
         height: 1.1em;
         width: 2em;
         font-size: 1.4em;
@@ -143,7 +137,7 @@ div.Dark::before {
         text-align: center;
     }
 
-    div.FilmText {
+    .FilmText {
         margin: 0;
         padding: 0;
         border: 0;
@@ -153,7 +147,7 @@ div.Dark::before {
         align-items: center;
     }
 
-    div.Name {
+    .Name {
         width: 75%;
         margin-left: 5%;
         padding: 0;
@@ -163,7 +157,7 @@ div.Dark::before {
         justify-content: center;
     }
 
-    button.Close {
+    .Close {
         width: 15%;
         height: 10%;
         background: transparent;
@@ -176,47 +170,45 @@ div.Dark::before {
         margin-bottom: 10%;;
     }
 
-    div.DetailsFilmText {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        height: 10%;
-    }
+    .DetailsName {
 
-    div.DetailsName {
         display: flex;
         flex-direction: column;
         width: 70%;
         height: 100%;
         margin-right: 5%;
         margin-left: 3%;
-    }
 
-    .DetailsName {
-        h3 {
+        .DetailsNameText {
             color: white;
             z-index: 2;
         }
 
-        h2 {
+        .DetailsTagsText {
             z-index: 2;
         }
     }
 
     .DetailsFilmText {
-        h1 {
+
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 10%;
+
+        .DetailsRateText {
             z-index: 2;
         }
     }
 
-    p {
+    .Overview {
         color: white;
         z-index: 2;
         margin: 3% 5%;
         font-size: 1.2em;
     }
 
-    button.DetailsPlay {
+    .DetailsPlay {
         width: 40%;
         height: 10%;
         border: 0;

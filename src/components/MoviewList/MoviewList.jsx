@@ -1,6 +1,6 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import style from './MoviewList.scss';
 import FilmData from '../FilmData';
 import setFilmAction, { loadGenres } from './actions';
@@ -33,12 +33,13 @@ class MoviewList extends Component {
         <div className={style.List}>
           {base.results.slice(0, 12).map((item) => (
             <FilmData
-              key={item.id}
+              id={item.id}
               name={item.title}
               imgURL={item.poster_path}
               rating={item.vote_average / 2}
               tagList={this.genGenreString(genList.genres, item.genre_ids)}
               overview={item.overview}
+              key={item.id}
             />
           ))}
         </div>
@@ -46,11 +47,25 @@ class MoviewList extends Component {
     }
     return (
       <div className={style.List}>
-        <FilmData />
+        <span>Cannot download film list...</span>
       </div>
     );
   }
 }
+
+MoviewList.defaultProps = {
+  base: {},
+  genList: {},
+  loadList: () => {},
+  setFilm: () => {},
+};
+
+MoviewList.propTypes = {
+  base: PropTypes.objectOf(PropTypes.any),
+  genList: PropTypes.objectOf(PropTypes.any),
+  loadList: PropTypes.func,
+  setFilm: PropTypes.func,
+};
 
 const mapStateToProps = (store) => ({
   base: store.moviewReducer.base,

@@ -1,6 +1,5 @@
-
-div.topper {
-    width: 100%;
+.topper {
+    width: 100vw;
     height: 80vh;
     border: 0;
     padding: 0;
@@ -11,10 +10,8 @@ div.topper {
     background-image: url(../trash/jb_wall.jpg);
     background-size: cover;
     box-shadow: inset 0 110px 150px  -50px black , inset 0 -110px 150px  -50px black;
-}
 
-.topper {
-    big {
+    .Title {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         width: 10%;
         color: white;
@@ -31,7 +28,7 @@ div.topper {
 }
 
 
-div.searchLine, div.filmData {
+.searchLine, .filmData {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

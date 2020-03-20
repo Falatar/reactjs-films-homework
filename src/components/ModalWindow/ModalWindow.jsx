@@ -1,42 +1,66 @@
 import React, { Component } from 'react';
-import {
-  Button, Header, Icon, Modal,
-} from 'semantic-ui-react';
+import { connect } from 'react-redux';
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+import style from './ModalWindow.scss';
+import endSession from './actions';
 
 class ModalWindow extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpen: false,
+      isShowed: false,
     };
   }
 
-  handleOpen = () => this.setState({ modalOpen: true })
+  show = () => {
+    this.setState((state) => ({
+      isShowed: !state.isShowed,
+    }));
+  }
 
-  handleClose = () => this.setState({ modalOpen: false })
+  hide = () => {
+    const { closeModal } = this.props;
+    closeModal();
+  }
 
   render() {
-    const { modalOpen } = this.state;
+    const { status, root } = this.props;
+    const { isShowed } = this.state;
+    if (status && root.results !== undefined) this.show();
     return (
-      <Modal
-        trigger={<Button onClick={this.handleOpen}>Show Modal</Button>}
-        open={modalOpen}
-        onClose={this.handleClose}
-        basic
-        size="small"
-      >
-        <Header icon="browser" content="Cookies policy" />
-        <Modal.Content>
-          <h3>This website uses cookies to ensure the best user experience.</h3>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button color="green" onClick={this.handleClose} inverted>
-            <Icon name="checkmark" />
-          </Button>
-        </Modal.Actions>
-      </Modal>
+      <div className={classNames(style.Bord, isShowed ? style.Up : style.Down)}>
+        <iframe src={isShowed ? `https://www.youtube.com/watch?v=${root.results[0].key}` : ''} title="trailer" />
+        <div className={style.BotLain}>
+          <button type="button" className={style.CloseButton} onClick={this.hide}>close</button>
+        </div>
+      </div>
     );
   }
 }
 
-export default ModalWindow;
+ModalWindow.defaultProps = {
+  status: false,
+  root: {},
+  closeModal: () => {},
+};
+
+ModalWindow.propTypes = {
+  status: PropTypes.bool,
+  root: PropTypes.objectOf(PropTypes.any),
+  closeModal: PropTypes.func,
+};
+
+const mapStateToProps = (store) => ({
+  status: store.modalReducer.status,
+  root: store.modalReducer.root,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  closeModal: () => dispatch(endSession()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ModalWindow);

@@ -1,4 +1,6 @@
-div.List {
+
+.List {
+
     height: 200vh;
     width: 100%;
     background-color: lightgrey;
@@ -10,9 +12,8 @@ div.List {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-}
 
-.List {
+
     ::selection {
         background-color: dimgray;
     }

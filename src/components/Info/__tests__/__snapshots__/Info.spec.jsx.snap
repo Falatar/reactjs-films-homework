@@ -5,12 +5,14 @@ exports[`renders correctly 1`] = `
   className="info"
 >
   <button
+    className="Watch"
     id="watch"
     type="button"
   >
     Watch now
   </button>
   <button
+    className="View"
     id="check"
     type="button"
   >
