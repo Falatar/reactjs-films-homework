@@ -1,7 +1,7 @@
 
 export const initialState = {
-  base: JSON.stringify({}),
-  genList: JSON.stringify({}),
+  base: {},
+  genList: {},
 };
 
 export function moviewReducer(state = initialState, action) {

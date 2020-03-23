@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './Film.scss';
-import Rate from '../Rate/Rate';
+import Rate from '../Rate';
 
 function Film({
   name, genrePtime, rating,
@@ -12,7 +12,7 @@ function Film({
       <h1 className={style.Genres}>{genrePtime}</h1>
       <div className={style.RatePanel}>
         <Rate rating={rating} />
-        <h1 className={style.Rate}>{rating}</h1>
+        <h1 className={style.Rate}>{rating.toFixed(1)}</h1>
       </div>
     </div>
   );

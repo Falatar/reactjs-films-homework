@@ -1,5 +1,5 @@
 export const initialState = {
-  filmData: JSON.stringify({}),
+  filmData: {},
 };
 
 export function filmReducer(state = initialState, action) {

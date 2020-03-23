@@ -1,1 +1,1 @@
-export { default } from './FilmData';
+export { default } from './FilmDataContainer';

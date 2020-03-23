@@ -7,8 +7,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-image: url(../trash/jb_wall.jpg);
-    background-size: cover;
+    background-size: contain;
+    background-position-y: center;
     box-shadow: inset 0 110px 150px  -50px black , inset 0 -110px 150px  -50px black;
 
     .Title {

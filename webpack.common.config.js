@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
   output: {
     filename: 'js/main.js',
-    path: path.resolve(__dirname, 'build'),
+    path: path.resolve(__dirname, 'public'),
     publicPath: '/',
   },
   resolve: {
@@ -17,6 +18,11 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/style.css',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Output Management',
+      filename: 'index.html',
+      template: 'src/index.html',
     }),
   ],
   module: {
@@ -74,6 +80,11 @@ module.exports = {
               },
               'sass-loader',
             ],
+      },
+      {
+        test: /\.(js|jsx)$/,
+        use: 'react-hot-loader/webpack',
+        include: /node_modules/,
       },
     ],
   },
