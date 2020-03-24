@@ -4,7 +4,13 @@ import style from './ModalWindow.scss';
 
 const ModalWindow = (isShowed, root, hide) => (
   <div className={classNames(style.Bord, isShowed ? style.Up : style.Down)}>
-    <iframe src={isShowed ? `https://www.youtube.com/watch?v=${root.results[0].key}` : ''} title="trailer" />
+    <iframe
+      className={style.Video}
+      src={isShowed ? `https://www.youtube.com/embed/${root.results[0].key}` : ''}
+      title="trailer"
+      frameBorder="0"
+      allowFullScreen
+    />
     <div className={style.BotLain}>
       <button type="button" className={style.CloseButton} onClick={hide}>close</button>
     </div>

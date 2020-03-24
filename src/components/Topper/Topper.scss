@@ -1,5 +1,5 @@
 .topper {
-    width: 100vw;
+    width: 100%;
     height: 80vh;
     border: 0;
     padding: 0;
@@ -7,9 +7,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-size: contain;
+    background-size: cover;
     background-position-y: center;
     box-shadow: inset 0 110px 150px  -50px black , inset 0 -110px 150px  -50px black;
+    background-color: lightgrey;
 
     .Title {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -24,6 +25,10 @@
 
     ::selection {
         background-color: dimgray;
+    }
+
+    .Loading {
+        color: white;
     }
 }
 

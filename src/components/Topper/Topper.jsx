@@ -8,7 +8,7 @@ const Topper = (latestFilm, genList, genGenreString) => (
   <div
     className={style.topper}
     id="space"
-    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${latestFilm.results[0].poster_path})` }}
+    style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${latestFilm.results[0].backdrop_path})` }}
   >
     <div className={style.searchLine}>
       <big className={style.Title}>FILMS</big>
@@ -26,8 +26,8 @@ const Topper = (latestFilm, genList, genGenreString) => (
 );
 
 export const TopperVoid = () => (
-  <div className={style.List}>
-    <span>Cannot download latest film...</span>
+  <div className={style.topper}>
+    <span className={style.Loading}>loading presentation...</span>
   </div>
 );
 

@@ -14,7 +14,8 @@ class ModalWindowContainer extends Component {
 
   componentDidUpdate() {
     const { status, root } = this.props;
-    if (status && root.results !== undefined) this.show();
+    const { isShowed } = this.state;
+    if (status && root.results !== undefined && !isShowed) this.show();
   }
 
   show = () => {
@@ -26,6 +27,9 @@ class ModalWindowContainer extends Component {
   hide = () => {
     const { closeModal } = this.props;
     closeModal();
+    this.setState((state) => ({
+      isShowed: !state.isShowed,
+    }));
   }
 
   render() {

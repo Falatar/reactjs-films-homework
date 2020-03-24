@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import style from './MoviewList.scss';
 import FilmData from '../FilmData';
 
@@ -8,7 +9,7 @@ const MoviewList = (base, genList, genGenreString) => (
       <FilmData
         id={item.id}
         name={item.title}
-        imgURL={item.poster_path}
+        imgURL={item.backdrop_path}
         rating={item.vote_average / 2}
         tagList={genGenreString(genList.genres, item.genre_ids)}
         overview={item.overview}
@@ -19,8 +20,8 @@ const MoviewList = (base, genList, genGenreString) => (
 );
 
 export const MoviewListVoid = () => (
-  <div className={style.List}>
-    <span>Cannot download film list...</span>
+  <div className={classNames(style.List, style.EmptyList)}>
+    <span className={style.Loading}>Loading...</span>
   </div>
 );
 
