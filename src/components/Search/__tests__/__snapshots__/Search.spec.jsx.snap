@@ -1,5 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Search renders correctly 1`] = `
+<div
+  className="Search"
+>
+  <form
+    className="SearchForm"
+  >
+    <input
+      className="SearchText"
+      placeholder="Search here..."
+      type="text"
+    />
+    <button
+      className="SearchButton"
+      id="push"
+      type="submit"
+    >
+      ⌕
+    </button>
+  </form>
+</div>
+`;
+
 exports[`renders correctly 1`] = `
 <div
   className="Search"

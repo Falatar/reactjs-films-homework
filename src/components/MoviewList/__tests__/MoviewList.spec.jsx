@@ -1,10 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MoviewListContainer from '../MoviewListContainer';
+import MoviewList from '../MoviewListContainer';
 
-it('renders correctly', () => {
-  const tree = renderer
-    .create(<MoviewListContainer />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe('MoviewList', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<MoviewList />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

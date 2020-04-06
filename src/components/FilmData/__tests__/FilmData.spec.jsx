@@ -1,10 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import FilmDataContainer from '../FilmDataContainer';
+import FilmData from '../FilmDataContainer';
 
-it('renders correctly', () => {
-  const tree = renderer
-    .create(<FilmDataContainer imgURL="" id={1} name="nemo" tagList="empty" rating={0.0} overview="some text" />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe('FilmData', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<FilmData imgURL="" id={1} name="nemo" tagList="empty" rating={0.0} overview="some text" />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

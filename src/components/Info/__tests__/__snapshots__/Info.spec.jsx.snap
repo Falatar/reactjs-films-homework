@@ -1,5 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Info renders correctly 1`] = `
+<div
+  className="info"
+>
+  <button
+    className="Watch"
+    id="watch"
+    type="button"
+  >
+    Watch now
+  </button>
+  <button
+    className="View"
+    id="check"
+    type="button"
+  >
+    View info
+  </button>
+</div>
+`;
+
 exports[`renders correctly 1`] = `
 <div
   className="info"

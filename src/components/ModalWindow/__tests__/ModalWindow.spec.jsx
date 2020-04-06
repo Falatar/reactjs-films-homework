@@ -1,10 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import ModalWindowContainer from '../ModalWindowContainer';
+import ModalWindow from '../ModalWindowContainer';
 
-it('renders correctly', () => {
-  const tree = renderer
-    .create(<ModalWindowContainer />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe('ModalWindow', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<ModalWindow />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

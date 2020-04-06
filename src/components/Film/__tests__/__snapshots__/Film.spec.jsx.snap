@@ -1,5 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Film renders correctly 1`] = `
+<div
+  className="Film"
+>
+  <big
+    className="Name"
+  >
+    nemo
+  </big>
+  <h1
+    className="Genres"
+  >
+    empty
+  </h1>
+  <div
+    className="RatePanel"
+  >
+    <div
+      className="rate"
+    >
+      <span
+        className="voidStar"
+      />
+      <span
+        className="voidStar"
+      />
+      <span
+        className="voidStar"
+      />
+      <span
+        className="voidStar"
+      />
+      <span
+        className="voidStar"
+      />
+    </div>
+    <h1
+      className="Rate"
+    >
+      0.0
+    </h1>
+  </div>
+</div>
+`;
+
 exports[`renders correctly 1`] = `
 <div
   className="Film"

@@ -1,10 +1,12 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import TopperContainer from '../TopperContainer';
+import Topper from '../TopperContainer';
 
-it('renders correctly', () => {
-  const tree = renderer
-    .create(<TopperContainer />)
-    .toJSON();
-  expect(tree).toMatchSnapshot();
+describe('Topper', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(<Topper />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

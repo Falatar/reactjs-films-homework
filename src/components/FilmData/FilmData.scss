@@ -11,10 +11,10 @@
 
 .FilmData {
 
-    width: 20%;
-    height: 45vh;
+    width: 300px;
+    height: 280px;
     background-color: white;
-    margin: 0 1%;
+    margin: 1%;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     position: relative;
     display: flex;
@@ -97,7 +97,8 @@
             }
 
             .Info {
-                margin-top: 5%;
+                //margin-top: 5%;
+                margin-bottom: 1%;
                 background: transparent;
                 color: white;
                 font-size: 1.15em;
