@@ -6,8 +6,7 @@ import Film from '../Film';
 import Info from '../Info';
 
 class Topper extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     const { loadLatest, loadList } = this.props;
     loadList();
     loadLatest();

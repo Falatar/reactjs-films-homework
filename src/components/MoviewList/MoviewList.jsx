@@ -5,8 +5,7 @@ import style from './MoviewList.scss';
 import FilmData from '../FilmData';
 
 class MoviewList extends Component {
-  constructor(props) {
-    super(props);
+  componentDidMount() {
     const { setFilm, loadList } = this.props;
     loadList();
     setFilm();
