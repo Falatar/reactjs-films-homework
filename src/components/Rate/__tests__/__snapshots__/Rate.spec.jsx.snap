@@ -21,25 +21,3 @@ exports[`Rate renders correctly 1`] = `
   />
 </div>
 `;
-
-exports[`renders correctly 1`] = `
-<div
-  className="rate"
->
-  <span
-    className="voidStar"
-  />
-  <span
-    className="voidStar"
-  />
-  <span
-    className="voidStar"
-  />
-  <span
-    className="voidStar"
-  />
-  <span
-    className="voidStar"
-  />
-</div>
-`;

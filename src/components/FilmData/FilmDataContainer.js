@@ -1,11 +1,11 @@
 import { connect } from 'react-redux';
-import showTrailer, { updatePath } from './actions';
+import updateTrailerPath, { openModal } from '../../modules/singleFilmModule/singleFilmModuleActions';
 import FilmData from './FilmData';
 
 
 const mapDispatchToProps = (dispatch) => ({
-  openModal: () => dispatch(showTrailer()),
-  setTrailer: (path) => dispatch(updatePath(path)),
+  callTrailer: () => dispatch(openModal()),
+  setTrailer: (path) => dispatch(updateTrailerPath(path)),
 });
 
 export default connect(

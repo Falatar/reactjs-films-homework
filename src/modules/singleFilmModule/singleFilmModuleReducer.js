@@ -3,7 +3,7 @@ export const initialState = {
   root: '',
 };
 
-export function modalReducer(state = initialState, action) {
+export function singleFilmModalReducer(state = initialState, action) {
   switch (action.type) {
     case 'PREPARE_MODAL_VIDEO':
       return { ...state, status: action.payload };

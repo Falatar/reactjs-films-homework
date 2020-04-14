@@ -6,35 +6,23 @@ import FilmData from '../FilmData';
 
 class MoviewList extends Component {
   componentDidMount() {
-    const { setFilm, loadList } = this.props;
-    loadList();
-    setFilm();
-  }
-
-  genGenreString = (genres, filmGenres) => {
-    let result = '';
-    filmGenres.forEach((elem) => {
-      const genre = genres.find((type) => {
-        if (type.id === elem) return true;
-        return false;
-      });
-      result = result.concat(genre.name, ' ');
-    });
-    return result.slice(0, -1);
+    const { getFilmList, loadGenreList } = this.props;
+    loadGenreList();
+    getFilmList();
   }
 
   render() {
-    const { base, genList } = this.props;
-    if (base.results !== undefined && genList.genres !== undefined) {
+    const { base, genList, genGenreString } = this.props;
+    if (base[0] !== undefined && genList.genres !== undefined) {
       return (
         <div className={style.List}>
-          {base.results.slice(0, 12).map((item) => (
+          {base.map((item) => (
             <FilmData
               id={item.id}
               name={item.title}
               imgURL={item.backdrop_path}
               rating={item.vote_average / 2}
-              tagList={this.genGenreString(genList.genres, item.genre_ids)}
+              tagList={genGenreString(genList.genres, item.genre_ids)}
               overview={item.overview}
               key={item.id}
             />
@@ -51,17 +39,19 @@ class MoviewList extends Component {
 }
 
 MoviewList.defaultProps = {
+  genGenreString: () => {},
   base: {},
   genList: {},
-  loadList: () => {},
-  setFilm: () => {},
+  loadGenreList: () => {},
+  getFilmList: () => {},
 };
 
 MoviewList.propTypes = {
+  genGenreString: PropTypes.func,
   base: PropTypes.objectOf(PropTypes.any),
   genList: PropTypes.objectOf(PropTypes.any),
-  loadList: PropTypes.func,
-  setFilm: PropTypes.func,
+  loadGenreList: PropTypes.func,
+  getFilmList: PropTypes.func,
 };
 
 export default MoviewList;

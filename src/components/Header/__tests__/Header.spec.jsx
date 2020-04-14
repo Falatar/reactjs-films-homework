@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import Topper from '../TopperContainer';
+import Header from '../HeaderContainer';
 
-describe('Topper', () => {
+describe('Header', () => {
   it('renders correctly', () => {
     const tree = renderer
-      .create(<Topper />)
+      .create(<Header />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

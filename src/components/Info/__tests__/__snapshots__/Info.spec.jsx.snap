@@ -20,24 +20,3 @@ exports[`Info renders correctly 1`] = `
   </button>
 </div>
 `;
-
-exports[`renders correctly 1`] = `
-<div
-  className="info"
->
-  <button
-    className="Watch"
-    id="watch"
-    type="button"
-  >
-    Watch now
-  </button>
-  <button
-    className="View"
-    id="check"
-    type="button"
-  >
-    View info
-  </button>
-</div>
-`;

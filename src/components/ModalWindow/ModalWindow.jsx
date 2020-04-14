@@ -24,8 +24,8 @@ class ModalWindow extends Component {
   }
 
   hide = () => {
-    const { closeModal } = this.props;
-    closeModal();
+    const { endModalSession } = this.props;
+    endModalSession();
     this.setState((state) => ({
       isShowed: !state.isShowed,
     }));
@@ -54,13 +54,13 @@ class ModalWindow extends Component {
 ModalWindow.defaultProps = {
   status: false,
   root: {},
-  closeModal: () => {},
+  endModalSession: () => {},
 };
 
 ModalWindow.propTypes = {
   status: PropTypes.bool,
   root: PropTypes.objectOf(PropTypes.any),
-  closeModal: PropTypes.func,
+  endModalSession: PropTypes.func,
 };
 
 export default ModalWindow;

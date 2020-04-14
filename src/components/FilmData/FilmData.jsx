@@ -19,9 +19,9 @@ class FilmData extends Component {
   }
 
   callModal = () => {
-    const { openModal, setTrailer, id } = this.props;
+    const { callTrailer, setTrailer, id } = this.props;
     setTrailer(id);
-    openModal();
+    callTrailer();
   }
 
   render() {
@@ -77,7 +77,7 @@ FilmData.defaultProps = {
   rating: 0,
   tagList: 'Can\'t find property "tagList"',
   overview: 'Can\'t find property "overview"',
-  openModal: () => {},
+  callTrailer: () => {},
   setTrailer: () => {},
 };
 
@@ -88,7 +88,7 @@ FilmData.propTypes = {
   rating: PropTypes.number,
   tagList: PropTypes.string,
   overview: PropTypes.string,
-  openModal: PropTypes.func,
+  callTrailer: PropTypes.func,
   setTrailer: PropTypes.func,
 };
 

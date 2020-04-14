@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
-import endSession from './actions';
+import { closeModal } from '../../modules/singleFilmModule/singleFilmModuleActions';
+import isModalActive, { getVideoLink } from '../../modules/singleFilmModule/singleFilmModuleSelector';
 import ModalWindow from './ModalWindow';
 
 const mapStateToProps = (store) => ({
-  status: store.modalReducer.status,
-  root: store.modalReducer.root,
+  status: isModalActive(store),
+  root: getVideoLink(store),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeModal: () => dispatch(endSession()),
+  endModalSession: () => dispatch(closeModal()),
 });
 
 export default connect(

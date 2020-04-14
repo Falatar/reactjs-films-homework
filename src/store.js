@@ -1,10 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import rootReducer from './reducers/indexReducer';
+import coreReducer from './coreReducer';
 
 export const store = createStore(
-  rootReducer,
+  coreReducer,
   composeWithDevTools(applyMiddleware(thunk)),
 );
 export default { store };
