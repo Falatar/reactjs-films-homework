@@ -5,7 +5,7 @@ export const initialState = {
 
 export function singleFilmModalReducer(state = initialState, action) {
   switch (action.type) {
-    case 'PREPARE_MODAL_VIDEO':
+    case 'PREPARE_MODAL_WINDOW':
       return { ...state, status: action.payload };
 
     case 'UPDATE_TRAILER_ROOT':
