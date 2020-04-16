@@ -15,7 +15,7 @@ class MoviewList extends Component {
     const { base, genList, genGenreString } = this.props;
     if (base[0] !== undefined && genList.genres !== undefined) {
       return (
-        <div className={style.List}>
+        <div className={style.list}>
           {base.map((item) => (
             <FilmData
               id={item.id}
@@ -31,8 +31,8 @@ class MoviewList extends Component {
       );
     }
     return (
-      <div className={classNames(style.List, style.EmptyList)}>
-        <span className={style.Loading}>Loading...</span>
+      <div className={classNames(style.list, style.empty_list)}>
+        <span className={style.loading}>Loading...</span>
       </div>
     );
   }

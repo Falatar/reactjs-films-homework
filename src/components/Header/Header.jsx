@@ -17,19 +17,19 @@ class Header extends Component {
     if (mostPopularFilm.backdrop_path !== undefined && genList.genres !== undefined) {
       return (
         <div
-          className={style.Header}
+          className={style.header}
           id="space"
           style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${mostPopularFilm.backdrop_path})` }}
         >
-          <div className={style.searchLine}>
-            <big className={style.Title}>FILMS</big>
+          <div className={style.search__line}>
+            <big className={style.title}>FILMS</big>
             <Search />
           </div>
-          <div className={style.filmData}>
+          <div className={style.film__data}>
             <Film
               name={mostPopularFilm.title}
               genrePtime={genGenreString(genList.genres, mostPopularFilm.genre_ids)}
-              rating={mostPopularFilm.vote_average / 2}
+              rating={mostPopularFilm.vote_average}
             />
             <Info />
           </div>
@@ -37,8 +37,8 @@ class Header extends Component {
       );
     }
     return (
-      <div className={style.Header}>
-        <span className={style.Loading}>loading presentation...</span>
+      <div className={style.header}>
+        <span className={style.loading}>loading presentation...</span>
       </div>
     );
   }

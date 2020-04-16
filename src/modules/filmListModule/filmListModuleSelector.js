@@ -21,9 +21,25 @@ export const getGenres = createSelector(
 
 export const getTopFilm = createSelector(
   [getMostPopularFilm], (mostPopularFilm) => {
-    if (mostPopularFilm.results !== undefined) return mostPopularFilm.results[0];
+    if (mostPopularFilm.results !== undefined) {
+      const temp = mostPopularFilm.results[0];
+      temp.vote_average = (temp.vote_average / 2).toFixed(1);
+      return temp;
+    }
     return {};
   },
 );
+
+export const genGenreString = (genres, filmGenres) => {
+  let result = '';
+  filmGenres.forEach((elem) => {
+    const genre = genres.find((type) => {
+      if (type.id === elem) return true;
+      return false;
+    });
+    result = result.concat(genre.name, ' ');
+  });
+  return result.slice(0, -1);
+};
 
 export default getMoviesInfo;

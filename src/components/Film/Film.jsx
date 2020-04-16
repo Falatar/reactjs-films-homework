@@ -7,12 +7,12 @@ function Film({
   name, genrePtime, rating,
 }) {
   return (
-    <div className={style.Film}>
-      <big className={style.Name}>{name}</big>
-      <h1 className={style.Genres}>{genrePtime}</h1>
-      <div className={style.RatePanel}>
+    <div className={style.film}>
+      <big className={style.name}>{name}</big>
+      <h1 className={style.genres}>{genrePtime}</h1>
+      <div className={style.rate__panel}>
         <Rate rating={rating} />
-        <h1 className={style.Rate}>{rating.toFixed(1)}</h1>
+        <h1 className={style.rate}>{rating}</h1>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-.Film {
+.film {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
@@ -7,7 +7,7 @@
     margin: 0 0 1vh 6vw;
     font-size: 1.4em;
 
-    .Name {
+    .name {
         width: 100%;
         font-size: 2em;
         color: white;
@@ -15,14 +15,14 @@
         margin: 0;
     }
 
-    .Genres {
+    .genres {
         font-size: 1em;
         color: white;
         margin: 0 0 1vh 0;
         font-weight: lighter;
     }
 
-    .RatePanel {
+    .rate__panel {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -31,7 +31,7 @@
         margin: 0;
         height: 1.7em;
 
-        .Rate {
+        .rate {
             font-size: 1.2em;
             height: 1.1em;
             width: 2em;

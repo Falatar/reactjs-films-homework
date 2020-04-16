@@ -5,12 +5,14 @@ import style from './Rate.scss';
 function Rate({
   rating,
 }) {
-  let rt = rating.toFixed();
-  const stars = Array(5).fill(0).map(() => {
-    const elem = <span className={rt > 0 ? style.star : style.voidStar} key={rt} />;
-    rt -= 1;
-    return elem;
-  });
+  const stars = Array(5).fill(0).map(
+    (elem, index) => (
+      <span
+        className={rating >= (index + 0.5) ? style.star : style.void_star}
+        key={rating}
+      />
+    ),
+  );
   return (
     <div className={style.rate}>
       {stars}

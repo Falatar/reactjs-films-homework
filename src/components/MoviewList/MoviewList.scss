@@ -1,5 +1,5 @@
 
-.List {
+.list {
 
     //height: 145vh;
     width: 100%;
@@ -19,11 +19,11 @@
     }
 }
 
-.EmptyList {
+.empty_list {
     justify-content: center;
     align-items: flex-start;
 
-    .Loading {
+    .loading {
         color: deepskyblue;
         font-size: 2em;
     }

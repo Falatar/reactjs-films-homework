@@ -1,11 +1,11 @@
-.Search {
-    .SearchForm {
+.search {
+    .search_form {
         position: relative;
         width: 300px;
         margin-right: 6vw;
         margin-top: 1vh;
     }
-    .SearchText {
+    .search_text {
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         width: 100%;
         height: 42px;
@@ -17,9 +17,9 @@
         color: white;
         outline:none;
     }
-    .SearchText::-webkit-input-placeholder { color: white; }
-    .SearchText::-moz-placeholder { color: white; }
-    .SearchButton {
+    .search_text::-webkit-input-placeholder { color: white; }
+    .search_text::-moz-placeholder { color: white; }
+    .search_button {
         position: absolute; 
         top: 0;
         right: 0px;

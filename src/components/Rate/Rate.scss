@@ -10,11 +10,11 @@
         content: '★';
     }
 
-    .voidStar:before {
+    .void_star:before {
         content: '☆';
     }
 
-    .star, .voidStar {
+    .star, .void_star {
         display: flex;
         flex-direction: column;
         align-items: center;
