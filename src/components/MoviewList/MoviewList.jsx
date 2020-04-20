@@ -6,13 +6,15 @@ import FilmData from '../FilmData';
 
 class MoviewList extends Component {
   componentDidMount() {
-    const { getFilmList, loadGenreList } = this.props;
-    loadGenreList();
+    const { getFilmList } = this.props;
+    // loadGenreList();
     getFilmList();
   }
 
   render() {
-    const { base, genList, genGenreString } = this.props;
+    const {
+      base, genList, genGenreString,
+    } = this.props;
     if (base[0] !== undefined && genList.genres !== undefined) {
       return (
         <div className={style.list}>
@@ -40,9 +42,8 @@ class MoviewList extends Component {
 
 MoviewList.defaultProps = {
   genGenreString: () => {},
-  base: {},
+  base: [],
   genList: {},
-  loadGenreList: () => {},
   getFilmList: () => {},
 };
 
@@ -50,7 +51,6 @@ MoviewList.propTypes = {
   genGenreString: PropTypes.func,
   base: PropTypes.objectOf(PropTypes.any),
   genList: PropTypes.objectOf(PropTypes.any),
-  loadGenreList: PropTypes.func,
   getFilmList: PropTypes.func,
 };
 

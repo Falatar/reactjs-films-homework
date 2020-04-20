@@ -8,13 +8,32 @@ const loadTopFilm = () => async (dispatch) => {
   });
 };
 
+const addNewPage = (numberOfPage) => async (dispatch) => {
+  const pageUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US&page=${numberOfPage}&adult=false`;
+  const pagePromise = await fetch(pageUrl);
+  const pageFilms = await pagePromise.json();
+  return dispatch({
+    type: 'ADD_PAGE',
+    payload: pageFilms.results,
+  });
+};
+
+const saveNumberOfPages = (value) => async (dispatch) => dispatch({
+  type: 'UPDATE_NUMBER_OF_PAGES',
+  payload: value,
+});
+
 export const loadActualFilms = () => async (dispatch) => {
   const url = 'https://api.themoviedb.org/3/movie/upcoming?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US&page=1&adult=false';
   const promise = await fetch(url);
-  const film = await promise.json();
+  const films = await promise.json();
+  dispatch(saveNumberOfPages(films.total_pages));
+  for (let counter = 2; counter <= films.total_pages; counter += 1) {
+    dispatch(addNewPage(counter));
+  }
   return dispatch({
     type: 'LOAD_MOVIE_LIST',
-    payload: film,
+    payload: films.results,
   });
 };
 
@@ -27,5 +46,10 @@ export const loadGenres = () => async (dispatch) => {
     payload: list,
   });
 };
+
+export const switchPage = (value) => async (dispatch) => dispatch({
+  type: 'UPDATE_ACTUAL_PAGE',
+  payload: value,
+});
 
 export default loadTopFilm;

@@ -3,12 +3,17 @@ import { createSelector } from 'reselect';
 const getActualFilms = (store) => store.filmListModuleReducer.actualFilms;
 const getGenreList = (store) => store.filmListModuleReducer.genreList;
 const getMostPopularFilm = (store) => store.filmListModuleReducer.mostPopularFilm;
+const getTotalPages = (store) => store.filmListModuleReducer.totalPages;
+const getActualPage = (store) => store.filmListModuleReducer.actualPage;
 
 
 const getMoviesInfo = createSelector(
-  [getActualFilms], (actualFilms) => {
-    if (actualFilms.results !== undefined) return actualFilms.results.slice(0, 12);
-    return {};
+  [getActualFilms, getActualPage], (actualFilms, actualPage) => {
+    if (actualFilms[0] !== undefined) {
+      const page = 12 * (actualPage - 1);
+      return actualFilms.slice(page, page + 12);
+    }
+    return [];
   },
 );
 
@@ -41,5 +46,9 @@ export const genGenreString = (genres, filmGenres) => {
   });
   return result.slice(0, -1);
 };
+
+export const getNumberOfPages = createSelector(
+  [getTotalPages], (totalPages) => totalPages,
+);
 
 export default getMoviesInfo;
