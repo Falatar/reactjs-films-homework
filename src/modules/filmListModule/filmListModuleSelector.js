@@ -19,7 +19,7 @@ const getMoviesInfo = createSelector(
 
 export const getGenres = createSelector(
   [getGenreList], (genreList) => {
-    if (genreList !== undefined) return genreList;
+    if (genreList !== undefined) return genreList.genres;
     return {};
   },
 );
@@ -46,6 +46,15 @@ export const genGenreString = (genres, filmGenres) => {
   });
   return result.slice(0, -1);
 };
+
+export const getTopFilmGenres = createSelector(
+  [getGenres, getTopFilm], (genreList, mostPopularFilm) => {
+    if (!genreList || !mostPopularFilm.genre_ids) {
+      return '';
+    }
+    return genreList.filter((genre) => mostPopularFilm.genre_ids.includes(genre.id)).map((genre) => genre.name).join(', ');
+  },
+);
 
 export const getNumberOfPages = createSelector(
   [getTotalPages], (totalPages) => totalPages,

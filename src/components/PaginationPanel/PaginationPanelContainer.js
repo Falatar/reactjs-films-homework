@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { switchPage } from '../../modules/filmListModule/filmListModuleActions';
 import { getNumberOfPages } from '../../modules/filmListModule/filmListModuleSelector';
-import ScrollPanel from './ScrollPanel';
+import PaginationPanel from './PaginationPanel';
 
 const mapStateToProps = (store) => ({
   totalPages: getNumberOfPages(store),
@@ -14,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ScrollPanel);
+)(PaginationPanel);

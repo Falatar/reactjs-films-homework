@@ -9,7 +9,13 @@ class FilmData extends Component {
     super(props);
     this.state = {
       detailsMode: false,
+      poster: '',
     };
+  }
+
+  componentDidMount() {
+    const { imgURL } = this.props;
+    this.setImg(imgURL);
   }
 
   switchMode = () => {
@@ -24,16 +30,36 @@ class FilmData extends Component {
     callTrailer();
   }
 
+  checkImgSizes = () => {
+    if (this.width + this.height === 0) {
+      this.onerror();
+    }
+  }
+
+  setDefaultImg = () => {
+    this.setState({ poster: 'https://cdn.pixabay.com/photo/2016/11/30/12/16/question-mark-1872665_1280.jpg' });
+  }
+
+  setImg = (imgURL) => {
+    this.setState({ poster: `https://image.tmdb.org/t/p/w500${imgURL}` });
+  }
+
   render() {
     const {
-      imgURL, id, name, tagList, rating, overview,
+      id, name, tagList, rating, overview,
     } = this.props;
-    const { detailsMode } = this.state;
+    const { detailsMode, poster } = this.state;
     if (!detailsMode) {
       return (
         <div className={style.film__data}>
           <div className={style.control}>
-            <img className={style.wall} src={`https://image.tmdb.org/t/p/w500${imgURL}`} alt={id} />
+            <img
+              className={style.wall}
+              src={poster}
+              alt={id}
+              onLoad={this.checkImgSizes}
+              onError={this.setDefaultImg}
+            />
             <div className={style.hidden}>
               <button type="button" className={style.play} onClick={this.callModal}>▶</button>
               <p className={style.watch__now}>Watch Now</p>
@@ -52,7 +78,7 @@ class FilmData extends Component {
     return (
       <div
         className={classNames(style.film__data, style.dark)}
-        style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w500${imgURL})` }}
+        style={{ backgroundImage: `url(${poster})` }}
       >
         <button type="button" className={style.close} onClick={this.switchMode}>✕</button>
         <FilmDescription

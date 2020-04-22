@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import style from './FilmDescription.scss';
+import styleAlter from './FilmDescriptionAlter.scss';
 
 function FilmDescription({
   name, tagList, rating, mode,
 }) {
+  const scss = mode ? style : styleAlter;
   return (
-    <div className={mode ? style.description : style.description_alter}>
-      <div className={mode ? style.title : style.title_alter}>
-        <h3 className={mode ? style.name : style.name_alter}>{name}</h3>
-        <h2 className={mode ? style.tags : style.tags_alter}>{tagList}</h2>
+    <div className={scss.description}>
+      <div className={scss.title}>
+        <h3 className={scss.name}>{name}</h3>
+        <h2 className={scss.tags}>{tagList}</h2>
       </div>
-      <h1 className={mode ? style.rate : style.rate_alter}>{rating.toFixed(1)}</h1>
+      <h1 className={scss.rate}>{rating.toFixed(1)}</h1>
     </div>
   );
 }

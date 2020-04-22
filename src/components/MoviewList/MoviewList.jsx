@@ -7,7 +7,6 @@ import FilmData from '../FilmData';
 class MoviewList extends Component {
   componentDidMount() {
     const { getFilmList } = this.props;
-    // loadGenreList();
     getFilmList();
   }
 
@@ -15,7 +14,7 @@ class MoviewList extends Component {
     const {
       base, genList, genGenreString,
     } = this.props;
-    if (base[0] !== undefined && genList.genres !== undefined) {
+    if (base[0] !== undefined && genList !== undefined) {
       return (
         <div className={style.list}>
           {base.map((item) => (
@@ -24,7 +23,7 @@ class MoviewList extends Component {
               name={item.title}
               imgURL={item.backdrop_path}
               rating={item.vote_average / 2}
-              tagList={genGenreString(genList.genres, item.genre_ids)}
+              tagList={genGenreString(genList, item.genre_ids)}
               overview={item.overview}
               key={item.id}
             />

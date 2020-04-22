@@ -1,23 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import style from './ScrollPanel.scss';
+import style from './PaginationPanel.scss';
 
-class ScrollPanel extends Component {
+class PaginationPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
       actualPage: 1,
     };
-  }
-
-  changePageToFixed = (event) => {
-    const {
-      totalPages, scroll,
-    } = this.props;
-    if (event.target.value >= 1 && event.target.value <= totalPages) {
-      this.setState({ actualPage: event.target.value });
-      scroll(event.target.value);
-    }
   }
 
   GoLeft = () => {
@@ -77,54 +67,54 @@ class ScrollPanel extends Component {
       actualPage,
     } = this.state;
     return (
-      <div className={style.scroll__panel}>
+      <div className={style.pagination__panel}>
         <button
           type="button"
-          className={style.scroll__left__to__end}
+          className={style.pagination__left__to__end}
           onClick={this.GoLeftToEnd}
         >
-        ⭰
+        ⮜
         </button>
         <button
           type="button"
-          className={style.scroll__left}
+          className={style.pagination__left}
           onClick={this.GoLeft}
         >
-        🠔
+        ❰
         </button>
         <input
           type="text"
           value={actualPage}
-          className={style.scroll__to__certain__page}
-          onKeyPress={this.changePageToFixed}
+          className={style.pagination__to__certain__page}
+          readOnly
         />
         <button
           type="button"
-          className={style.scroll__right}
+          className={style.pagination__right}
           onClick={this.GoRight}
         >
-        🠖
+        ❱
         </button>
         <button
           type="button"
-          className={style.scroll__right__to__end}
+          className={style.pagination__right__to__end}
           onClick={this.GoRightToEnd}
         >
-        ⭲
+        ⮞
         </button>
       </div>
     );
   }
 }
 
-ScrollPanel.defaultProps = {
+PaginationPanel.defaultProps = {
   totalPages: 1,
   scroll: () => {},
 };
 
-ScrollPanel.propTypes = {
+PaginationPanel.propTypes = {
   totalPages: PropTypes.number,
   scroll: PropTypes.func,
 };
 
-export default ScrollPanel;
+export default PaginationPanel;

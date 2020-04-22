@@ -1,4 +1,4 @@
-.scroll__panel {
+.pagination__panel {
     width: 100%;
     height: 7vh;
     display: flex;
@@ -7,12 +7,12 @@
     align-items: center;
     background-color: lightgrey;
 
-    .scroll__left, 
-    .scroll__left__to__end, 
-    .scroll__right, 
-    .scroll__right__to__end {
+    .pagination__left, 
+    .pagination__left__to__end, 
+    .pagination__right, 
+    .pagination__right__to__end {
         width: 5%;
-        height: 1.2em;
+        height: 1.6em;
         border-radius: 15px;
         outline: none;
         border: 0;
@@ -21,16 +21,13 @@
         margin: 0 0.5%;
         background-color: deepskyblue;
         color: white;
-        text-align: center;
         font-size: 1.5em;
-        vertical-align: middle;
-        line-height: 2em;
     }
 
-    .scroll__left:active, 
-    .scroll__left__to__end:active, 
-    .scroll__right:active, 
-    .scroll__right__to__end:active {
+    .pagination__left:active, 
+    .pagination__left__to__end:active, 
+    .pagination__right:active, 
+    .pagination__right__to__end:active {
         background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
         background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
         background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
@@ -38,7 +35,7 @@
         background-image: linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
     }
 
-    .scroll__to__certain__page {
+    .pagination__to__certain__page {
         width: 7%;
         height: 40%;
         font-size: 1.5em;

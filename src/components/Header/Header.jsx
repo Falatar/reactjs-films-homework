@@ -13,8 +13,8 @@ class Header extends Component {
   }
 
   render() {
-    const { mostPopularFilm, genList, genGenreString } = this.props;
-    if (mostPopularFilm.backdrop_path !== undefined && genList.genres !== undefined) {
+    const { mostPopularFilm, genList, genres } = this.props;
+    if (mostPopularFilm.backdrop_path !== undefined && genList !== undefined) {
       return (
         <div
           className={style.header}
@@ -28,7 +28,7 @@ class Header extends Component {
           <div className={style.film__data}>
             <Film
               name={mostPopularFilm.title}
-              genrePtime={genGenreString(genList.genres, mostPopularFilm.genre_ids)}
+              genrePtime={genres}
               rating={mostPopularFilm.vote_average}
             />
             <Info />
@@ -45,19 +45,19 @@ class Header extends Component {
 }
 
 Header.defaultProps = {
-  genGenreString: () => {},
   LoadMostPopularFilm: () => {},
   LoadGenreList: () => {},
   mostPopularFilm: {},
   genList: {},
+  genres: {},
 };
 
 Header.propTypes = {
-  genGenreString: PropTypes.func,
   LoadMostPopularFilm: PropTypes.func,
   LoadGenreList: PropTypes.func,
   mostPopularFilm: PropTypes.objectOf(PropTypes.any),
   genList: PropTypes.objectOf(PropTypes.any),
+  genres: PropTypes.objectOf(PropTypes.any),
 };
 
 export default Header;
