@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import style from './MoviewList.scss';
+import style from './MovieList.scss';
 import FilmData from '../FilmData';
 
-class MoviewList extends Component {
+class MovieList extends Component {
   componentDidMount() {
     const { getFilmList } = this.props;
     getFilmList();
@@ -12,18 +12,18 @@ class MoviewList extends Component {
 
   render() {
     const {
-      base, genList, genGenreString,
+      filmList, genList,
     } = this.props;
-    if (base[0] !== undefined && genList !== undefined) {
+    if (filmList.length && genList) {
       return (
         <div className={style.list}>
-          {base.map((item) => (
+          {filmList.map((item) => (
             <FilmData
               id={item.id}
               name={item.title}
               imgURL={item.backdrop_path}
               rating={item.vote_average / 2}
-              tagList={genGenreString(genList, item.genre_ids)}
+              tagList={item.genre_str}
               overview={item.overview}
               key={item.id}
             />
@@ -39,18 +39,16 @@ class MoviewList extends Component {
   }
 }
 
-MoviewList.defaultProps = {
-  genGenreString: () => {},
-  base: [],
+MovieList.defaultProps = {
+  filmList: [],
   genList: {},
   getFilmList: () => {},
 };
 
-MoviewList.propTypes = {
-  genGenreString: PropTypes.func,
-  base: PropTypes.objectOf(PropTypes.any),
+MovieList.propTypes = {
+  filmList: PropTypes.objectOf(PropTypes.any),
   genList: PropTypes.objectOf(PropTypes.any),
   getFilmList: PropTypes.func,
 };
 
-export default MoviewList;
+export default MovieList;

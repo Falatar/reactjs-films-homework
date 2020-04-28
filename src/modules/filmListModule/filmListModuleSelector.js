@@ -7,52 +7,37 @@ const getTotalPages = (store) => store.filmListModuleReducer.totalPages;
 const getActualPage = (store) => store.filmListModuleReducer.actualPage;
 
 
-const getMoviesInfo = createSelector(
-  [getActualFilms, getActualPage], (actualFilms, actualPage) => {
-    if (actualFilms[0] !== undefined) {
-      const page = 12 * (actualPage - 1);
-      return actualFilms.slice(page, page + 12);
-    }
-    return [];
+export const getGenres = createSelector(
+  [getGenreList], (genreList) => {
+    if (genreList) return genreList.genres;
+    return undefined;
   },
 );
 
-export const getGenres = createSelector(
-  [getGenreList], (genreList) => {
-    if (genreList !== undefined) return genreList.genres;
-    return {};
+const getMoviesInfo = createSelector(
+  [getActualFilms, getActualPage, getGenres], (actualFilms, actualPage, genreList) => {
+    if (actualFilms[0]) {
+      const itemsOnPage = 12;
+      const page = itemsOnPage * (actualPage - 1);
+      return actualFilms.slice(page, page + itemsOnPage).map((film) => {
+        const result = { ...film };
+        result.genre_str = genreList.filter((genre) => film.genre_ids.includes(genre.id)).map((genre) => genre.name).join(', ');
+        return result;
+      });
+    }
+    return undefined;
   },
 );
 
 export const getTopFilm = createSelector(
-  [getMostPopularFilm], (mostPopularFilm) => {
-    if (mostPopularFilm.results !== undefined) {
+  [getMostPopularFilm, getGenres], (mostPopularFilm, genreList) => {
+    if (mostPopularFilm.results && genreList) {
       const temp = mostPopularFilm.results[0];
       temp.vote_average = (temp.vote_average / 2).toFixed(1);
+      temp.genre_str = genreList.filter((genre) => temp.genre_ids.includes(genre.id)).map((genre) => genre.name).join(', ');
       return temp;
     }
-    return {};
-  },
-);
-
-export const genGenreString = (genres, filmGenres) => {
-  let result = '';
-  filmGenres.forEach((elem) => {
-    const genre = genres.find((type) => {
-      if (type.id === elem) return true;
-      return false;
-    });
-    result = result.concat(genre.name, ' ');
-  });
-  return result.slice(0, -1);
-};
-
-export const getTopFilmGenres = createSelector(
-  [getGenres, getTopFilm], (genreList, mostPopularFilm) => {
-    if (!genreList || !mostPopularFilm.genre_ids) {
-      return '';
-    }
-    return genreList.filter((genre) => mostPopularFilm.genre_ids.includes(genre.id)).map((genre) => genre.name).join(', ');
+    return undefined;
   },
 );
 

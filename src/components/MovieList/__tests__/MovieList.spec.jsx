@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MoviewList from '../MoviewListContainer';
+import MovieList from '../MovieListContainer';
 
 describe('MoviewList', () => {
   it('renders correctly', () => {
     const tree = renderer
-      .create(<MoviewList />)
+      .create(<MovieList />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

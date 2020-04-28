@@ -1,13 +1,12 @@
 import { connect } from 'react-redux';
 import { loadActualFilms, loadGenres } from '../../modules/filmListModule/filmListModuleActions';
 import getMoviesInfo, {
-  getGenres, genGenreString,
+  getGenres,
 } from '../../modules/filmListModule/filmListModuleSelector';
-import MoviewList from './MoviewList';
+import MovieList from './MovieList';
 
 const mapStateToProps = (store) => ({
-  genGenreString,
-  base: getMoviesInfo(store),
+  filmList: getMoviesInfo(store),
   genList: getGenres(store),
 });
 
@@ -19,4 +18,4 @@ const mapDispatchToProps = (dispatch) => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(MoviewList);
+)(MovieList);

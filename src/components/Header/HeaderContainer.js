@@ -1,12 +1,11 @@
 import { connect } from 'react-redux';
 import loadTopFilm, { loadGenres } from '../../modules/filmListModule/filmListModuleActions';
 import {
-  getTopFilm, getGenres, getTopFilmGenres,
+  getTopFilm, getGenres,
 } from '../../modules/filmListModule/filmListModuleSelector';
 import Header from './Header';
 
 const mapStateToProps = (store) => ({
-  genres: getTopFilmGenres(store),
   mostPopularFilm: getTopFilm(store),
   genList: getGenres(store),
 });
