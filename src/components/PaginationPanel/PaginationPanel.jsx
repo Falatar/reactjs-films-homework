@@ -1,120 +1,78 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import style from './PaginationPanel.scss';
 
-class PaginationPanel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      actualPage: 1,
-    };
-  }
 
-  GoLeft = () => {
-    const {
-      totalPages, scroll,
-    } = this.props;
-    const {
-      actualPage,
-    } = this.state;
-    if (actualPage - 1 >= 1 && actualPage - 1 <= totalPages) {
-      this.setState({ actualPage: actualPage - 1 });
-      scroll(actualPage - 1);
-    }
-  }
-
-  GoRight = () => {
-    const {
-      totalPages, scroll,
-    } = this.props;
-    const {
-      actualPage,
-    } = this.state;
-    if (actualPage + 1 >= 1 && actualPage + 1 <= totalPages) {
-      this.setState({ actualPage: actualPage + 1 });
-      scroll(actualPage + 1);
-    }
-  }
-
-  GoLeftToEnd = () => {
-    const {
-      scroll,
-    } = this.props;
-    const {
-      actualPage,
-    } = this.state;
-    if (actualPage !== 1) {
-      this.setState({ actualPage: 1 });
-      scroll(1);
-    }
-  }
-
-  GoRightToEnd = () => {
-    const {
-      totalPages, scroll,
-    } = this.props;
-    const {
-      actualPage,
-    } = this.state;
-    if (actualPage !== totalPages) {
-      this.setState({ actualPage: totalPages });
-      scroll(totalPages);
-    }
-  }
-
-  render() {
-    const {
-      actualPage,
-    } = this.state;
-    return (
-      <div className={style.pagination__panel}>
-        <button
-          type="button"
-          className={style.pagination__left__to__end}
-          onClick={this.GoLeftToEnd}
-        >
-        ⮜
-        </button>
-        <button
-          type="button"
-          className={style.pagination__left}
-          onClick={this.GoLeft}
-        >
-        ❰
-        </button>
-        <input
-          type="text"
-          value={actualPage}
-          className={style.pagination__to__certain__page}
-          readOnly
-        />
-        <button
-          type="button"
-          className={style.pagination__right}
-          onClick={this.GoRight}
-        >
-        ❱
-        </button>
-        <button
-          type="button"
-          className={style.pagination__right__to__end}
-          onClick={this.GoRightToEnd}
-        >
-        ⮞
-        </button>
-      </div>
-    );
-  }
+function PaginationPanel({
+  actualPage,
+  totalFilms,
+  left,
+  right,
+  finallyLeft,
+  finallyRight,
+}) {
+  const filmsOnPage = 12;
+  const numberOfPages = (totalFilms / filmsOnPage).toFixed(0);
+  return (
+    <div className={style.pagination__panel}>
+      <button
+        type="button"
+        className={style.pagination__left__to__end}
+        onClick={finallyLeft}
+        disabled={actualPage === 1}
+      >
+      ⮜
+      </button>
+      <button
+        type="button"
+        className={style.pagination__left}
+        onClick={() => left(numberOfPages)}
+        disabled={actualPage === 1}
+      >
+      ❰
+      </button>
+      <input
+        type="text"
+        value={actualPage}
+        className={style.pagination__to__certain__page}
+        readOnly
+      />
+      <button
+        type="button"
+        className={style.pagination__right}
+        onClick={() => right(numberOfPages)}
+        disabled={actualPage === numberOfPages}
+      >
+      ❱
+      </button>
+      <button
+        type="button"
+        className={style.pagination__right__to__end}
+        onClick={() => finallyRight(numberOfPages)}
+        disabled={actualPage === numberOfPages}
+      >
+      ⮞
+      </button>
+    </div>
+  );
 }
 
 PaginationPanel.defaultProps = {
-  totalPages: 1,
-  scroll: () => {},
+  totalFilms: 1,
+  actualPage: 1,
+  left: () => {},
+  right: () => {},
+  finallyLeft: () => {},
+  finallyRight: () => {},
 };
 
 PaginationPanel.propTypes = {
-  totalPages: PropTypes.number,
-  scroll: PropTypes.func,
+  totalFilms: PropTypes.number,
+  actualPage: PropTypes.number,
+  left: PropTypes.func,
+  right: PropTypes.func,
+  finallyLeft: PropTypes.func,
+  finallyRight: PropTypes.func,
 };
 
 export default PaginationPanel;

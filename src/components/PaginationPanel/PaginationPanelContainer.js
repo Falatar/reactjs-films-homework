@@ -1,14 +1,23 @@
 import { connect } from 'react-redux';
-import { switchPage } from '../../modules/filmListModule/filmListModuleActions';
-import { getNumberOfPages } from '../../modules/filmListModule/filmListModuleSelector';
+import {
+  moveLeft,
+  moveRight,
+  moveLeftToEnd,
+  moveRightToEnd,
+} from '../../modules/filmListModule/filmListModuleActions';
+import { getNumberOfFilms, getCurrentPage } from '../../modules/filmListModule/filmListModuleSelector';
 import PaginationPanel from './PaginationPanel';
 
 const mapStateToProps = (store) => ({
-  totalPages: getNumberOfPages(store),
+  totalFilms: getNumberOfFilms(store),
+  actualPage: getCurrentPage(store),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  scroll: (value) => dispatch(switchPage(value)),
+  left: (value) => dispatch(moveLeft(value)),
+  right: (value) => dispatch(moveRight(value)),
+  finallyLeft: () => dispatch(moveLeftToEnd()),
+  finallyRight: (value) => dispatch(moveRightToEnd(value)),
 });
 
 export default connect(

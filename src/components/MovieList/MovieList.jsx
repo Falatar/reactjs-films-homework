@@ -12,9 +12,9 @@ class MovieList extends Component {
 
   render() {
     const {
-      filmList, genList,
+      filmList,
     } = this.props;
-    if (filmList.length && genList) {
+    if (filmList.length) {
       return (
         <div className={style.list}>
           {filmList.map((item) => (
@@ -41,13 +41,11 @@ class MovieList extends Component {
 
 MovieList.defaultProps = {
   filmList: [],
-  genList: {},
   getFilmList: () => {},
 };
 
 MovieList.propTypes = {
   filmList: PropTypes.objectOf(PropTypes.any),
-  genList: PropTypes.objectOf(PropTypes.any),
   getFilmList: PropTypes.func,
 };
 

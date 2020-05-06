@@ -6,12 +6,15 @@ function Rate({
   rating,
 }) {
   const stars = Array(5).fill(0).map(
-    (elem, index) => (
-      <span
-        className={rating >= (index + 0.5) ? style.star : style.void_star}
-        key={rating}
-      />
-    ),
+    (elem, index) => {
+      const roof = index + 0.5;
+      return (
+        <span
+          className={rating >= (roof) ? style.star : style.void_star}
+          key={roof}
+        />
+      );
+    },
   );
   return (
     <div className={style.rate}>

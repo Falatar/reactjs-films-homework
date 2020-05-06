@@ -13,8 +13,8 @@ class Header extends Component {
   }
 
   render() {
-    const { mostPopularFilm, genList } = this.props;
-    if (mostPopularFilm.backdrop_path && genList) {
+    const { mostPopularFilm } = this.props;
+    if (mostPopularFilm) {
       return (
         <div
           className={style.header}
@@ -48,14 +48,12 @@ Header.defaultProps = {
   LoadMostPopularFilm: () => {},
   LoadGenreList: () => {},
   mostPopularFilm: {},
-  genList: {},
 };
 
 Header.propTypes = {
   LoadMostPopularFilm: PropTypes.func,
   LoadGenreList: PropTypes.func,
   mostPopularFilm: PropTypes.objectOf(PropTypes.any),
-  genList: PropTypes.objectOf(PropTypes.any),
 };
 
 export default Header;

@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 const getActualFilms = (store) => store.filmListModuleReducer.actualFilms;
 const getGenreList = (store) => store.filmListModuleReducer.genreList;
 const getMostPopularFilm = (store) => store.filmListModuleReducer.mostPopularFilm;
-const getTotalPages = (store) => store.filmListModuleReducer.totalPages;
+const getTotalFilms = (store) => store.filmListModuleReducer.totalFilms;
 const getActualPage = (store) => store.filmListModuleReducer.actualPage;
 
 
@@ -14,6 +14,8 @@ export const getGenres = createSelector(
   },
 );
 
+const createGenreString = (film, genres) => genres.filter((genre) => film.genre_ids.includes(genre.id)).map((genre) => genre.name).join(', ');
+
 const getMoviesInfo = createSelector(
   [getActualFilms, getActualPage, getGenres], (actualFilms, actualPage, genreList) => {
     if (actualFilms[0]) {
@@ -21,7 +23,7 @@ const getMoviesInfo = createSelector(
       const page = itemsOnPage * (actualPage - 1);
       return actualFilms.slice(page, page + itemsOnPage).map((film) => {
         const result = { ...film };
-        result.genre_str = genreList.filter((genre) => film.genre_ids.includes(genre.id)).map((genre) => genre.name).join(', ');
+        result.genre_str = createGenreString(film, genreList);
         return result;
       });
     }
@@ -34,15 +36,19 @@ export const getTopFilm = createSelector(
     if (mostPopularFilm.results && genreList) {
       const temp = mostPopularFilm.results[0];
       temp.vote_average = (temp.vote_average / 2).toFixed(1);
-      temp.genre_str = genreList.filter((genre) => temp.genre_ids.includes(genre.id)).map((genre) => genre.name).join(', ');
+      temp.genre_str = createGenreString(temp, genreList);
       return temp;
     }
     return undefined;
   },
 );
 
-export const getNumberOfPages = createSelector(
-  [getTotalPages], (totalPages) => totalPages,
+export const getNumberOfFilms = createSelector(
+  [getTotalFilms], (totalFilms) => totalFilms,
+);
+
+export const getCurrentPage = createSelector(
+  [getActualPage], (actualPage) => actualPage,
 );
 
 export default getMoviesInfo;

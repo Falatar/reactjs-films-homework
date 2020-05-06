@@ -4,6 +4,8 @@ export const initialState = {
   actualFilms: [],
   actualPage: 1,
   totalPages: 0,
+  totalFilms: 0,
+  uploadedPages: 0,
 };
 
 export function filmListModuleReducer(state = initialState, action) {
@@ -20,11 +22,17 @@ export function filmListModuleReducer(state = initialState, action) {
     case 'UPDATE_NUMBER_OF_PAGES':
       return { ...state, totalPages: action.payload };
 
+    case 'UPDATE_NUMBER_OF_FILMS':
+      return { ...state, totalFilms: action.payload };
+
     case 'UPDATE_ACTUAL_PAGE':
       return { ...state, actualPage: action.payload };
 
     case 'ADD_PAGE':
       return { ...state, actualFilms: state.actualFilms.concat(action.payload) };
+
+    case 'UPDATE_UPLOADED_PAGES':
+      return { ...state, uploadedPages: action.payload };
 
     default: return state;
   }
