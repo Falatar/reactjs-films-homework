@@ -1,3 +1,5 @@
+import makeRequest from '../../services/requester';
+
 export const openModal = () => async (dispatch) => dispatch({
   type: 'PREPARE_MODAL_WINDOW',
   payload: true,
@@ -9,9 +11,7 @@ export const closeModal = () => async (dispatch) => dispatch({
 });
 
 const updateTrailerPath = (id) => async (dispatch) => {
-  const url = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US`;
-  const promise = await fetch(url);
-  const videos = await promise.json();
+  const videos = await makeRequest(`movie/${id}`, 'videos', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US');
   return dispatch({
     type: 'UPDATE_TRAILER_ROOT',
     payload: videos,

@@ -21,7 +21,7 @@ function PaginationPanel({
         onClick={finallyLeft}
         disabled={actualPage === 1}
       >
-      ⮜
+        ⮜
       </button>
       <button
         type="button"
@@ -29,7 +29,7 @@ function PaginationPanel({
         onClick={() => left(numberOfPages)}
         disabled={actualPage === 1}
       >
-      ❰
+        ❰
       </button>
       <input
         type="text"
@@ -43,7 +43,7 @@ function PaginationPanel({
         onClick={() => right(numberOfPages)}
         disabled={actualPage === numberOfPages}
       >
-      ❱
+        ❱
       </button>
       <button
         type="button"
@@ -51,7 +51,7 @@ function PaginationPanel({
         onClick={() => finallyRight(numberOfPages)}
         disabled={actualPage === numberOfPages}
       >
-      ⮞
+        ⮞
       </button>
     </div>
   );

@@ -1,7 +1,7 @@
+import makeRequest from '../../services/requester';
+
 const loadTopFilm = () => async (dispatch) => {
-  const url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US&page=1&adult=false';
-  const promise = await fetch(url);
-  const film = await promise.json();
+  const film = await makeRequest('movie', 'top_rated', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US', 'page=1', 'adult=false');
   return dispatch({
     type: 'LOAD_MOST_POPULAR_FILM',
     payload: film,
@@ -9,12 +9,10 @@ const loadTopFilm = () => async (dispatch) => {
 };
 
 const addNewPage = (numberOfPage) => async (dispatch) => {
-  const pageUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US&page=${numberOfPage}&adult=false`;
-  const pagePromise = await fetch(pageUrl);
-  const pageFilms = await pagePromise.json();
+  const page = await makeRequest('movie', 'upcoming', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US', `page=${numberOfPage}`, 'adult=false');
   return dispatch({
     type: 'ADD_PAGE',
-    payload: pageFilms.results,
+    payload: page.results,
   });
 };
 
@@ -34,9 +32,7 @@ const confirmAddedPages = (value) => async (dispatch) => dispatch({
 });
 
 export const loadActualFilms = () => async (dispatch) => {
-  const url = 'https://api.themoviedb.org/3/movie/upcoming?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US&page=1&adult=false';
-  const promise = await fetch(url);
-  const films = await promise.json();
+  const films = await makeRequest('movie', 'upcoming', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US', 'page=1', 'adult=false');
   dispatch(saveNumberOfPages(films.total_pages));
   dispatch(saveNumberOfFilms(films.total_results));
   dispatch(confirmAddedPages(1));
@@ -47,9 +43,7 @@ export const loadActualFilms = () => async (dispatch) => {
 };
 
 export const loadGenres = () => async (dispatch) => {
-  const url = 'https://api.themoviedb.org/3/genre/movie/list?api_key=0f3cfa59da5e9c54b4eebea803330d71&language=en-US';
-  const promise = await fetch(url);
-  const list = await promise.json();
+  const list = await makeRequest('genre/movie', 'list', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US');
   return dispatch({
     type: 'LOAD_GENRE_LIST',
     payload: list,
