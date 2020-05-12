@@ -22,7 +22,7 @@ class MovieList extends Component {
               id={item.id}
               name={item.title}
               imgURL={item.backdrop_path}
-              rating={item.vote_average / 2}
+              rating={item.vote_average}
               tagList={item.genre_str}
               overview={item.overview}
               key={item.id}

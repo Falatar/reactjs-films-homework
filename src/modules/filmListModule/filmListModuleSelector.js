@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import itemsOnPage from './constants';
 
 const getActualFilms = (store) => store.filmListModuleReducer.actualFilms;
 const getGenreList = (store) => store.filmListModuleReducer.genreList;
@@ -19,10 +20,10 @@ const createGenreString = (film, genres) => genres.filter((genre) => film.genre_
 const getMoviesInfo = createSelector(
   [getActualFilms, getActualPage, getGenres], (actualFilms, actualPage, genreList) => {
     if (actualFilms[0]) {
-      const itemsOnPage = 12;
       const page = itemsOnPage * (actualPage - 1);
       return actualFilms.slice(page, page + itemsOnPage).map((film) => {
         const result = { ...film };
+        result.vote_average /= 2;
         result.genre_str = createGenreString(film, genreList);
         return result;
       });
@@ -34,7 +35,7 @@ const getMoviesInfo = createSelector(
 export const getTopFilm = createSelector(
   [getMostPopularFilm, getGenres], (mostPopularFilm, genreList) => {
     if (mostPopularFilm.results && genreList) {
-      const temp = mostPopularFilm.results[0];
+      const temp = { ...mostPopularFilm.results[0] };
       temp.vote_average = (temp.vote_average / 2).toFixed(1);
       temp.genre_str = createGenreString(temp, genreList);
       return temp;

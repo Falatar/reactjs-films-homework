@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmDescription renders correctly 1`] = `
+<div
+  className="description"
+>
+  <div
+    className="title"
+  >
+    <h3
+      className="name"
+    >
+      nemo
+    </h3>
+    <h2
+      className="tags"
+    >
+      unknown
+    </h2>
+  </div>
+  <h1
+    className="rate"
+  >
+    0.0
+  </h1>
+</div>
+`;

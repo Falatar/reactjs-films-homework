@@ -11,7 +11,7 @@ export const closeModal = () => async (dispatch) => dispatch({
 });
 
 const updateTrailerPath = (id) => async (dispatch) => {
-  const videos = await makeRequest(`movie/${id}`, 'videos', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US');
+  const videos = await makeRequest(`movie/${id}`, 'videos');
   return dispatch({
     type: 'UPDATE_TRAILER_ROOT',
     payload: videos,

@@ -1,7 +1,9 @@
 import makeRequest from '../../services/requester';
+import itemsOnPage, { itemsOnSite } from './constants';
 
 const loadTopFilm = () => async (dispatch) => {
-  const film = await makeRequest('movie', 'top_rated', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US', 'page=1', 'adult=false');
+  const requestParams = { page: 1, adult: false };
+  const film = await makeRequest('movie', 'top_rated', requestParams);
   return dispatch({
     type: 'LOAD_MOST_POPULAR_FILM',
     payload: film,
@@ -9,7 +11,8 @@ const loadTopFilm = () => async (dispatch) => {
 };
 
 const addNewPage = (numberOfPage) => async (dispatch) => {
-  const page = await makeRequest('movie', 'upcoming', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US', `page=${numberOfPage}`, 'adult=false');
+  const requestParams = { page: numberOfPage, adult: false };
+  const page = await makeRequest('movie', 'upcoming', requestParams);
   return dispatch({
     type: 'ADD_PAGE',
     payload: page.results,
@@ -32,7 +35,8 @@ const confirmAddedPages = (value) => async (dispatch) => dispatch({
 });
 
 export const loadActualFilms = () => async (dispatch) => {
-  const films = await makeRequest('movie', 'upcoming', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US', 'page=1', 'adult=false');
+  const requestParams = { page: 1, adult: false };
+  const films = await makeRequest('movie', 'upcoming', requestParams);
   dispatch(saveNumberOfPages(films.total_pages));
   dispatch(saveNumberOfFilms(films.total_results));
   dispatch(confirmAddedPages(1));
@@ -43,7 +47,7 @@ export const loadActualFilms = () => async (dispatch) => {
 };
 
 export const loadGenres = () => async (dispatch) => {
-  const list = await makeRequest('genre/movie', 'list', '0f3cfa59da5e9c54b4eebea803330d71', 'language=en-US');
+  const list = await makeRequest('genre/movie', 'list');
   return dispatch({
     type: 'LOAD_GENRE_LIST',
     payload: list,
@@ -52,12 +56,10 @@ export const loadGenres = () => async (dispatch) => {
 
 const switchPage = (value) => async (dispatch, getState) => {
   const { uploadedPages, totalFilms } = getState().filmListModuleReducer;
-  const filmsOnPage = 12;
-  const filmsOnSite = 20;
-  if (value <= (totalFilms / filmsOnPage).toFixed(0)) {
-    const needsToAdd = value * filmsOnPage - uploadedPages * filmsOnSite;
+  if (value <= (totalFilms / itemsOnPage).toFixed(0)) {
+    const needsToAdd = value * itemsOnPage - uploadedPages * itemsOnSite;
     if (needsToAdd > 0) {
-      for (let i = 0; i < Math.ceil(needsToAdd / 20); i += 1) {
+      for (let i = 0; i < Math.ceil(needsToAdd / itemsOnSite); i += 1) {
         dispatch(addNewPage(uploadedPages + i + 1));
         dispatch(confirmAddedPages(uploadedPages + i + 1));
       }
