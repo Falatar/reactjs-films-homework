@@ -3,10 +3,10 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import Adapter from 'enzyme-adapter-react-16';
 import { mount, configure } from 'enzyme';
-import ModalWindowContainer from '../ModalWindowContainer';
-import ModalWindow from '../ModalWindow';
+import PaginationPanelContainer from '../PaginationPanelContainer';
+import PaginationPanel from '../PaginationPanel';
 
-jest.mock('../ModalWindow');
+jest.mock('../PaginationPanel');
 configure({ adapter: new Adapter() });
 
 const storeModel = (state) => ({
@@ -16,19 +16,19 @@ const storeModel = (state) => ({
   getState: () => state,
 });
 
-describe('Header', () => {
+describe('PaginationPanel', () => {
   jest.resetAllMocks();
 
   const store = storeModel({});
 
   const wrapper = mount(
     <Provider store={store}>
-      <ModalWindowContainer />
+      <PaginationPanelContainer />
     </Provider>,
   );
 
-  const container = wrapper.find(ModalWindowContainer);
-  const component = container.find(ModalWindow);
+  const container = wrapper.find(PaginationPanelContainer);
+  const component = container.find(PaginationPanel);
 
   it('should render both the container and the component ', () => {
     expect(container.length).toBeTruthy();
@@ -36,15 +36,20 @@ describe('Header', () => {
   });
 
   it('should map dispatch to props', () => {
-    const expectedPropKeys = ['endModalSession'];
+    const expectedPropKeys = [
+      'left',
+      'right',
+      'finallyLeft',
+      'finallyRight',
+    ];
 
     expect(Object.keys(component.props())).toEqual(expect.arrayContaining(expectedPropKeys));
   });
 
   it('should map state to props', () => {
     const expectedPropKeys = [
-      'status',
-      'root',
+      'totalFilms',
+      'actualPage',
     ];
 
     expect(Object.keys(component.props())).toEqual(expect.arrayContaining(expectedPropKeys));
@@ -52,7 +57,7 @@ describe('Header', () => {
 
   it('renders correctly', () => {
     const tree = renderer
-      .create(<ModalWindow status root="" />)
+      .create(<PaginationPanel totalFilms={1} actualPage={1} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

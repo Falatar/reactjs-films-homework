@@ -2,18 +2,18 @@
 
 exports[`Search renders correctly 1`] = `
 <div
-  className="Search"
+  className="search"
 >
   <form
-    className="SearchForm"
+    className="search_form"
   >
     <input
-      className="SearchText"
+      className="search_text"
       placeholder="Search here..."
       type="text"
     />
     <button
-      className="SearchButton"
+      className="search_button"
       id="push"
       type="submit"
     >

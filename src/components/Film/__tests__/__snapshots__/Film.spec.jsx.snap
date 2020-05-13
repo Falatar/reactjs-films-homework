@@ -2,44 +2,44 @@
 
 exports[`Film renders correctly 1`] = `
 <div
-  className="Film"
+  className="film"
 >
   <big
-    className="Name"
+    className="name"
   >
     nemo
   </big>
   <h1
-    className="Genres"
+    className="genres"
   >
     empty
   </h1>
   <div
-    className="RatePanel"
+    className="rate__panel"
   >
     <div
       className="rate"
     >
       <span
-        className="voidStar"
+        className="void_star"
       />
       <span
-        className="voidStar"
+        className="void_star"
       />
       <span
-        className="voidStar"
+        className="void_star"
       />
       <span
-        className="voidStar"
+        className="void_star"
       />
       <span
-        className="voidStar"
+        className="void_star"
       />
     </div>
     <h1
-      className="Rate"
+      className="rate"
     >
-      0.0
+      0
     </h1>
   </div>
 </div>
