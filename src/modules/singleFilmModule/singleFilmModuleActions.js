@@ -10,7 +10,7 @@ export const closeModal = () => async (dispatch) => dispatch({
   payload: false,
 });
 
-const updateTrailerPath = (id) => async (dispatch) => {
+export const updateTrailerPath = (id) => async (dispatch) => {
   const videos = await makeRequest(`movie/${id}`, 'videos');
   return dispatch({
     type: 'UPDATE_TRAILER_ROOT',

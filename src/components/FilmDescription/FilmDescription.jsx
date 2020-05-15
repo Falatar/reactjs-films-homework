@@ -20,7 +20,7 @@ function FilmDescription({
 
 FilmDescription.defaultProps = {
   name: 'Can\'t find property "name"',
-  tagList: ['unknown'],
+  tagList: 'unknown',
   rating: 0,
   mode: true,
 };

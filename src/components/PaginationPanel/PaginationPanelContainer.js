@@ -8,12 +8,12 @@ import {
 import { getNumberOfFilms, getCurrentPage } from '../../modules/filmListModule/filmListModuleSelector';
 import PaginationPanel from './PaginationPanel';
 
-const mapStateToProps = (store) => ({
+export const mapStateToProps = (store) => ({
   totalFilms: getNumberOfFilms(store),
   actualPage: getCurrentPage(store),
 });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   left: (value) => dispatch(moveLeft(value)),
   right: (value) => dispatch(moveRight(value)),
   finallyLeft: () => dispatch(moveLeftToEnd()),

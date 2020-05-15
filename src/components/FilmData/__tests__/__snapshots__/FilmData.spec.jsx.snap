@@ -1,3 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilmData renders correctly 1`] = `null`;
+exports[`FilmData renders correctly 1`] = `
+<div
+  className="film__data"
+>
+  <div
+    className="control"
+  >
+    <img
+      alt={1}
+      className="wall"
+      onError={[Function]}
+      onLoad={[Function]}
+      src="https://image.tmdb.org/t/p/w500"
+    />
+    <div
+      className="hidden"
+    >
+      <button
+        className="play"
+        onClick={[Function]}
+        type="button"
+      >
+        ▶
+      </button>
+      <p
+        className="watch__now"
+      >
+        Watch Now
+      </p>
+      <button
+        className="info"
+        onClick={[Function]}
+        type="button"
+      >
+        View Info
+      </button>
+    </div>
+  </div>
+  <div
+    className="description"
+  >
+    <div
+      className="title"
+    >
+      <h3
+        className="name"
+      >
+        nemo
+      </h3>
+      <h2
+        className="tags"
+      >
+        empty
+      </h2>
+    </div>
+    <h1
+      className="rate"
+    >
+      0.0
+    </h1>
+  </div>
+</div>
+`;

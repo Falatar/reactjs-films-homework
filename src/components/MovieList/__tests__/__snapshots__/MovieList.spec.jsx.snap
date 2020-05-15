@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList renders correctly without input 1`] = `
+<div
+  className="list empty_list"
+>
+  <span
+    className="loading"
+  >
+    Loading...
+  </span>
+</div>
+`;

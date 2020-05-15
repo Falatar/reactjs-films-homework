@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<div
+  className="header"
+  id="space"
+  style={
+    Object {
+      "backgroundImage": "url(https://image.tmdb.org/t/p/original)",
+    }
+  }
+>
+  <div
+    className="search__line"
+  >
+    <big
+      className="title"
+    >
+      FILMS
+    </big>
+    <div
+      className="search"
+    >
+      <form
+        className="search_form"
+      >
+        <input
+          className="search_text"
+          placeholder="Search here..."
+          type="text"
+        />
+        <button
+          className="search_button"
+          id="push"
+          type="submit"
+        >
+          ⌕
+        </button>
+      </form>
+    </div>
+  </div>
+  <div
+    className="film__data"
+  >
+    <div
+      className="film"
+    >
+      <big
+        className="name"
+      >
+        test
+      </big>
+      <h1
+        className="genres"
+      >
+        
+      </h1>
+      <div
+        className="rate__panel"
+      >
+        <div
+          className="rate"
+        >
+          <span
+            className="void_star"
+          />
+          <span
+            className="void_star"
+          />
+          <span
+            className="void_star"
+          />
+          <span
+            className="void_star"
+          />
+          <span
+            className="void_star"
+          />
+        </div>
+        <h1
+          className="rate"
+        >
+          0
+        </h1>
+      </div>
+    </div>
+    <div
+      className="info"
+    >
+      <button
+        className="watch"
+        id="watch"
+        type="button"
+      >
+        Watch now
+      </button>
+      <button
+        className="view"
+        id="check"
+        type="button"
+      >
+        View info
+      </button>
+    </div>
+  </div>
+</div>
+`;

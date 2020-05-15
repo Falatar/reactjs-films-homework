@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaginationPanel renders correctly 1`] = `
+<div
+  className="pagination__panel"
+>
+  <button
+    className="pagination__left__to__end"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    ⮜
+  </button>
+  <button
+    className="pagination__left"
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    ❰
+  </button>
+  <input
+    className="pagination__to__certain__page"
+    readOnly={true}
+    type="text"
+    value={1}
+  />
+  <button
+    className="pagination__right"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    ❱
+  </button>
+  <button
+    className="pagination__right__to__end"
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    ⮞
+  </button>
+</div>
+`;

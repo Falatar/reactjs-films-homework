@@ -17,7 +17,7 @@ export const getGenres = createSelector(
 
 const createGenreString = (film, genres) => genres.filter((genre) => film.genre_ids.includes(genre.id)).map((genre) => genre.name).join(', ');
 
-const getMoviesInfo = createSelector(
+export const getMoviesInfo = createSelector(
   [getActualFilms, getActualPage, getGenres], (actualFilms, actualPage, genreList) => {
     if (actualFilms[0]) {
       const page = itemsOnPage * (actualPage - 1);

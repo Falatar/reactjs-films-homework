@@ -1,7 +1,7 @@
 import makeRequest from '../../services/requester';
 import itemsOnPage, { itemsOnSite } from './constants';
 
-const loadTopFilm = () => async (dispatch) => {
+export const loadTopFilm = () => async (dispatch) => {
   const requestParams = { page: 1, adult: false };
   const film = await makeRequest('movie', 'top_rated', requestParams);
   return dispatch({
