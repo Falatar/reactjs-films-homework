@@ -11,6 +11,7 @@ jest.mock('../../../modules/filmListModule/filmListModuleSelector.js', () => ({
       overview: '',
     },
   ]),
+  getSearchResult: jest.fn().mockReturnValue(true),
 }));
 
 jest.mock('../../../modules/filmListModule/filmListModuleActions.js', () => ({
@@ -35,6 +36,7 @@ describe('MovieListContainer', () => {
           overview: '',
         },
       ],
+      searchResult: true,
     };
 
     expect(mapStateToProps()).toEqual(testInput);

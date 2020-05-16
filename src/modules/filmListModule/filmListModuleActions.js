@@ -10,9 +10,14 @@ export const loadTopFilm = () => async (dispatch) => {
   });
 };
 
-const addNewPage = (numberOfPage) => async (dispatch) => {
-  const requestParams = { page: numberOfPage, adult: false };
-  const page = await makeRequest('movie', 'upcoming', requestParams);
+const addNewPage = (numberOfPage) => async (dispatch, getState) => {
+  const { searchMode, searchString } = getState().filmListModuleReducer;
+  const requestParams = !searchMode
+    ? { page: numberOfPage, adult: false }
+    : { page: numberOfPage, adult: false, query: searchString };
+  const page = !searchMode
+    ? await makeRequest('movie', 'upcoming', requestParams)
+    : await makeRequest('search', 'movie', requestParams);
   return dispatch({
     type: 'ADD_PAGE',
     payload: page.results,
@@ -34,25 +39,19 @@ const confirmAddedPages = (value) => async (dispatch) => dispatch({
   payload: value,
 });
 
-export const loadActualFilms = () => async (dispatch) => {
-  const requestParams = { page: 1, adult: false };
-  const films = await makeRequest('movie', 'upcoming', requestParams);
-  dispatch(saveNumberOfPages(films.total_pages));
-  dispatch(saveNumberOfFilms(films.total_results));
-  dispatch(confirmAddedPages(1));
-  return dispatch({
-    type: 'LOAD_MOVIE_LIST',
-    payload: films.results,
-  });
-};
+const jumpToSearchMode = (value) => async (dispatch) => dispatch({
+  type: 'SEARCH_MODE_CONFIRMED',
+  payload: value,
+});
 
-export const loadGenres = () => async (dispatch) => {
-  const list = await makeRequest('genre/movie', 'list');
-  return dispatch({
-    type: 'LOAD_GENRE_LIST',
-    payload: list,
-  });
-};
+const clearActualFlms = () => async (dispatch) => dispatch({
+  type: 'CLEAR_COLLECTION',
+});
+
+const confirmSearchResult = (value) => async (dispatch) => dispatch({
+  type: 'CONFIRM_SEARCH_RESULT',
+  payload: value,
+});
 
 const switchPage = (value) => async (dispatch, getState) => {
   const { uploadedPages, totalFilms } = getState().filmListModuleReducer;
@@ -70,6 +69,54 @@ const switchPage = (value) => async (dispatch, getState) => {
     });
   }
   return null;
+};
+
+
+export const loadActualFilms = () => async (dispatch) => {
+  const requestParams = { page: 1, adult: false };
+  const films = await makeRequest('movie', 'upcoming', requestParams);
+  dispatch(saveNumberOfPages(films.total_pages));
+  dispatch(saveNumberOfFilms(films.total_results));
+  dispatch(confirmAddedPages(1));
+  return dispatch({
+    type: 'LOAD_MOVIE_LIST',
+    payload: films.results,
+  });
+};
+
+const loadSearchResults = (searchString) => async (dispatch) => {
+  const requestParams = { query: searchString, page: 1, adult: false };
+  const films = await makeRequest('search', 'movie', requestParams);
+  dispatch(saveNumberOfPages(films.total_pages));
+  dispatch(saveNumberOfFilms(films.total_results));
+  dispatch(confirmAddedPages(1));
+  dispatch(jumpToSearchMode(true));
+  dispatch(switchPage(1));
+  if (films.total_results === 0) dispatch(confirmSearchResult(false));
+  else dispatch(confirmSearchResult(true));
+  return dispatch({
+    type: 'LOAD_MOVIE_LIST',
+    payload: films.results,
+  });
+};
+
+export const startSearch = (newString) => async (dispatch, getState) => {
+  const { searchString } = getState().filmListModuleReducer;
+  if (searchString === newString) return null;
+  dispatch(clearActualFlms());
+  dispatch(loadSearchResults(newString));
+  return dispatch({
+    type: 'SAVE_SEARCH_STRING',
+    payload: newString,
+  });
+};
+
+export const loadGenres = () => async (dispatch) => {
+  const list = await makeRequest('genre/movie', 'list');
+  return dispatch({
+    type: 'LOAD_GENRE_LIST',
+    payload: list,
+  });
 };
 
 export const moveLeft = (totalPages) => async (dispatch, getState) => {

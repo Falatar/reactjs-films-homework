@@ -13,7 +13,15 @@ class MovieList extends Component {
   render() {
     const {
       filmList,
+      searchResult,
     } = this.props;
+    if (!searchResult) {
+      return (
+        <div className={classNames(style.list, style.empty_list)}>
+          <span className={style.notice}>There are 0 results for your request</span>
+        </div>
+      );
+    }
     if (filmList.length) {
       return (
         <div className={style.list}>
@@ -33,7 +41,7 @@ class MovieList extends Component {
     }
     return (
       <div className={classNames(style.list, style.empty_list)}>
-        <span className={style.loading}>Loading...</span>
+        <span className={style.notice}>Loading...</span>
       </div>
     );
   }
@@ -41,11 +49,13 @@ class MovieList extends Component {
 
 MovieList.defaultProps = {
   filmList: [],
+  searchResult: true,
   getFilmList: () => {},
 };
 
 MovieList.propTypes = {
   filmList: PropTypes.objectOf(PropTypes.any),
+  searchResult: PropTypes.bool,
   getFilmList: PropTypes.func,
 };
 

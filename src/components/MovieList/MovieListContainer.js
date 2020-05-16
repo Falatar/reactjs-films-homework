@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
 import { loadActualFilms, loadGenres } from '../../modules/filmListModule/filmListModuleActions';
-import { getMoviesInfo } from '../../modules/filmListModule/filmListModuleSelector';
+import { getMoviesInfo, getSearchResult } from '../../modules/filmListModule/filmListModuleSelector';
 import MovieList from './MovieList';
 
 export const mapStateToProps = (store) => ({
   filmList: getMoviesInfo(store),
+  searchResult: getSearchResult(store),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

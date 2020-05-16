@@ -6,6 +6,9 @@ export const initialState = {
   totalPages: 0,
   totalFilms: 0,
   uploadedPages: 0,
+  searchMode: false,
+  searchString: '',
+  successfullSearch: true,
 };
 
 export function filmListModuleReducer(state = initialState, action) {
@@ -33,6 +36,18 @@ export function filmListModuleReducer(state = initialState, action) {
 
     case 'UPDATE_UPLOADED_PAGES':
       return { ...state, uploadedPages: action.payload };
+
+    case 'SEARCH_MODE_CONFIRMED':
+      return { ...state, searchMode: action.payload };
+
+    case 'SAVE_SEARCH_STRING':
+      return { ...state, searchString: action.payload };
+
+    case 'CLEAR_COLLECTION':
+      return { ...state, actualFilms: [] };
+
+    case 'CONFIRM_SEARCH_RESULT':
+      return { ...state, successfullSearch: action.payload };
 
     default: return state;
   }

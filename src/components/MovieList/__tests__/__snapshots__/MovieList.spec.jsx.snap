@@ -5,9 +5,33 @@ exports[`MovieList renders correctly without input 1`] = `
   className="list empty_list"
 >
   <span
-    className="loading"
+    className="notice"
   >
     Loading...
+  </span>
+</div>
+`;
+
+exports[`MovieList renders correctly without input and results 1`] = `
+<div
+  className="list empty_list"
+>
+  <span
+    className="notice"
+  >
+    There are 0 results for your request
+  </span>
+</div>
+`;
+
+exports[`MovieList renders correctly without results 1`] = `
+<div
+  className="list empty_list"
+>
+  <span
+    className="notice"
+  >
+    There are 0 results for your request
   </span>
 </div>
 `;

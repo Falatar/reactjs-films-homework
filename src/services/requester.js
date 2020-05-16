@@ -8,12 +8,13 @@ const download = async (url) => {
 };
 
 const convertProps = (props) => {
-  const result = ''.concat(Object.keys(props).map((name) => `${name}=${props[name]}`));
+  const result = ''.concat(Object.entries(props[0]).map((item) => `${item[0]}=${item[1]}`).join('&'));
   return result;
 };
 
 const makeRequest = async (type, category, ...rest) => {
-  const searchParam = [`api_key=${key}`, language, convertProps(rest)].join('&');
+  let searchParam = [`api_key=${key}`, language].join('&');
+  if (rest.length !== 0) searchParam += `&${convertProps(rest)}`;
   const url = `https://api.themoviedb.org/3/${type}/${category}?${searchParam}`;
   const result = await download(url);
   return result;

@@ -31,5 +31,9 @@
         cursor: pointer;
         color: white;
         font-size: 2em;
+        outline: none;
+    }
+    .search_button:active {
+        color: gray;
     }
 }

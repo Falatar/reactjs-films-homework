@@ -16,14 +16,28 @@ describe('MovieList', () => {
 
   it('renders correctly', () => {
     const tree = renderer
-      .create(<MovieList filmList={testInput} />)
+      .create(<MovieList filmList={testInput} searchResult />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders correctly without input', () => {
     const tree = renderer
-      .create(<MovieList filmList={[]} />)
+      .create(<MovieList filmList={[]} searchResult />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly without results', () => {
+    const tree = renderer
+      .create(<MovieList filmList={testInput} searchResult={false} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly without input and results', () => {
+    const tree = renderer
+      .create(<MovieList filmList={[]} searchResult={false} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

@@ -9,13 +9,16 @@ exports[`Search renders correctly 1`] = `
   >
     <input
       className="search_text"
+      onChange={[Function]}
       placeholder="Search here..."
       type="text"
+      value=""
     />
     <button
       className="search_button"
       id="push"
-      type="submit"
+      onClick={[Function]}
+      type="button"
     >
       ⌕
     </button>
