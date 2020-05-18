@@ -13,7 +13,7 @@ function FilmDescription({
         <h3 className={scss.name}>{name}</h3>
         <h2 className={scss.tags}>{tagList}</h2>
       </div>
-      <h1 className={scss.rate}>{rating.toFixed(1)}</h1>
+      <h1 className={scss.rate}>{rating}</h1>
     </div>
   );
 }

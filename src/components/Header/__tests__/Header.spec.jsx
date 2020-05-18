@@ -2,6 +2,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import Header from '../Header';
 
+jest.mock('../../Search', () => 'Search');
+jest.mock('../../Film', () => 'Film');
+jest.mock('../../Info', () => 'Info');
+
 describe('Header', () => {
   const testInput = {
     backdrop_path: '',

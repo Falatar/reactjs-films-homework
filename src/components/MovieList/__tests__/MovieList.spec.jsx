@@ -2,6 +2,8 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MovieList from '../MovieList';
 
+jest.mock('../../FilmData', () => 'FilmData');
+
 describe('MovieList', () => {
   const testInput = [
     {

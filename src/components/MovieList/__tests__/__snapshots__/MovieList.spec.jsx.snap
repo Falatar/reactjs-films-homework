@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MovieList renders correctly 1`] = `
+<div
+  className="list"
+>
+  <FilmData
+    id={0}
+    imgURL=""
+    name="test"
+    overview=""
+    rating={0}
+    tagList=""
+  />
+</div>
+`;
+
 exports[`MovieList renders correctly without input 1`] = `
 <div
   className="list empty_list"

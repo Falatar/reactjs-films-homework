@@ -11,11 +11,11 @@ export const loadTopFilm = () => async (dispatch) => {
 };
 
 const addNewPage = (numberOfPage) => async (dispatch, getState) => {
-  const { searchMode, searchString } = getState().filmListModuleReducer;
-  const requestParams = !searchMode
+  const { searchString } = getState().filmListModuleReducer;
+  const requestParams = searchString.length === 0
     ? { page: numberOfPage, adult: false }
     : { page: numberOfPage, adult: false, query: searchString };
-  const page = !searchMode
+  const page = searchString.length === 0
     ? await makeRequest('movie', 'upcoming', requestParams)
     : await makeRequest('search', 'movie', requestParams);
   return dispatch({
@@ -36,11 +36,6 @@ const saveNumberOfFilms = (value) => async (dispatch) => dispatch({
 
 const confirmAddedPages = (value) => async (dispatch) => dispatch({
   type: 'UPDATE_UPLOADED_PAGES',
-  payload: value,
-});
-
-const jumpToSearchMode = (value) => async (dispatch) => dispatch({
-  type: 'SEARCH_MODE_CONFIRMED',
   payload: value,
 });
 
@@ -90,7 +85,6 @@ const loadSearchResults = (searchString) => async (dispatch) => {
   dispatch(saveNumberOfPages(films.total_pages));
   dispatch(saveNumberOfFilms(films.total_results));
   dispatch(confirmAddedPages(1));
-  dispatch(jumpToSearchMode(true));
   dispatch(switchPage(1));
   if (films.total_results === 0) dispatch(confirmSearchResult(false));
   else dispatch(confirmSearchResult(true));
