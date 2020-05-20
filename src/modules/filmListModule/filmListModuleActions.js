@@ -10,7 +10,7 @@ export const loadTopFilm = () => async (dispatch) => {
   });
 };
 
-const addNewPage = (numberOfPage) => async (dispatch, getState) => {
+export const addNewPage = (numberOfPage) => async (dispatch, getState) => {
   const { searchString } = getState().filmListModuleReducer;
   const requestParams = searchString.length === 0
     ? { page: numberOfPage, adult: false }
@@ -24,31 +24,31 @@ const addNewPage = (numberOfPage) => async (dispatch, getState) => {
   });
 };
 
-const saveNumberOfPages = (value) => async (dispatch) => dispatch({
+export const saveNumberOfPages = (value) => async (dispatch) => dispatch({
   type: 'UPDATE_NUMBER_OF_PAGES',
   payload: value,
 });
 
-const saveNumberOfFilms = (value) => async (dispatch) => dispatch({
+export const saveNumberOfFilms = (value) => async (dispatch) => dispatch({
   type: 'UPDATE_NUMBER_OF_FILMS',
   payload: value,
 });
 
-const confirmAddedPages = (value) => async (dispatch) => dispatch({
+export const confirmAddedPages = (value) => async (dispatch) => dispatch({
   type: 'UPDATE_UPLOADED_PAGES',
   payload: value,
 });
 
-const clearActualFlms = () => async (dispatch) => dispatch({
+export const clearActualFilms = () => async (dispatch) => dispatch({
   type: 'CLEAR_COLLECTION',
 });
 
-const confirmSearchResult = (value) => async (dispatch) => dispatch({
+export const confirmSearchResult = (value) => async (dispatch) => dispatch({
   type: 'CONFIRM_SEARCH_RESULT',
   payload: value,
 });
 
-const switchPage = (value) => async (dispatch, getState) => {
+export const switchPage = (value) => async (dispatch, getState) => {
   const { uploadedPages, totalFilms } = getState().filmListModuleReducer;
   if (value <= (totalFilms / itemsOnPage).toFixed(0)) {
     const needsToAdd = value * itemsOnPage - uploadedPages * itemsOnSite;
@@ -79,7 +79,7 @@ export const loadActualFilms = () => async (dispatch) => {
   });
 };
 
-const loadSearchResults = (searchString) => async (dispatch) => {
+export const loadSearchResults = (searchString) => async (dispatch) => {
   const requestParams = { query: searchString, page: 1, adult: false };
   const films = await makeRequest('search', 'movie', requestParams);
   dispatch(saveNumberOfPages(films.total_pages));
@@ -97,8 +97,8 @@ const loadSearchResults = (searchString) => async (dispatch) => {
 export const startSearch = (newString) => async (dispatch, getState) => {
   const { searchString } = getState().filmListModuleReducer;
   if (searchString === newString) return null;
-  dispatch(clearActualFlms());
-  dispatch(loadSearchResults(newString));
+  dispatch(clearActualFilms());
+  await dispatch(loadSearchResults(newString));
   return dispatch({
     type: 'SAVE_SEARCH_STRING',
     payload: newString,

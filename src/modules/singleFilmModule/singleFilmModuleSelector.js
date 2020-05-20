@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
-const getStatus = (store) => store.singleFilmModalReducer.status;
-const getRoot = (store) => store.singleFilmModalReducer.root;
+const getStatus = (store) => store.singleFilmModuleReducer.status;
+const getRoot = (store) => store.singleFilmModuleReducer.root;
 
 
 export const isModalActive = createSelector(
