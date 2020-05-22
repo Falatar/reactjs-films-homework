@@ -11,8 +11,8 @@
     .pagination__left__to__end, 
     .pagination__right, 
     .pagination__right__to__end {
-        width: 5%;
         height: 1.6em;
+        width: 3.2em;
         border-radius: 15px;
         outline: none;
         border: 0;
@@ -22,6 +22,19 @@
         background-color: deepskyblue;
         color: white;
         font-size: 1.5em;
+
+        .icon__left__to__end,
+        .icon__left,
+        .icon__right,
+        .icon__right__to__end {
+            position: relative;
+            display: block;
+            width: 100px;
+            height: 100px;
+            stroke-width: 0;
+            stroke: white;
+            fill: white;
+        }
     }
 
     .pagination__left:active, 
@@ -47,8 +60,8 @@
     }
 
     .pagination__to__certain__page {
-        width: 7%;
-        height: 40%;
+        height: 1.2em;
+        width: 5em;
         font-size: 1.5em;
         border-radius: 15px;
         text-align: center;

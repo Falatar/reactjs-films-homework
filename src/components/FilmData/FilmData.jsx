@@ -61,7 +61,14 @@ class FilmData extends Component {
               onError={this.setDefaultImg}
             />
             <div className={style.hidden}>
-              <button type="button" className={style.play} onClick={this.callModal}>▶</button>
+              <button type="button" className={style.play} onClick={this.callModal}>
+                <svg className={style.icon} xlinkHref="#icon-play3">
+                  <symbol id="icon-play3" viewBox="-8 -5 50 50">
+                    <path d="M6 4l20 12-20 12z" />
+                  </symbol>
+                  <use xlinkHref="#icon-play3" />
+                </svg>
+              </button>
               <p className={style.watch__now}>Watch Now</p>
               <button type="button" className={style.info} onClick={this.switchMode}>View Info</button>
             </div>

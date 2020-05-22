@@ -32,6 +32,17 @@
         color: white;
         font-size: 2em;
         outline: none;
+
+        .icon__search {
+            transform: scale(-1, 1);
+            position: relative;
+            display: block;
+            width: 100px;
+            height: 100px;
+            stroke-width: 0;
+            stroke: white;
+            fill: white;
+        }
     }
     .search_button:active {
         color: gray;

@@ -21,7 +21,12 @@ function PaginationPanel({
         onClick={finallyLeft}
         disabled={actualPage === 1}
       >
-        ⮜
+        <svg className={style.icon__left__to__end} xlinkHref="#icon__left__to__end">
+          <symbol id="icon__left__to__end" viewBox="-12 1 75 75">
+            <path d="M4 28v-24h4v11l10-10v10l10-10v22l-10-10v10l-10-10v11z" />
+          </symbol>
+          <use xlinkHref="#icon__left__to__end" />
+        </svg>
       </button>
       <button
         type="button"
@@ -29,7 +34,12 @@ function PaginationPanel({
         onClick={() => left(numberOfPages)}
         disabled={actualPage === 1}
       >
-        ❰
+        <svg className={style.icon__left__to__end} xlinkHref="#icon__left">
+          <symbol id="icon__left" viewBox="-14 1 75 75">
+            <path d="M8 28v-24h4v11l10-10v22l-10-10v11z" />
+          </symbol>
+          <use xlinkHref="#icon__left" />
+        </svg>
       </button>
       <input
         type="text"
@@ -43,7 +53,12 @@ function PaginationPanel({
         onClick={() => right(numberOfPages)}
         disabled={actualPage === numberOfPages}
       >
-        ❱
+        <svg className={style.icon__right} xlinkHref="#icon__right">
+          <symbol id="icon__right" viewBox="-12 1 75 75">
+            <path d="M24 4v24h-4v-11l-10 10v-22l10 10v-11z" />
+          </symbol>
+          <use xlinkHref="#icon__right" />
+        </svg>
       </button>
       <button
         type="button"
@@ -51,7 +66,12 @@ function PaginationPanel({
         onClick={() => finallyRight(numberOfPages)}
         disabled={actualPage === numberOfPages}
       >
-        ⮞
+        <svg className={style.icon__right__to__end} xlinkHref="#icon__right__to__end">
+          <symbol id="icon__right__to__end" viewBox="-12 1 75 75">
+            <path d="M28 4v24h-4v-11l-10 10v-10l-10 10v-22l10 10v-10l10 10v-11z" />
+          </symbol>
+          <use xlinkHref="#icon__right__to__end" />
+        </svg>
       </button>
     </div>
   );
@@ -60,10 +80,10 @@ function PaginationPanel({
 PaginationPanel.defaultProps = {
   totalFilms: 1,
   actualPage: 1,
-  left: () => {},
-  right: () => {},
-  finallyLeft: () => {},
-  finallyRight: () => {},
+  left: () => { },
+  right: () => { },
+  finallyLeft: () => { },
+  finallyRight: () => { },
 };
 
 PaginationPanel.propTypes = {
