@@ -4,7 +4,7 @@ exports[`MovieList renders correctly 1`] = `
 <div
   className="list"
 >
-  <FilmData
+  <FilmBlock
     id={0}
     imgURL=""
     name="test"

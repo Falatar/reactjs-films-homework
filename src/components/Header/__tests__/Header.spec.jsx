@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import Header from '../Header';
 
 jest.mock('../../Search', () => 'Search');
-jest.mock('../../Film', () => 'Film');
+jest.mock('../../FilmTitle', () => 'FilmTitle');
 jest.mock('../../Info', () => 'Info');
 
 describe('Header', () => {

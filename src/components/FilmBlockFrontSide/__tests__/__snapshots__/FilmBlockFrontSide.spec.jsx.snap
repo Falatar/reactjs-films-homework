@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilmData renders correctly 1`] = `
+exports[`FilmBlockFrontSide renders correctly 1`] = `
 <div
-  className="film__data"
+  className="film__block"
 >
   <div
     className="control"
@@ -12,7 +12,7 @@ exports[`FilmData renders correctly 1`] = `
       className="wall"
       onError={[Function]}
       onLoad={[Function]}
-      src="https://image.tmdb.org/t/p/w500"
+      src=""
     />
     <div
       className="hidden"
@@ -22,7 +22,22 @@ exports[`FilmData renders correctly 1`] = `
         onClick={[Function]}
         type="button"
       >
-        ▶
+        <svg
+          className="icon"
+          xlinkHref="#icon-play3"
+        >
+          <symbol
+            id="icon-play3"
+            viewBox="-8 -5 50 50"
+          >
+            <path
+              d="M6 4l20 12-20 12z"
+            />
+          </symbol>
+          <use
+            xlinkHref="#icon-play3"
+          />
+        </svg>
       </button>
       <p
         className="watch__now"
@@ -38,28 +53,11 @@ exports[`FilmData renders correctly 1`] = `
       </button>
     </div>
   </div>
-  <div
-    className="description"
-  >
-    <div
-      className="title"
-    >
-      <h3
-        className="name"
-      >
-        nemo
-      </h3>
-      <h2
-        className="tags"
-      >
-        empty
-      </h2>
-    </div>
-    <h1
-      className="rate"
-    >
-      0
-    </h1>
-  </div>
+  <FilmDescription
+    mode={true}
+    name="nemo"
+    rating={0}
+    tagList="empty"
+  />
 </div>
 `;

@@ -23,7 +23,7 @@ exports[`Header renders correctly 1`] = `
   <div
     className="film__data"
   >
-    <Film
+    <FilmTitle
       genrePtime=""
       name="test"
       rating={0}
@@ -56,7 +56,7 @@ exports[`Header renders correctly without input 1`] = `
   <div
     className="film__data"
   >
-    <Film />
+    <FilmTitle />
     <Info />
   </div>
 </div>

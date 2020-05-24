@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import style from './MovieList.scss';
-import FilmData from '../FilmData';
+import FilmBlock from '../FilmBlock';
 
 class MovieList extends Component {
   componentDidMount() {
@@ -26,7 +26,7 @@ class MovieList extends Component {
       return (
         <div className={style.list}>
           {filmList.map((item) => (
-            <FilmData
+            <FilmBlock
               id={item.id}
               name={item.title}
               imgURL={item.backdrop_path}

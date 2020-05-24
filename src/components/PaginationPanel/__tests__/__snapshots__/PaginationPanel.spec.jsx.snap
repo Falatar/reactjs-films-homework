@@ -10,7 +10,22 @@ exports[`PaginationPanel renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    ⮜
+    <svg
+      className="icon__left__to__end"
+      xlinkHref="#icon__left__to__end"
+    >
+      <symbol
+        id="icon__left__to__end"
+        viewBox="-12 1 75 75"
+      >
+        <path
+          d="M4 28v-24h4v11l10-10v10l10-10v22l-10-10v10l-10-10v11z"
+        />
+      </symbol>
+      <use
+        xlinkHref="#icon__left__to__end"
+      />
+    </svg>
   </button>
   <button
     className="pagination__left"
@@ -18,7 +33,22 @@ exports[`PaginationPanel renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    ❰
+    <svg
+      className="icon__left__to__end"
+      xlinkHref="#icon__left"
+    >
+      <symbol
+        id="icon__left"
+        viewBox="-14 1 75 75"
+      >
+        <path
+          d="M8 28v-24h4v11l10-10v22l-10-10v11z"
+        />
+      </symbol>
+      <use
+        xlinkHref="#icon__left"
+      />
+    </svg>
   </button>
   <input
     className="pagination__to__certain__page"
@@ -32,7 +62,22 @@ exports[`PaginationPanel renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    ❱
+    <svg
+      className="icon__right"
+      xlinkHref="#icon__right"
+    >
+      <symbol
+        id="icon__right"
+        viewBox="-12 1 75 75"
+      >
+        <path
+          d="M24 4v24h-4v-11l-10 10v-22l10 10v-11z"
+        />
+      </symbol>
+      <use
+        xlinkHref="#icon__right"
+      />
+    </svg>
   </button>
   <button
     className="pagination__right__to__end"
@@ -40,7 +85,22 @@ exports[`PaginationPanel renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    ⮞
+    <svg
+      className="icon__right__to__end"
+      xlinkHref="#icon__right__to__end"
+    >
+      <symbol
+        id="icon__right__to__end"
+        viewBox="-12 1 75 75"
+      >
+        <path
+          d="M28 4v24h-4v-11l-10 10v-10l-10 10v-22l10 10v-10l10 10v-11z"
+        />
+      </symbol>
+      <use
+        xlinkHref="#icon__right__to__end"
+      />
+    </svg>
   </button>
 </div>
 `;

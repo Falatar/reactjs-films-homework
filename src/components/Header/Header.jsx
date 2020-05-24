@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import style from './Header.scss';
 import Search from '../Search';
-import Film from '../Film';
+import FilmTitle from '../FilmTitle';
 import Info from '../Info';
 
 class Header extends Component {
@@ -26,7 +26,7 @@ class Header extends Component {
             <Search />
           </div>
           <div className={style.film__data}>
-            <Film
+            <FilmTitle
               name={mostPopularFilm.title}
               genrePtime={mostPopularFilm.genre_str}
               rating={mostPopularFilm.vote_average}

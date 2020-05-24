@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { updateTrailerPath, openModal } from '../../modules/singleFilmModule/singleFilmModuleActions';
-import FilmData from './FilmData';
+import FilmBlock from './FilmBlock';
 
 
 export const mapDispatchToProps = (dispatch) => ({
@@ -11,4 +11,4 @@ export const mapDispatchToProps = (dispatch) => ({
 export default connect(
   null,
   mapDispatchToProps,
-)(FilmData);
+)(FilmBlock);

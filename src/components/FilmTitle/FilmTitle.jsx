@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import style from './Film.scss';
+import style from './FilmTitle.scss';
 import Rate from '../Rate';
 
-function Film({
+function FilmTitle({
   name, genrePtime, rating,
 }) {
   return (
@@ -18,16 +18,16 @@ function Film({
   );
 }
 
-Film.defaultProps = {
+FilmTitle.defaultProps = {
   name: 'Can\'t find property "name"',
   genrePtime: ['unknown'],
   rating: 0,
 };
 
-Film.propTypes = {
+FilmTitle.propTypes = {
   name: PropTypes.string,
   genrePtime: PropTypes.string,
   rating: PropTypes.number,
 };
 
-export default Film;
+export default FilmTitle;

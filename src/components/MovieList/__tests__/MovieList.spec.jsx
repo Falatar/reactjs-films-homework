@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import MovieList from '../MovieList';
 
-jest.mock('../../FilmData', () => 'FilmData');
+jest.mock('../../FilmBlock', () => 'FilmBlock');
 
 describe('MovieList', () => {
   const testInput = [

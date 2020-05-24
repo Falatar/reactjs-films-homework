@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmBlockBackSide renders correctly 1`] = `
+<div
+  className="film__block dark"
+  style={
+    Object {
+      "backgroundImage": "url()",
+    }
+  }
+>
+  <button
+    className="close"
+    onClick={[Function]}
+    type="button"
+  >
+    ✕
+  </button>
+  <FilmDescription
+    mode={false}
+    name="nemo"
+    rating={0}
+    tagList="empty"
+  />
+  <p
+    className="overview"
+  >
+    some text
+  </p>
+  <button
+    className="details_play"
+    onClick={[Function]}
+    type="button"
+  >
+    Watch Now
+  </button>
+</div>
+`;

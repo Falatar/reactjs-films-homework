@@ -1,4 +1,4 @@
-import { mapDispatchToProps } from '../FilmDataContainer';
+import { mapDispatchToProps } from '../FilmBlockContainer';
 
 jest.mock('../../../modules/singleFilmModule/singleFilmModuleActions.js', () => ({
   openModal: jest.fn().mockReturnValue({
@@ -9,7 +9,7 @@ jest.mock('../../../modules/singleFilmModule/singleFilmModuleActions.js', () => 
   }),
 }));
 
-describe('FilmDataContainer', () => {
+describe('FilmBlockContainer', () => {
   it('should map dispatch to props correctly', () => {
     const dispatch = jest.fn();
 

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmBlock renders correctly 1`] = `
+<FilmBlockFrontSide
+  callModal={[Function]}
+  checkImgSizes={[Function]}
+  id={1}
+  name="nemo"
+  poster="https://image.tmdb.org/t/p/w500"
+  rating={0}
+  setDefaultImg={[Function]}
+  switchMode={[Function]}
+  tagList="empty"
+/>
+`;
