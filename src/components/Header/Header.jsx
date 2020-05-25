@@ -31,7 +31,10 @@ class Header extends Component {
               genrePtime={mostPopularFilm.genre_str}
               rating={mostPopularFilm.vote_average}
             />
-            <Info />
+            <Info
+              overview={mostPopularFilm.overview}
+              id={mostPopularFilm.id}
+            />
           </div>
         </div>
       );

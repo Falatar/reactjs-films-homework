@@ -11,7 +11,7 @@ class ModalWindow extends Component {
 
   render() {
     const { root, status } = this.props;
-    if (root.results !== undefined) {
+    if (root.results && root.results[0]) {
       return (
         <div className={classNames(style.bord, status ? style.up : style.down)}>
           <iframe
@@ -29,7 +29,10 @@ class ModalWindow extends Component {
     }
     return (
       <div className={classNames(style.bord, status ? style.up : style.down)}>
-        <span className={style.loading}>Loading...</span>
+        <span className={style.loading}>Cannot find trailer</span>
+        <div className={style.bot__lain}>
+          <button type="button" className={style.close__button} onClick={this.hide}>close</button>
+        </div>
       </div>
     );
   }

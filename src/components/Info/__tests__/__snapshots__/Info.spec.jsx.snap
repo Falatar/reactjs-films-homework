@@ -2,21 +2,32 @@
 
 exports[`Info renders correctly 1`] = `
 <div
-  className="info"
+  className="info sheer"
 >
-  <button
-    className="watch"
-    id="watch"
-    type="button"
+  <p
+    className="text unvisible"
   >
-    Watch now
-  </button>
-  <button
-    className="view"
-    id="check"
-    type="button"
+    
+  </p>
+  <div
+    className="buttons"
   >
-    View info
-  </button>
+    <button
+      className="watch"
+      id="watch"
+      onClick={[Function]}
+      type="button"
+    >
+      Watch now
+    </button>
+    <button
+      className="view"
+      id="check"
+      onClick={[Function]}
+      type="button"
+    >
+      View info
+    </button>
+  </div>
 </div>
 `;

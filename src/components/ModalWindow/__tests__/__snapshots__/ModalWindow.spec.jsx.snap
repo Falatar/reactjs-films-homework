@@ -32,8 +32,19 @@ exports[`ModalWindow renders correctly in active mode without input 1`] = `
   <span
     className="loading"
   >
-    Loading...
+    Cannot find trailer
   </span>
+  <div
+    className="bot__lain"
+  >
+    <button
+      className="close__button"
+      onClick={[Function]}
+      type="button"
+    >
+      close
+    </button>
+  </div>
 </div>
 `;
 
@@ -69,7 +80,18 @@ exports[`ModalWindow renders correctly in passive mode without input 1`] = `
   <span
     className="loading"
   >
-    Loading...
+    Cannot find trailer
   </span>
+  <div
+    className="bot__lain"
+  >
+    <button
+      className="close__button"
+      onClick={[Function]}
+      type="button"
+    >
+      close
+    </button>
+  </div>
 </div>
 `;
