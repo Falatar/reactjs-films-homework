@@ -14,7 +14,7 @@ class Header extends Component {
 
   render() {
     const { mostPopularFilm } = this.props;
-    if (mostPopularFilm) {
+    if (mostPopularFilm.title) {
       return (
         <div
           className={style.header}

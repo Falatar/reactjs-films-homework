@@ -41,7 +41,7 @@ class ModalWindow extends Component {
 ModalWindow.defaultProps = {
   status: false,
   root: {},
-  endModalSession: () => {},
+  endModalSession: () => 'can\'t find endModalSession function',
 };
 
 ModalWindow.propTypes = {

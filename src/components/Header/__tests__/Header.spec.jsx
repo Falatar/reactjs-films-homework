@@ -23,7 +23,7 @@ describe('Header', () => {
 
   it('renders correctly without input', () => {
     const tree = renderer
-      .create(<Header mostPopularFilm={{}} />)
+      .create(<Header mostPopularFilm={undefined} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });

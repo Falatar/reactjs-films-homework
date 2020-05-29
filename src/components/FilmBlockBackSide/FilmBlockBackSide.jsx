@@ -31,8 +31,8 @@ FilmBlockBackSide.defaultProps = {
   rating: 0,
   tagList: 'Can\'t find property "tagList"',
   overview: 'Can\'t find property "overview"',
-  callModal: () => {},
-  switchMode: () => {},
+  callModal: () => 'can\'t find callModal function',
+  switchMode: () => 'can\'t find switchMode function',
 };
 
 FilmBlockBackSide.propTypes = {

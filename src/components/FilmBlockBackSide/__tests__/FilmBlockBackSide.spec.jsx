@@ -21,4 +21,14 @@ describe('FilmBlockBackSide', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('default functions works correctly', () => {
+    const component = renderer.create(
+      <FilmBlockBackSide />,
+    );
+    const result1 = component.root.props.callModal();
+    const result2 = component.root.props.switchMode();
+    expect(result1).toEqual('can\'t find callModal function');
+    expect(result2).toEqual('can\'t find switchMode function');
+  });
 });

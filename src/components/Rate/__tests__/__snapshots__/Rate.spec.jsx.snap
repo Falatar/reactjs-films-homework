@@ -5,13 +5,13 @@ exports[`Rate renders correctly 1`] = `
   className="rate"
 >
   <span
-    className="void_star"
+    className="star"
   />
   <span
-    className="void_star"
+    className="star"
   />
   <span
-    className="void_star"
+    className="star"
   />
   <span
     className="void_star"

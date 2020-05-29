@@ -23,19 +23,10 @@ exports[`FilmBlockFrontSide renders correctly 1`] = `
         type="button"
       >
         <svg
-          className="icon"
-          xlinkHref="#icon-play3"
+          className="svg"
         >
-          <symbol
-            id="icon-play3"
-            viewBox="-8 -5 50 50"
-          >
-            <path
-              d="M6 4l20 12-20 12z"
-            />
-          </symbol>
           <use
-            xlinkHref="#icon-play3"
+            xlinkHref="mocked-image"
           />
         </svg>
       </button>

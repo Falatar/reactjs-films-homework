@@ -55,8 +55,8 @@ class Info extends Component {
 Info.defaultProps = {
   overview: '',
   id: 0,
-  callTrailer: () => { },
-  setTrailer: () => { },
+  callTrailer: () => 'can\'t find callTrailer function',
+  setTrailer: () => 'can\'t find setTrailer function',
 };
 
 Info.propTypes = {

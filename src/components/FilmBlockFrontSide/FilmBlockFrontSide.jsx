@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import style from './FilmBlockFrontSide.scss';
 import FilmDescription from '../FilmDescription';
+import play from '../../static/play.svg';
 
 function FilmBlockFrontSide({
   id, name, tagList, rating, callModal, switchMode, poster, checkImgSizes, setDefaultImg,
@@ -18,11 +19,8 @@ function FilmBlockFrontSide({
         />
         <div className={style.hidden}>
           <button type="button" className={style.play} onClick={callModal}>
-            <svg className={style.icon} xlinkHref="#icon-play3">
-              <symbol id="icon-play3" viewBox="-8 -5 50 50">
-                <path d="M6 4l20 12-20 12z" />
-              </symbol>
-              <use xlinkHref="#icon-play3" />
+            <svg className={style.svg}>
+              <use xlinkHref={play} />
             </svg>
           </button>
           <p className={style.watch__now}>Watch Now</p>
@@ -45,10 +43,10 @@ FilmBlockFrontSide.defaultProps = {
   poster: '',
   rating: 0,
   tagList: 'Can\'t find property "tagList"',
-  callModal: () => {},
-  switchMode: () => {},
-  checkImgSizes: () => {},
-  setDefaultImg: () => {},
+  callModal: () => 'can\'t find callModal function',
+  switchMode: () => 'can\'t find switchMode function',
+  checkImgSizes: () => 'can\'t find checkImgSizes function',
+  setDefaultImg: () => 'can\'t find setDefaultImg function',
 };
 
 FilmBlockFrontSide.propTypes = {

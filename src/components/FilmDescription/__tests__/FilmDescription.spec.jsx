@@ -9,4 +9,11 @@ describe('FilmDescription', () => {
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders correctly in alter mode', () => {
+    const tree = renderer
+      .create(<FilmDescription name="nemo" genrePtime="empty" rating={0.0} mode={false} />)
+      .toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

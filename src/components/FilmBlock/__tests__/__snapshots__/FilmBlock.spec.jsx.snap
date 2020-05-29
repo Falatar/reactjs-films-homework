@@ -13,3 +13,15 @@ exports[`FilmBlock renders correctly 1`] = `
   tagList="empty"
 />
 `;
+
+exports[`FilmBlock renders correctly in details mode 1`] = `
+<FilmBlockBackSide
+  callModal={[Function]}
+  name="nemo"
+  overview="some text"
+  poster="https://image.tmdb.org/t/p/w500"
+  rating={0}
+  switchMode={[Function]}
+  tagList="empty"
+/>
+`;

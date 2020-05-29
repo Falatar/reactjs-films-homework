@@ -84,8 +84,8 @@ FilmBlock.defaultProps = {
   rating: 0,
   tagList: 'Can\'t find property "tagList"',
   overview: 'Can\'t find property "overview"',
-  callTrailer: () => { },
-  setTrailer: () => { },
+  callTrailer: () => 'can\'t find callTrailer function',
+  setTrailer: () => 'can\'t find setTrailer function',
 };
 
 FilmBlock.propTypes = {
