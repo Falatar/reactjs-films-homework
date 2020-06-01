@@ -21,13 +21,13 @@ function FilmTitle({
 FilmTitle.defaultProps = {
   name: 'Can\'t find property "name"',
   genrePtime: ['unknown'],
-  rating: 0,
+  rating: '',
 };
 
 FilmTitle.propTypes = {
   name: PropTypes.string,
   genrePtime: PropTypes.string,
-  rating: PropTypes.number,
+  rating: PropTypes.string,
 };
 
 export default FilmTitle;

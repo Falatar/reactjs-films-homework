@@ -24,11 +24,11 @@ function Rate({
 }
 
 Rate.defaultProps = {
-  rating: 0.0,
+  rating: '',
 };
 
 Rate.propTypes = {
-  rating: PropTypes.number,
+  rating: PropTypes.string,
 };
 
 export default Rate;

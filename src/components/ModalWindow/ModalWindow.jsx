@@ -40,13 +40,13 @@ class ModalWindow extends Component {
 
 ModalWindow.defaultProps = {
   status: false,
-  root: {},
+  root: '',
   endModalSession: () => 'can\'t find endModalSession function',
 };
 
 ModalWindow.propTypes = {
   status: PropTypes.bool,
-  root: PropTypes.objectOf(PropTypes.any),
+  root: PropTypes.string,
   endModalSession: PropTypes.func,
 };
 

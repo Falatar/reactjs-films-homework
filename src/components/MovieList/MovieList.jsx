@@ -54,7 +54,8 @@ MovieList.defaultProps = {
 };
 
 MovieList.propTypes = {
-  filmList: PropTypes.objectOf(PropTypes.any),
+  // eslint-disable-next-line react/forbid-prop-types
+  filmList: PropTypes.array,
   searchResult: PropTypes.bool,
   getFilmList: PropTypes.func,
 };
