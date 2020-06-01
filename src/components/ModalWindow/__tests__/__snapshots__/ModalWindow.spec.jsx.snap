@@ -77,11 +77,13 @@ exports[`ModalWindow renders correctly in passive mode without input 1`] = `
 <div
   className="bord down"
 >
-  <span
-    className="loading"
-  >
-    Cannot find trailer
-  </span>
+  <iframe
+    allowFullScreen={true}
+    className="video"
+    frameBorder="0"
+    src=""
+    title="trailer"
+  />
   <div
     className="bot__lain"
   >

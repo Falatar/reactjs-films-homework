@@ -31,4 +31,13 @@ describe('singleFilmModuleSelector', () => {
       ],
     });
   });
+
+  it('getVideoLink works correctly without results', () => {
+    const state = {
+      singleFilmModuleReducer: {
+        root: {},
+      },
+    };
+    expect(selector.getVideoLink(state)).toEqual(undefined);
+  });
 });

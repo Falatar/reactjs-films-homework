@@ -5,7 +5,7 @@ import FilmDescription from '../FilmDescription';
 import play from '../../static/play.svg';
 
 function FilmBlockFrontSide({
-  id, name, tagList, rating, callModal, switchMode, poster, setDefaultImg,
+  id, name, tagList, rating, callModal, switchMode, poster,
 }) {
   return (
     <div className={style.film__block}>
@@ -14,7 +14,6 @@ function FilmBlockFrontSide({
           className={style.wall}
           src={poster}
           alt={id}
-          onError={setDefaultImg}
         />
         <div className={style.hidden}>
           <button type="button" className={style.play} onClick={callModal}>
@@ -44,7 +43,6 @@ FilmBlockFrontSide.defaultProps = {
   tagList: 'Can\'t find property "tagList"',
   callModal: () => 'can\'t find callModal function',
   switchMode: () => 'can\'t find switchMode function',
-  setDefaultImg: () => 'can\'t find setDefaultImg function',
 };
 
 FilmBlockFrontSide.propTypes = {
@@ -55,7 +53,6 @@ FilmBlockFrontSide.propTypes = {
   tagList: PropTypes.string,
   callModal: PropTypes.func,
   switchMode: PropTypes.func,
-  setDefaultImg: PropTypes.func,
 };
 
 export default FilmBlockFrontSide;

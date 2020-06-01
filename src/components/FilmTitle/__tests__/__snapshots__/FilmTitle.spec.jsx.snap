@@ -39,7 +39,7 @@ exports[`FilmTitle renders correctly 1`] = `
     <h1
       className="rate"
     >
-      0
+      
     </h1>
   </div>
 </div>

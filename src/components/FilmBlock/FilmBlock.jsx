@@ -34,7 +34,8 @@ class FilmBlock extends Component {
   }
 
   setImg = (imgURL) => {
-    this.setState({ poster: `https://image.tmdb.org/t/p/w500${imgURL}` });
+    if (!imgURL) this.setDefaultImg();
+    else this.setState({ poster: `https://image.tmdb.org/t/p/w500${imgURL}` });
   }
 
   render() {
@@ -52,7 +53,6 @@ class FilmBlock extends Component {
           rating={rating}
           callModal={this.callModal}
           switchMode={this.switchMode}
-          setDefaultImg={this.setDefaultImg}
         />
       );
     }

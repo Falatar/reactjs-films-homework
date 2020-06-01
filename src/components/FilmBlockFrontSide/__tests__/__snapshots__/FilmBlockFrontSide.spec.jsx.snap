@@ -10,7 +10,6 @@ exports[`FilmBlockFrontSide renders correctly 1`] = `
     <img
       alt={1}
       className="wall"
-      onError={[Function]}
       src=""
     />
     <div

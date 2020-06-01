@@ -30,9 +30,7 @@ describe('FilmBlockFrontSide', () => {
     );
     const result1 = component.root.props.callModal();
     const result2 = component.root.props.switchMode();
-    const result3 = component.root.props.setDefaultImg();
     expect(result1).toEqual('can\'t find callModal function');
     expect(result2).toEqual('can\'t find switchMode function');
-    expect(result3).toEqual('can\'t find setDefaultImg function');
   });
 });

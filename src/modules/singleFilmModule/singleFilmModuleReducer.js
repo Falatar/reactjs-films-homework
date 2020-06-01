@@ -1,6 +1,6 @@
 export const initialState = {
   status: false,
-  root: '',
+  root: {},
 };
 
 export function singleFilmModuleReducer(state = initialState, action) {

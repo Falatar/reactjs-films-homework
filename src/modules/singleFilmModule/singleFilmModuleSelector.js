@@ -9,7 +9,10 @@ export const isModalActive = createSelector(
 );
 
 export const getVideoLink = createSelector(
-  [getRoot], (root) => root,
+  [getRoot], (root) => {
+    if (root.results && root.results[0]) return root;
+    return undefined;
+  },
 );
 
 export default isModalActive;

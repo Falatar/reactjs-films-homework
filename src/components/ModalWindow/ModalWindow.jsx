@@ -11,7 +11,7 @@ class ModalWindow extends Component {
 
   render() {
     const { root, status } = this.props;
-    if (root.results && root.results[0]) {
+    if (root) {
       return (
         <div className={classNames(style.bord, status ? style.up : style.down)}>
           <iframe
@@ -40,13 +40,14 @@ class ModalWindow extends Component {
 
 ModalWindow.defaultProps = {
   status: false,
-  root: '',
+  root: undefined,
   endModalSession: () => 'can\'t find endModalSession function',
 };
 
 ModalWindow.propTypes = {
   status: PropTypes.bool,
-  root: PropTypes.string,
+  // eslint-disable-next-line react/forbid-prop-types
+  root: PropTypes.object,
   endModalSession: PropTypes.func,
 };
 

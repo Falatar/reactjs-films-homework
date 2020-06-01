@@ -27,7 +27,7 @@ describe('ModalWindow', () => {
 
   it('renders correctly in active mode without input', () => {
     const tree = renderer
-      .create(<ModalWindow status root={{}} />)
+      .create(<ModalWindow status root={undefined} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
