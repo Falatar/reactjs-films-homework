@@ -3,7 +3,6 @@
 exports[`FilmBlock renders correctly 1`] = `
 <FilmBlockFrontSide
   callModal={[Function]}
-  checkImgSizes={[Function]}
   id={1}
   name="nemo"
   poster="https://image.tmdb.org/t/p/w500"

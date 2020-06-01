@@ -29,12 +29,6 @@ class FilmBlock extends Component {
     callTrailer();
   }
 
-  checkImgSizes = () => {
-    if (this.width + this.height === 0) {
-      this.onerror();
-    }
-  }
-
   setDefaultImg = () => {
     this.setState({ poster: 'https://cdn.pixabay.com/photo/2016/11/30/12/16/question-mark-1872665_1280.jpg' });
   }
@@ -58,7 +52,6 @@ class FilmBlock extends Component {
           rating={rating}
           callModal={this.callModal}
           switchMode={this.switchMode}
-          checkImgSizes={this.checkImgSizes}
           setDefaultImg={this.setDefaultImg}
         />
       );

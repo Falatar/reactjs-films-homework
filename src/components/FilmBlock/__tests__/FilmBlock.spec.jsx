@@ -35,30 +35,6 @@ describe('FilmBlock', () => {
     expect(setTrailer).toHaveBeenCalled();
   });
 
-  it('checkImgSizes works correctly', () => {
-    const component = renderer.create(<FilmBlock imgURL="" id={1} name="nemo" tagList="empty" rating={0.0} overview="some text" />);
-    const testFn = jest.fn();
-    component.getInstance().checkImgSizes.bind({
-      width: 100,
-      height: 100,
-      onerror: testFn,
-    });
-    component.getInstance().checkImgSizes();
-    expect(testFn).not.toHaveBeenCalled();
-  });
-
-  it('checkImgSizes works correctly without image', () => {
-    const component = renderer.create(<FilmBlock imgURL="" id={1} name="nemo" tagList="empty" rating={0.0} overview="some text" />);
-    const testFn = jest.fn();
-    component.getInstance().checkImgSizes.bind({
-      width: 0,
-      height: 0,
-      onerror: testFn,
-    });
-    component.getInstance().checkImgSizes();
-    expect(testFn).toHaveBeenCalled();
-  });
-
   it('setImg works correctly', () => {
     const component = renderer.create(<FilmBlock imgURL="" id={1} name="nemo" tagList="empty" rating={0.0} overview="some text" />);
     component.getInstance().setImg('/12345');
