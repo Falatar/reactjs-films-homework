@@ -2,22 +2,31 @@
 
 exports[`Search renders correctly 1`] = `
 <div
-  className="Search"
+  className="search"
 >
   <form
-    className="SearchForm"
+    className="search_form"
   >
     <input
-      className="SearchText"
+      className="search_text"
+      onChange={[Function]}
       placeholder="Search here..."
       type="text"
+      value=""
     />
     <button
-      className="SearchButton"
+      className="search_button"
       id="push"
-      type="submit"
+      onClick={[Function]}
+      type="button"
     >
-      ⌕
+      <svg
+        className="svg"
+      >
+        <use
+          xlinkHref="mocked-image"
+        />
+      </svg>
     </button>
   </form>
 </div>

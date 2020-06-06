@@ -1,0 +1,45 @@
+.header {
+    width: 100%;
+    height: calc(100vw/2.3);
+    border: 0;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-size: cover;
+    background-position-y: center;
+    box-shadow: inset 0 110px 150px  -50px black , inset 0 -110px 150px  -50px black;
+    background-color: lightgrey;
+
+    .title {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        width: 10%;
+        color: white;
+        margin-left: 6%;
+        margin-top: 1%;
+        font-size: 1.5em;
+        padding: 0;
+        border: 0;
+    }
+
+    ::selection {
+        background-color: dimgray;
+    }
+
+    .loading {
+        color: white;
+    }
+}
+
+
+.search__line, .film__data {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.film__data {
+    height: 50%;
+    align-items: flex-end;
+}

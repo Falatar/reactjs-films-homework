@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmBlock renders correctly 1`] = `
+<FilmBlockFrontSide
+  callModal={[Function]}
+  id={1}
+  name="nemo"
+  poster="https://cdn.pixabay.com/photo/2016/11/30/12/16/question-mark-1872665_1280.jpg"
+  rating={0}
+  switchMode={[Function]}
+  tagList="empty"
+/>
+`;
+
+exports[`FilmBlock renders correctly in details mode 1`] = `
+<FilmBlockBackSide
+  callModal={[Function]}
+  name="nemo"
+  overview="some text"
+  poster="https://cdn.pixabay.com/photo/2016/11/30/12/16/question-mark-1872665_1280.jpg"
+  rating={0}
+  switchMode={[Function]}
+  tagList="empty"
+/>
+`;

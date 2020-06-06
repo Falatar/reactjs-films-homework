@@ -1,0 +1,30 @@
+
+.list {
+
+    //height: 145vh;
+    width: 100%;
+    background-color: lightgrey;
+    padding-top: 1%;
+    margin: 0;
+    border: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+
+
+    ::selection {
+        background-color: dimgray;
+    }
+}
+
+.empty_list {
+    justify-content: center;
+    align-items: flex-start;
+
+    .notice {
+        color: deepskyblue;
+        font-size: 2em;
+    }
+}

@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalWindow renders correctly in active mode 1`] = `
+<div
+  className="bord up"
+>
+  <iframe
+    allowFullScreen={true}
+    className="video"
+    frameBorder="0"
+    src="https://www.youtube.com/embed/number"
+    title="trailer"
+  />
+  <div
+    className="bot__lain"
+  >
+    <button
+      className="close__button"
+      onClick={[Function]}
+      type="button"
+    >
+      close
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ModalWindow renders correctly in active mode without input 1`] = `
+<div
+  className="bord up"
+>
+  <span
+    className="loading"
+  >
+    Cannot find trailer
+  </span>
+  <div
+    className="bot__lain"
+  >
+    <button
+      className="close__button"
+      onClick={[Function]}
+      type="button"
+    >
+      close
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ModalWindow renders correctly in passive mode 1`] = `
+<div
+  className="bord down"
+>
+  <iframe
+    allowFullScreen={true}
+    className="video"
+    frameBorder="0"
+    src=""
+    title="trailer"
+  />
+  <div
+    className="bot__lain"
+  >
+    <button
+      className="close__button"
+      onClick={[Function]}
+      type="button"
+    >
+      close
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ModalWindow renders correctly in passive mode without input 1`] = `
+<div
+  className="bord down"
+>
+  <iframe
+    allowFullScreen={true}
+    className="video"
+    frameBorder="0"
+    src=""
+    title="trailer"
+  />
+  <div
+    className="bot__lain"
+  >
+    <button
+      className="close__button"
+      onClick={[Function]}
+      type="button"
+    >
+      close
+    </button>
+  </div>
+</div>
+`;

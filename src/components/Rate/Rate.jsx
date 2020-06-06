@@ -5,12 +5,17 @@ import style from './Rate.scss';
 function Rate({
   rating,
 }) {
-  let rt = rating.toFixed();
-  const stars = Array(5).fill(0).map(() => {
-    const elem = <span className={rt > 0 ? style.star : style.voidStar} key={rt} />;
-    rt -= 1;
-    return elem;
-  });
+  const stars = Array(5).fill(0).map(
+    (elem, index) => {
+      const roof = index + 0.5;
+      return (
+        <span
+          className={rating >= (roof) ? style.star : style.void_star}
+          key={roof}
+        />
+      );
+    },
+  );
   return (
     <div className={style.rate}>
       {stars}
@@ -19,11 +24,11 @@ function Rate({
 }
 
 Rate.defaultProps = {
-  rating: 0.0,
+  rating: '',
 };
 
 Rate.propTypes = {
-  rating: PropTypes.number,
+  rating: PropTypes.string,
 };
 
 export default Rate;

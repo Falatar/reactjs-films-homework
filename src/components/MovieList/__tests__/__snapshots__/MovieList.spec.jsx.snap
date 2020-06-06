@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList renders correctly 1`] = `
+<div
+  className="list"
+>
+  <FilmBlock
+    id={0}
+    imgURL=""
+    name="test"
+    overview=""
+    rating={0}
+    tagList=""
+  />
+</div>
+`;
+
+exports[`MovieList renders correctly without input 1`] = `
+<div
+  className="list empty_list"
+>
+  <span
+    className="notice"
+  >
+    Loading...
+  </span>
+</div>
+`;
+
+exports[`MovieList renders correctly without input and results 1`] = `
+<div
+  className="list empty_list"
+>
+  <span
+    className="notice"
+  >
+    There are 0 results for your request
+  </span>
+</div>
+`;
+
+exports[`MovieList renders correctly without results 1`] = `
+<div
+  className="list empty_list"
+>
+  <span
+    className="notice"
+  >
+    There are 0 results for your request
+  </span>
+</div>
+`;

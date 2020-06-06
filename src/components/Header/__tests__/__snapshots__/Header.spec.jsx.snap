@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header renders correctly 1`] = `
+<div
+  className="header"
+  id="space"
+  style={
+    Object {
+      "backgroundImage": "url(https://image.tmdb.org/t/p/original)",
+    }
+  }
+>
+  <div
+    className="search__line"
+  >
+    <big
+      className="title"
+    >
+      FILMS
+    </big>
+    <Search />
+  </div>
+  <div
+    className="film__data"
+  >
+    <FilmTitle
+      genrePtime=""
+      name="test"
+      rating={0}
+    />
+    <Info />
+  </div>
+</div>
+`;
+
+exports[`Header renders correctly without input 1`] = `
+<div
+  className="header"
+>
+  <span
+    className="loading"
+  >
+    loading presentation...
+  </span>
+</div>
+`;

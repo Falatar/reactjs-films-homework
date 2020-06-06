@@ -1,0 +1,68 @@
+.pagination__panel {
+    width: 100%;
+    height: 7vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgrey;
+
+    .pagination__left, 
+    .pagination__left__to__end, 
+    .pagination__right, 
+    .pagination__right__to__end {
+        height: 1.6em;
+        width: 3.2em;
+        border-radius: 15px;
+        outline: none;
+        border: 0;
+        padding: 0;
+        //padding-bottom: 4%;
+        margin: 0 0.5%;
+        background-color: deepskyblue;
+        color: white;
+        font-size: 1.5em;
+
+        .svg {
+            width: 50%;
+            height: 100%;
+            fill: white;
+            padding-left: 5%;
+        }
+    }
+
+    .pagination__left:active, 
+    .pagination__left__to__end:active, 
+    .pagination__right:active, 
+    .pagination__right__to__end:active {
+        background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    }
+
+    .pagination__left:disabled, 
+    .pagination__left__to__end:disabled, 
+    .pagination__right:disabled, 
+    .pagination__right__to__end:disabled {
+        background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    }
+
+    .pagination__to__certain__page {
+        height: 1.2em;
+        width: 5em;
+        font-size: 1.5em;
+        border-radius: 15px;
+        text-align: center;
+        color: deepskyblue;
+        border: 3px solid;
+        border-color: deepskyblue;
+        background-color: white;
+        outline: none;
+    }
+}

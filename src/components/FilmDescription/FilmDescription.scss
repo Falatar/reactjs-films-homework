@@ -1,0 +1,58 @@
+.description {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    .title {
+        width: 75%;
+        margin-left: 5%;
+        padding: 0;
+        border: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .name {
+            width: 100%;
+            text-transform: uppercase;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-weight: 600;
+            font-size: 1.6em;
+            color: black;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        
+        .tags {
+            text-transform: uppercase;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            font-size: 1em;
+            width: 100%;
+            color: deepskyblue;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+    }
+
+    .rate {
+        height: 1.1em;
+        width: 2em;
+        font-size: 1.4em;
+        margin: 0 0 0 0.5em;
+        padding: 0;
+        border: 1px solid;
+        color: deepskyblue;
+        border-color: deepskyblue;
+        text-align: center;
+    }
+}
