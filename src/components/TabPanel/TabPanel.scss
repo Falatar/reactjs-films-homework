@@ -1,0 +1,100 @@
+.panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 5%;
+    background-color: lightgrey;
+    border: 0;
+    padding: 0.05em;
+    margin: 0;
+
+    .tabs {
+        height: 95%;
+        margin-left: 5%;
+        width: 40%;
+        display: flex;
+        flex-direction: row;
+
+        .trending_tab, .top_tab, .coming_tab, .genres_tab {
+            width: 25%;
+            font-size: 1.2em;
+            color: deepskyblue;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            outline: none;
+            background-color: lightgrey;
+        }
+
+        .active {
+            border-bottom: 3px solid;
+            border-color: deepskyblue;
+        }
+
+        .dropdown {
+            width: 25%;
+            position: relative;
+            display: inline-block;
+
+            .genres_tab {
+                width: 100%;
+            }
+
+            .genre__list {
+                background-color: lightgray;
+                display: none;
+                position: absolute;
+                z-index: 100500;
+
+                .genre {
+                    width: 100%;
+                    font-size: 1.2em;
+                    color: deepskyblue;
+                    border: 0;
+                    padding: 0;
+                    margin: 1px;
+                    outline: none;
+                    background-color: lightgrey;
+                }
+
+                .active {
+                    color: black;
+                }
+
+            }
+
+            .show {
+                display: block;
+            }
+        }
+    }
+
+    .view {
+        height: 95%;
+        width: 20%;
+        display: flex;
+        flex-direction: row;
+
+        .view__block, .view__list {
+            width: 50%;
+            font-size: 1.5em;
+            color: deepskyblue;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            background-color: lightgrey;
+            outline: none;
+        }
+    }
+
+    .view__block:active, .view__list:active, .trending_tab:active, .top_tab:active, .coming_tab:active, .genres_tab:active, .genre:active {
+        background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -o-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: -ms-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+        background-image: linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
+    }
+}
+

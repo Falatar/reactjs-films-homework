@@ -4,10 +4,12 @@ import Header from './components/Header';
 import MovieList from './components/MovieList';
 import ModalWindow from './components/ModalWindow';
 import PaginationPanel from './components/PaginationPanel';
+import TabPanel from './components/TabPanel';
 
 const App = () => (
   <div>
     <Header />
+    <TabPanel />
     <MovieList />
     <PaginationPanel />
     <ModalWindow />

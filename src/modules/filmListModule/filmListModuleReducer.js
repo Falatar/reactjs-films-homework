@@ -8,6 +8,8 @@ export const initialState = {
   uploadedPages: 0,
   searchString: '',
   successfullSearch: true,
+  activeMode: 'Trending',
+  activeGenre: 0,
 };
 
 export function filmListModuleReducer(state = initialState, action) {
@@ -44,6 +46,12 @@ export function filmListModuleReducer(state = initialState, action) {
 
     case 'CONFIRM_SEARCH_RESULT':
       return { ...state, successfullSearch: action.payload };
+
+    case 'SWITCH_MAIN_PAGE_MODE':
+      return { ...state, activeMode: action.payload };
+
+    case 'SWITCH_ACTUAL_GENRE':
+      return { ...state, activeGenre: action.payload };
 
     default: return state;
   }

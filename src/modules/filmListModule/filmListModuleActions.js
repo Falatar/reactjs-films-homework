@@ -11,13 +11,24 @@ export const loadTopFilm = () => async (dispatch) => {
 };
 
 export const addNewPage = (numberOfPage) => async (dispatch, getState) => {
-  const { searchString } = getState().filmListModuleReducer;
-  const requestParams = searchString.length === 0
-    ? { page: numberOfPage, adult: false }
-    : { page: numberOfPage, adult: false, query: searchString };
-  const page = searchString.length === 0
-    ? await makeRequest('movie', 'upcoming', requestParams)
-    : await makeRequest('search', 'movie', requestParams);
+  const { searchString, activeMode, activeGenre } = getState().filmListModuleReducer;
+  let mode = '';
+  if (activeMode === 'Coming') mode = 'upcoming';
+  else if (activeMode === 'Trending') mode = 'popular';
+  else if (activeMode === 'Top') mode = 'top_rated';
+  let page = {};
+  if (searchString.length !== 0) {
+    const requestParams = { page: numberOfPage, adult: false, query: searchString };
+    page = await makeRequest('search', 'movie', requestParams);
+  } else if (activeMode === 'Genres') {
+    const requestParams = {
+      page: numberOfPage, include_adult: false, sort_by: 'popularity.desc', with_genres: activeGenre,
+    };
+    page = await makeRequest('discover', 'movie', requestParams);
+  } else {
+    const requestParams = { page: numberOfPage, adult: false };
+    page = await makeRequest('movie', mode, requestParams);
+  }
   return dispatch({
     type: 'ADD_PAGE',
     payload: page.results,
@@ -67,9 +78,20 @@ export const switchPage = (value) => async (dispatch, getState) => {
 };
 
 
-export const loadActualFilms = () => async (dispatch) => {
-  const requestParams = { page: 1, adult: false };
-  const films = await makeRequest('movie', 'upcoming', requestParams);
+export const loadActualFilms = () => async (dispatch, getState) => {
+  const { activeMode, activeGenre } = getState().filmListModuleReducer;
+  let mode = '';
+  if (activeMode === 'Coming') mode = 'upcoming';
+  else if (activeMode === 'Trending') mode = 'popular';
+  else if (activeMode === 'Top') mode = 'top_rated';
+  const requestParams = activeMode !== 'Genres'
+    ? { page: 1, adult: false }
+    : {
+      page: 1, include_adult: false, sort_by: 'popularity.desc', with_genres: activeGenre,
+    };
+  const films = activeMode !== 'Genres'
+    ? await makeRequest('movie', mode, requestParams)
+    : await makeRequest('discover', 'movie', requestParams);
   dispatch(saveNumberOfPages(films.total_pages));
   dispatch(saveNumberOfFilms(films.total_results));
   dispatch(confirmAddedPages(1));
@@ -142,5 +164,22 @@ export const moveRightToEnd = (totalPages) => async (dispatch, getState) => {
     dispatch(switchPage(totalPages));
   }
 };
+
+
+export const restructPage = (value) => async (dispatch) => dispatch({
+  type: 'SWITCH_MAIN_PAGE_MODE',
+  payload: value,
+});
+
+export const setNewMode = (value) => async (dispatch) => {
+  dispatch(restructPage(value));
+  dispatch(clearActualFilms());
+  dispatch(loadActualFilms());
+};
+
+export const setActualGenre = (value) => async (dispatch) => dispatch({
+  type: 'SWITCH_ACTUAL_GENRE',
+  payload: value,
+});
 
 export default loadTopFilm;
