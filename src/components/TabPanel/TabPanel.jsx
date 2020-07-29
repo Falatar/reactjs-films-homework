@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import style from './TabPanel.scss';
+import table from '../../static/table.svg';
+import list from '../../static/list.svg';
 
 class TabPanel extends Component {
   constructor(props) {
@@ -9,6 +11,7 @@ class TabPanel extends Component {
     this.state = {
       activeTab: 'Trending',
       activeGenre: 0,
+      activeViewMode: true,
       showGenres: false,
     };
   }
@@ -57,8 +60,16 @@ class TabPanel extends Component {
     switchMode('Genres');
   }
 
+  switchViewMode = () => {
+    this.setState((state) => ({
+      activeViewMode: !state.activeViewMode,
+    }));
+  }
+
   render() {
-    const { activeTab, activeGenre, showGenres } = this.state;
+    const {
+      activeTab, activeGenre, showGenres, activeViewMode,
+    } = this.state;
     const { genres } = this.props;
     const genreList = genres.map((item) => (
       <button
@@ -120,8 +131,34 @@ class TabPanel extends Component {
           </div>
         </div>
         <div className={style.view}>
-          <button type="button" className={style.view__block}>view 1</button>
-          <button type="button" className={style.view__list}>view 2</button>
+          <button
+            type="button"
+            className={
+              activeViewMode
+                ? classNames(style.view__block, style.active)
+                : style.view__block
+            }
+            onClick={this.switchViewMode}
+            disabled={activeViewMode}
+          >
+            <svg className={style.svg_block}>
+              <use xlinkHref={table} className={style.svg_block_use} />
+            </svg>
+          </button>
+          <button
+            type="button"
+            className={
+              !activeViewMode
+                ? classNames(style.view__list, style.active)
+                : style.view__list
+            }
+            onClick={this.switchViewMode}
+            disabled={!activeViewMode}
+          >
+            <svg className={style.svg_list}>
+              <use xlinkHref={list} className={style.svg_block_use} />
+            </svg>
+          </button>
         </div>
       </div>
     );
