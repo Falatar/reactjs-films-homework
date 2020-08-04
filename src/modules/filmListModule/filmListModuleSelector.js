@@ -7,6 +7,7 @@ const getMostPopularFilm = (store) => store.filmListModuleReducer.mostPopularFil
 const getTotalFilms = (store) => store.filmListModuleReducer.totalFilms;
 const getActualPage = (store) => store.filmListModuleReducer.actualPage;
 const getSuccessfullSearch = (store) => store.filmListModuleReducer.successfullSearch;
+const getView = (store) => store.filmListModuleReducer.view;
 
 export const getGenres = createSelector(
   [getGenreList], (genreList) => {
@@ -54,6 +55,10 @@ export const getCurrentPage = createSelector(
 
 export const getSearchResult = createSelector(
   [getSuccessfullSearch], (successfullSearch) => successfullSearch,
+);
+
+export const getActualView = createSelector(
+  [getView], (View) => View,
 );
 
 export default getMoviesInfo;

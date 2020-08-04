@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import style from './MovieList.scss';
 import FilmBlock from '../FilmBlock';
+import FilmList from '../FilmList';
 
 class MovieList extends Component {
   componentDidMount() {
@@ -12,8 +13,7 @@ class MovieList extends Component {
 
   render() {
     const {
-      filmList,
-      searchResult,
+      filmList, searchResult, actualView,
     } = this.props;
     if (!searchResult) {
       return (
@@ -25,17 +25,32 @@ class MovieList extends Component {
     if (filmList.length) {
       return (
         <div className={style.list}>
-          {filmList.map((item) => (
-            <FilmBlock
-              id={item.id}
-              name={item.title}
-              imgURL={item.backdrop_path}
-              rating={item.vote_average}
-              tagList={item.genre_str}
-              overview={item.overview}
-              key={item.id}
-            />
-          ))}
+          {filmList.map((item) => {
+            if (actualView) {
+              return (
+                <FilmBlock
+                  id={item.id}
+                  name={item.title}
+                  imgURL={item.backdrop_path}
+                  rating={item.vote_average}
+                  tagList={item.genre_str}
+                  overview={item.overview}
+                  key={item.id}
+                />
+              );
+            }
+            return (
+              <FilmList
+                id={item.id}
+                name={item.title}
+                imgURL={item.backdrop_path}
+                rating={item.vote_average}
+                tagList={item.genre_str}
+                overview={item.overview}
+                key={item.id}
+              />
+            );
+          })}
         </div>
       );
     }
@@ -50,6 +65,7 @@ class MovieList extends Component {
 MovieList.defaultProps = {
   filmList: [],
   searchResult: true,
+  actualView: true,
   getFilmList: () => {},
 };
 
@@ -57,6 +73,7 @@ MovieList.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   filmList: PropTypes.array,
   searchResult: PropTypes.bool,
+  actualView: PropTypes.bool,
   getFilmList: PropTypes.func,
 };
 

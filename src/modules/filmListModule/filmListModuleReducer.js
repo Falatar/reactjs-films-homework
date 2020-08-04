@@ -10,6 +10,7 @@ export const initialState = {
   successfullSearch: true,
   activeMode: 'Trending',
   activeGenre: 0,
+  view: true,
 };
 
 export function filmListModuleReducer(state = initialState, action) {
@@ -52,6 +53,9 @@ export function filmListModuleReducer(state = initialState, action) {
 
     case 'SWITCH_ACTUAL_GENRE':
       return { ...state, activeGenre: action.payload };
+
+    case 'SWITCH_VIEW_FORM':
+      return { ...state, view: !state.view };
 
     default: return state;
   }

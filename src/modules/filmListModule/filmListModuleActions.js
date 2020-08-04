@@ -182,4 +182,8 @@ export const setActualGenre = (value) => async (dispatch) => dispatch({
   payload: value,
 });
 
+export const switchView = () => async (dispatch) => dispatch({
+  type: 'SWITCH_VIEW_FORM',
+});
+
 export default loadTopFilm;

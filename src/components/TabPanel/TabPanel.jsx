@@ -64,6 +64,8 @@ class TabPanel extends Component {
     this.setState((state) => ({
       activeViewMode: !state.activeViewMode,
     }));
+    const { switchView } = this.props;
+    switchView();
   }
 
   render() {
@@ -169,6 +171,7 @@ TabPanel.defaultProps = {
   genres: [],
   switchMode: () => 'can\'t find switchMode function',
   switchGenre: () => 'can\'t find switchGenre function',
+  switchView: () => 'can\'t find switchView function',
 };
 
 TabPanel.propTypes = {
@@ -176,6 +179,7 @@ TabPanel.propTypes = {
   genres: PropTypes.array,
   switchMode: PropTypes.func,
   switchGenre: PropTypes.func,
+  switchView: PropTypes.func,
 };
 
 export default TabPanel;
