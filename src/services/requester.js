@@ -21,7 +21,6 @@ export const createAdressString = (type, category, ...rest) => {
 
 const makeRequest = async (type, category, ...rest) => {
   const url = createAdressString(type, category, ...rest);
-  console.log(url);
   const result = await download(url);
   return result;
 };
