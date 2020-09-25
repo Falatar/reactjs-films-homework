@@ -4,6 +4,9 @@ const common = require('./webpack.common.config.js');
 
 module.exports = merge(common, {
   mode: 'development',
+  output: {
+    publicPath: '/',
+  },
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
@@ -13,6 +16,7 @@ module.exports = merge(common, {
   devServer: {
     hotOnly: true,
     contentBase: './public',
+    historyApiFallback: true,
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
