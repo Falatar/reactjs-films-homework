@@ -16,7 +16,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 app.use(express.static('public'));
 
-app.get('/', (request, response) => {
+app.get('*', (request, response) => {
   response.sendFile(`${__dirname}/public/index.html`);
 });
 

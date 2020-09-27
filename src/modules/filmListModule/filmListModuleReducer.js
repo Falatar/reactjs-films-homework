@@ -9,7 +9,8 @@ export const initialState = {
   searchString: '',
   successfullSearch: true,
   activeMode: 'Trending',
-  activeGenre: 0,
+  activeGenre: '0',
+  actualViewMode: 'Block',
   view: true,
 };
 
@@ -22,7 +23,7 @@ export function filmListModuleReducer(state = initialState, action) {
       return { ...state, genreList: action.payload };
 
     case 'LOAD_MOVIE_LIST':
-      return { ...state, actualFilms: state.actualFilms.concat(action.payload) };
+      return { ...state, actualFilms: action.payload };
 
     case 'UPDATE_NUMBER_OF_PAGES':
       return { ...state, totalPages: action.payload };
@@ -56,6 +57,9 @@ export function filmListModuleReducer(state = initialState, action) {
 
     case 'SWITCH_VIEW_FORM':
       return { ...state, view: !state.view };
+
+    case 'UPDATE_ACTUAL_VIEW':
+      return { ...state, actualViewMode: action.payload };
 
     default: return state;
   }

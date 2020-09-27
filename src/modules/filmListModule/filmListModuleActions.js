@@ -59,6 +59,11 @@ export const confirmSearchResult = (value) => async (dispatch) => dispatch({
   payload: value,
 });
 
+export const updateActualView = (value) => async (dispatch) => dispatch({
+  type: 'UPDATE_ACTUAL_VIEW',
+  payload: value,
+});
+
 export const switchPage = (value) => async (dispatch, getState) => {
   const { uploadedPages, totalFilms } = getState().filmListModuleReducer;
   if (value <= (totalFilms / itemsOnPage).toFixed(0)) {
@@ -79,7 +84,7 @@ export const switchPage = (value) => async (dispatch, getState) => {
 
 
 export const loadActualFilms = () => async (dispatch, getState) => {
-  const { activeMode, activeGenre } = getState().filmListModuleReducer;
+  const { activeMode, activeGenre, actualFilms } = getState().filmListModuleReducer;
   let mode = '';
   if (activeMode === 'Coming') mode = 'upcoming';
   else if (activeMode === 'Trending') mode = 'popular';
@@ -92,39 +97,46 @@ export const loadActualFilms = () => async (dispatch, getState) => {
   const films = activeMode !== 'Genres'
     ? await makeRequest('movie', mode, requestParams)
     : await makeRequest('discover', 'movie', requestParams);
-  dispatch(saveNumberOfPages(films.total_pages));
-  dispatch(saveNumberOfFilms(films.total_results));
-  dispatch(confirmAddedPages(1));
-  return dispatch({
-    type: 'LOAD_MOVIE_LIST',
-    payload: films.results,
-  });
+  if (JSON.stringify(actualFilms.slice(0, 20)) !== JSON.stringify(films.results)) {
+    dispatch(saveNumberOfPages(films.total_pages));
+    dispatch(saveNumberOfFilms(films.total_results));
+    dispatch(confirmAddedPages(1));
+    return dispatch({
+      type: 'LOAD_MOVIE_LIST',
+      payload: films.results,
+    });
+  }
+  return null;
 };
 
-export const loadSearchResults = (searchString) => async (dispatch) => {
+export const loadSearchResults = (searchString) => async (dispatch, getState) => {
+  const { actualFilms } = getState().filmListModuleReducer;
   const requestParams = { query: searchString, page: 1, adult: false };
   const films = await makeRequest('search', 'movie', requestParams);
-  dispatch(saveNumberOfPages(films.total_pages));
-  dispatch(saveNumberOfFilms(films.total_results));
-  dispatch(confirmAddedPages(1));
-  dispatch(switchPage(1));
-  if (films.total_results === 0) dispatch(confirmSearchResult(false));
-  else dispatch(confirmSearchResult(true));
-  return dispatch({
-    type: 'LOAD_MOVIE_LIST',
-    payload: films.results,
-  });
+  if (JSON.stringify(actualFilms.slice(0, 20)) !== JSON.stringify(films.results)) {
+    dispatch(saveNumberOfPages(films.total_pages));
+    dispatch(saveNumberOfFilms(films.total_results));
+    dispatch(confirmAddedPages(1));
+    dispatch(switchPage(1));
+    if (films.total_results === 0) dispatch(confirmSearchResult(false));
+    else dispatch(confirmSearchResult(true));
+    return dispatch({
+      type: 'LOAD_MOVIE_LIST',
+      payload: films.results,
+    });
+  }
+  return null;
 };
 
-export const startSearch = (newString) => async (dispatch, getState) => {
+export const saveSearchStr = (newString) => async (dispatch) => dispatch({
+  type: 'SAVE_SEARCH_STRING',
+  payload: newString,
+});
+
+export const startSearch = () => async (dispatch, getState) => {
   const { searchString } = getState().filmListModuleReducer;
-  if (searchString === newString) return null;
-  dispatch(clearActualFilms());
-  await dispatch(loadSearchResults(newString));
-  return dispatch({
-    type: 'SAVE_SEARCH_STRING',
-    payload: newString,
-  });
+  if (searchString.length) await dispatch(loadSearchResults(searchString));
+  return null;
 };
 
 export const loadGenres = () => async (dispatch) => {
@@ -171,16 +183,24 @@ export const restructPage = (value) => async (dispatch) => dispatch({
   payload: value,
 });
 
-export const setNewMode = (value) => async (dispatch) => {
-  dispatch(restructPage(value));
-  dispatch(clearActualFilms());
-  dispatch(loadActualFilms());
+export const setNewMode = (value) => async (dispatch, getState) => {
+  const { activeMode } = getState().filmListModuleReducer;
+  if (activeMode !== value) {
+    dispatch(restructPage(value));
+    dispatch(clearActualFilms());
+  }
 };
 
-export const setActualGenre = (value) => async (dispatch) => dispatch({
-  type: 'SWITCH_ACTUAL_GENRE',
-  payload: value,
-});
+export const setActualGenre = (value) => async (dispatch, getState) => {
+  const { activeGenre } = getState().filmListModuleReducer;
+  if (value !== activeGenre) {
+    return dispatch({
+      type: 'SWITCH_ACTUAL_GENRE',
+      payload: value,
+    });
+  }
+  return null;
+};
 
 export const switchView = () => async (dispatch) => dispatch({
   type: 'SWITCH_VIEW_FORM',

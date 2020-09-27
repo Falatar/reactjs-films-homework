@@ -3,6 +3,10 @@ import { mapStateToProps, mapDispatchToProps } from '../PaginationPanelContainer
 jest.mock('../../../modules/filmListModule/filmListModuleSelector.js', () => ({
   getNumberOfFilms: jest.fn().mockReturnValue(115),
   getCurrentPage: jest.fn().mockReturnValue(5),
+  getActualMode: jest.fn().mockReturnValue('Mode'),
+  getActualGenre: jest.fn().mockReturnValue('Genre'),
+  getActiveView: jest.fn().mockReturnValue('View'),
+  getSearchStr: jest.fn().mockReturnValue('Str'),
 }));
 
 jest.mock('../../../modules/filmListModule/filmListModuleActions.js', () => ({
@@ -29,6 +33,10 @@ describe('PaginationPanelContainer', () => {
     const testInput = {
       totalFilms: 115,
       actualPage: 5,
+      activeMode: 'Mode',
+      activeGenre: 'Genre',
+      activeView: 'View',
+      searchStr: 'Str',
     };
 
     expect(mapStateToProps()).toEqual(testInput);

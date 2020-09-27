@@ -2,6 +2,18 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import PaginationPanel from '../PaginationPanel';
 
+jest.mock('react-router-dom', () => {
+  const originalModule = jest.requireActual('react-router-dom');
+
+  return {
+    __esModule: true,
+    ...originalModule,
+    Link: 'Link',
+    useParams: jest.fn(),
+    useHistory: jest.fn(),
+  };
+});
+
 describe('PaginationPanel', () => {
   it('renders correctly', () => {
     const tree = renderer

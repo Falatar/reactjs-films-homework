@@ -1,19 +1,18 @@
 import React from 'react';
+import {
+  Route, Switch, BrowserRouter,
+} from 'react-router-dom';
 import { hot } from 'react-hot-loader/root';
-import Header from './components/Header';
-import MovieList from './components/MovieList';
-import ModalWindow from './components/ModalWindow';
-import PaginationPanel from './components/PaginationPanel';
-import TabPanel from './components/TabPanel';
+import SearchResultsPage from './components/SearchResultsPage';
+import MovieDetailsPage from './components/MovieDetailsPage';
 
 const App = () => (
-  <div>
-    <Header />
-    <TabPanel />
-    <MovieList />
-    <PaginationPanel />
-    <ModalWindow />
-  </div>
+  <BrowserRouter>
+    <Switch>
+      <Route path="/search" component={SearchResultsPage} />
+      <Route path="*" component={MovieDetailsPage} />
+    </Switch>
+  </BrowserRouter>
 );
 
 export default hot(App);

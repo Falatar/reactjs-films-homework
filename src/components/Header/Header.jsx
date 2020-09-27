@@ -7,8 +7,7 @@ import Info from '../Info';
 
 class Header extends Component {
   componentDidMount() {
-    const { LoadMostPopularFilm, LoadGenreList } = this.props;
-    LoadGenreList();
+    const { LoadMostPopularFilm } = this.props;
     LoadMostPopularFilm();
   }
 
@@ -21,10 +20,7 @@ class Header extends Component {
           id="space"
           style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${mostPopularFilm.backdrop_path})` }}
         >
-          <div className={style.search__line}>
-            <big className={style.title}>FILMS</big>
-            <Search />
-          </div>
+          <Search />
           <div className={style.film__data}>
             <FilmTitle
               name={mostPopularFilm.title}
@@ -49,13 +45,11 @@ class Header extends Component {
 
 Header.defaultProps = {
   LoadMostPopularFilm: () => {},
-  LoadGenreList: () => {},
   mostPopularFilm: {},
 };
 
 Header.propTypes = {
   LoadMostPopularFilm: PropTypes.func,
-  LoadGenreList: PropTypes.func,
   mostPopularFilm: PropTypes.objectOf(PropTypes.any),
 };
 

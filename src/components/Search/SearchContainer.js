@@ -1,13 +1,23 @@
 import { connect } from 'react-redux';
-import { startSearch } from '../../modules/filmListModule/filmListModuleActions';
+import { saveSearchStr } from '../../modules/filmListModule/filmListModuleActions';
+import {
+  getActualMode, getActualGenre, getCurrentPage, getActiveView, getSearchStr,
+} from '../../modules/filmListModule/filmListModuleSelector';
 import Search from './Search';
 
+export const mapStateToProps = (store) => ({
+  activeMode: getActualMode(store),
+  activeGenre: getActualGenre(store),
+  actualPage: getCurrentPage(store),
+  activeView: getActiveView(store),
+  searchStr: getSearchStr(store),
+});
 
 export const mapDispatchToProps = (dispatch) => ({
-  search: (searchString) => dispatch(startSearch(searchString)),
+  saveSearchStr: (searchString) => dispatch(saveSearchStr(searchString)),
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 )(Search);

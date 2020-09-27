@@ -47,11 +47,86 @@ describe('filmListModuleActions', () => {
     ];
     const store = mockStore({
       filmListModuleReducer: {
-        actualFilms: [],
+        activeGenre: '12',
         searchString: '',
+        activeMode: 'Coming',
       },
     });
     return store.dispatch(actions.addNewPage(testNumber)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it('addNewPage completed successfully on trending mode', () => {
+    const requestParams = { page: testNumber, adult: false };
+    fetchMock.getOnce(createAdressString('movie', 'popular', requestParams), {
+      headers: { 'content-type': 'application/json' },
+      body: { results: [{ name: 'example' }] },
+    });
+    const expectedAction = [
+      {
+        type: 'ADD_PAGE',
+        payload: [{ name: 'example' }],
+      },
+    ];
+    const store = mockStore({
+      filmListModuleReducer: {
+        activeGenre: '12',
+        searchString: '',
+        activeMode: 'Trending',
+      },
+    });
+    return store.dispatch(actions.addNewPage(testNumber)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it('addNewPage completed successfully on rating mode', () => {
+    const requestParams = { page: testNumber, adult: false };
+    fetchMock.getOnce(createAdressString('movie', 'top_rated', requestParams), {
+      headers: { 'content-type': 'application/json' },
+      body: { results: [{ name: 'example' }] },
+    });
+    const expectedAction = [
+      {
+        type: 'ADD_PAGE',
+        payload: [{ name: 'example' }],
+      },
+    ];
+    const store = mockStore({
+      filmListModuleReducer: {
+        activeGenre: '12',
+        searchString: '',
+        activeMode: 'Top',
+      },
+    });
+    return store.dispatch(actions.addNewPage(testNumber)).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it('addNewPage completed successfully on genres mode', () => {
+    const requestParams = {
+      page: 1, include_adult: false, sort_by: 'popularity.desc', with_genres: 12,
+    };
+    fetchMock.getOnce(createAdressString('discover', 'movie', requestParams), {
+      headers: { 'content-type': 'application/json' },
+      body: { results: [{ name: 'example' }] },
+    });
+    const expectedAction = [
+      {
+        type: 'ADD_PAGE',
+        payload: [{ name: 'example' }],
+      },
+    ];
+    const store = mockStore({
+      filmListModuleReducer: {
+        activeGenre: '12',
+        searchString: '',
+        activeMode: 'Genres',
+      },
+    });
+    return store.dispatch(actions.addNewPage(1)).then(() => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });
@@ -206,7 +281,135 @@ describe('filmListModuleActions', () => {
         payload: [{ name: 'example' }],
       },
     ];
-    const store = mockStore({});
+    const store = mockStore({
+      filmListModuleReducer: {
+        activeMode: 'Coming',
+        activeGenre: '12',
+        actualFilms: [],
+      },
+    });
+    return store.dispatch(actions.loadActualFilms()).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it('loadActualFilms completed successfully in trending mode', () => {
+    const requestParams = { page: 1, adult: false };
+    fetchMock.getOnce(createAdressString('movie', 'popular', requestParams), {
+      headers: { 'content-type': 'application/json' },
+      body: {
+        results: [{ name: 'example' }],
+        total_pages: 2,
+        total_results: 20,
+      },
+    });
+    const expectedAction = [
+      {
+        type: 'UPDATE_NUMBER_OF_PAGES',
+        payload: 2,
+      },
+      {
+        type: 'UPDATE_NUMBER_OF_FILMS',
+        payload: 20,
+      },
+      {
+        type: 'UPDATE_UPLOADED_PAGES',
+        payload: 1,
+      },
+      {
+        type: 'LOAD_MOVIE_LIST',
+        payload: [{ name: 'example' }],
+      },
+    ];
+    const store = mockStore({
+      filmListModuleReducer: {
+        activeMode: 'Trending',
+        activeGenre: '12',
+        actualFilms: [],
+      },
+    });
+    return store.dispatch(actions.loadActualFilms()).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it('loadActualFilms completed successfully in rated mode', () => {
+    const requestParams = { page: 1, adult: false };
+    fetchMock.getOnce(createAdressString('movie', 'top_rated', requestParams), {
+      headers: { 'content-type': 'application/json' },
+      body: {
+        results: [{ name: 'example' }],
+        total_pages: 2,
+        total_results: 20,
+      },
+    });
+    const expectedAction = [
+      {
+        type: 'UPDATE_NUMBER_OF_PAGES',
+        payload: 2,
+      },
+      {
+        type: 'UPDATE_NUMBER_OF_FILMS',
+        payload: 20,
+      },
+      {
+        type: 'UPDATE_UPLOADED_PAGES',
+        payload: 1,
+      },
+      {
+        type: 'LOAD_MOVIE_LIST',
+        payload: [{ name: 'example' }],
+      },
+    ];
+    const store = mockStore({
+      filmListModuleReducer: {
+        activeMode: 'Top',
+        activeGenre: '12',
+        actualFilms: [],
+      },
+    });
+    return store.dispatch(actions.loadActualFilms()).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it('loadActualFilms completed successfully in genres mode', () => {
+    const requestParams = {
+      page: 1, include_adult: false, sort_by: 'popularity.desc', with_genres: '12',
+    };
+    fetchMock.getOnce(createAdressString('discover', 'movie', requestParams), {
+      headers: { 'content-type': 'application/json' },
+      body: {
+        results: [{ name: 'example' }],
+        total_pages: 2,
+        total_results: 20,
+      },
+    });
+    const expectedAction = [
+      {
+        type: 'UPDATE_NUMBER_OF_PAGES',
+        payload: 2,
+      },
+      {
+        type: 'UPDATE_NUMBER_OF_FILMS',
+        payload: 20,
+      },
+      {
+        type: 'UPDATE_UPLOADED_PAGES',
+        payload: 1,
+      },
+      {
+        type: 'LOAD_MOVIE_LIST',
+        payload: [{ name: 'example' }],
+      },
+    ];
+    const store = mockStore({
+      filmListModuleReducer: {
+        activeMode: 'Genres',
+        activeGenre: '12',
+        actualFilms: [],
+      },
+    });
     return store.dispatch(actions.loadActualFilms()).then(() => {
       expect(store.getActions()).toEqual(expectedAction);
     });
@@ -252,6 +455,7 @@ describe('filmListModuleActions', () => {
       filmListModuleReducer: {
         uploadedPages: 1,
         totalFilms: 24,
+        actualFilms: [],
       },
     });
     return store.dispatch(actions.loadSearchResults('searchString')).then(() => {
@@ -299,6 +503,7 @@ describe('filmListModuleActions', () => {
       filmListModuleReducer: {
         uploadedPages: 1,
         totalFilms: 24,
+        actualFilms: [],
       },
     });
     return store.dispatch(actions.loadSearchResults('searchString')).then(() => {
@@ -307,7 +512,7 @@ describe('filmListModuleActions', () => {
   });
 
   it('startSearch completed successfully', () => {
-    const requestParams = { query: 'searchString', page: 1, adult: false };
+    const requestParams = { query: 'str', page: 1, adult: false };
     fetchMock.getOnce(createAdressString('search', 'movie', requestParams), {
       headers: { 'content-type': 'application/json' },
       body: {
@@ -317,9 +522,6 @@ describe('filmListModuleActions', () => {
       },
     });
     const expectedAction = [
-      {
-        type: 'CLEAR_COLLECTION',
-      },
       {
         type: 'UPDATE_NUMBER_OF_PAGES',
         payload: 0,
@@ -344,24 +546,21 @@ describe('filmListModuleActions', () => {
         type: 'LOAD_MOVIE_LIST',
         payload: [{ name: 'example' }],
       },
-      {
-        type: 'SAVE_SEARCH_STRING',
-        payload: 'searchString',
-      },
     ];
     const store = mockStore({
       filmListModuleReducer: {
         uploadedPages: 1,
         totalFilms: 24,
-        searchString: '',
+        searchString: 'str',
+        actualFilms: [],
       },
     });
-    return store.dispatch(actions.startSearch('searchString')).then(() => {
+    return store.dispatch(actions.startSearch()).then(() => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });
 
-  it('startSearch completed successfully with simular string', () => {
+  it('startSearch completed successfully with empty string', () => {
     const requestParams = { query: 'searchString', page: 1, adult: false };
     fetchMock.getOnce(createAdressString('search', 'movie', requestParams), {
       headers: { 'content-type': 'application/json' },
@@ -376,10 +575,35 @@ describe('filmListModuleActions', () => {
       filmListModuleReducer: {
         uploadedPages: 1,
         totalFilms: 24,
-        searchString: 'searchString',
+        searchString: '',
+        actualFilms: [],
       },
     });
-    return store.dispatch(actions.startSearch('searchString')).then(() => {
+    return store.dispatch(actions.startSearch()).then(() => {
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
+  it('startSearch completed successfully with identical string', () => {
+    const requestParams = { query: 'searchString', page: 1, adult: false };
+    fetchMock.getOnce(createAdressString('search', 'movie', requestParams), {
+      headers: { 'content-type': 'application/json' },
+      body: {
+        results: [{ name: 'example' }],
+        total_pages: 0,
+        total_results: 0,
+      },
+    });
+    const expectedAction = [];
+    const store = mockStore({
+      filmListModuleReducer: {
+        uploadedPages: 1,
+        totalFilms: 24,
+        searchString: '',
+        actualFilms: [{ name: 'example' }],
+      },
+    });
+    return store.dispatch(actions.startSearch()).then(() => {
       expect(store.getActions()).toEqual(expectedAction);
     });
   });

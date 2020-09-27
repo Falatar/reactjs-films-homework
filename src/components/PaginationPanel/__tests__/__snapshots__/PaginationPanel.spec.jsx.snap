@@ -10,13 +10,18 @@ exports[`PaginationPanel renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <svg
-      className="svg"
+    <Link
+      className="link"
+      to="/1///"
     >
-      <use
-        xlinkHref="mocked-image"
-      />
-    </svg>
+      <svg
+        className="svg"
+      >
+        <use
+          xlinkHref="mocked-image"
+        />
+      </svg>
+    </Link>
   </button>
   <button
     className="pagination__left"
@@ -24,13 +29,18 @@ exports[`PaginationPanel renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <svg
-      className="svg"
+    <Link
+      className="link"
+      to="/1///"
     >
-      <use
-        xlinkHref="mocked-image"
-      />
-    </svg>
+      <svg
+        className="svg"
+      >
+        <use
+          xlinkHref="mocked-image"
+        />
+      </svg>
+    </Link>
   </button>
   <input
     className="pagination__to__certain__page"
@@ -44,13 +54,18 @@ exports[`PaginationPanel renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <svg
-      className="svg"
+    <Link
+      className="link"
+      to="/0///"
     >
-      <use
-        xlinkHref="mocked-image"
-      />
-    </svg>
+      <svg
+        className="svg"
+      >
+        <use
+          xlinkHref="mocked-image"
+        />
+      </svg>
+    </Link>
   </button>
   <button
     className="pagination__right__to__end"
@@ -58,13 +73,18 @@ exports[`PaginationPanel renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   >
-    <svg
-      className="svg"
+    <Link
+      className="link"
+      to="/0///"
     >
-      <use
-        xlinkHref="mocked-image"
-      />
-    </svg>
+      <svg
+        className="svg"
+      >
+        <use
+          xlinkHref="mocked-image"
+        />
+      </svg>
+    </Link>
   </button>
 </div>
 `;

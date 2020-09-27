@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 import style from './TabPanel.scss';
 import table from '../../static/table.svg';
 import list from '../../static/list.svg';
@@ -9,38 +10,13 @@ class TabPanel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      activeTab: 'Trending',
-      activeGenre: 0,
-      activeViewMode: true,
       showGenres: false,
     };
   }
 
-  setTrending = () => {
-    this.setState(() => ({
-      activeTab: 'Trending',
-    }));
-    const { switchMode, switchGenre } = this.props;
-    switchGenre(0);
-    switchMode('Trending');
-  }
-
-  setTop = () => {
-    this.setState(() => ({
-      activeTab: 'Top',
-    }));
-    const { switchMode, switchGenre } = this.props;
-    switchGenre(0);
-    switchMode('Top');
-  }
-
-  setComing = () => {
-    this.setState(() => ({
-      activeTab: 'Coming',
-    }));
-    const { switchMode, switchGenre } = this.props;
-    switchGenre(0);
-    switchMode('Coming');
+  hideGenreList = () => {
+    const { showGenres } = this.state;
+    if (showGenres) this.displayGenres();
   }
 
   displayGenres = () => {
@@ -50,41 +26,51 @@ class TabPanel extends Component {
   }
 
   setGenre = (id) => {
+    const { switchGenre } = this.props;
+    switchGenre(id);
     this.setState((state) => ({
-      activeTab: 'Genres',
-      activeGenre: id,
       showGenres: !state.showGenres,
     }));
-    const { switchMode, switchGenre } = this.props;
-    switchGenre(id);
-    switchMode('Genres');
   }
 
   switchViewMode = () => {
-    this.setState((state) => ({
-      activeViewMode: !state.activeViewMode,
-    }));
-    const { switchView } = this.props;
-    switchView();
+    const { updateActualView, activeView } = this.props;
+    const newMode = activeView === 'Block' ? 'List' : 'Block';
+    updateActualView(newMode);
   }
 
   render() {
     const {
-      activeTab, activeGenre, showGenres, activeViewMode,
+      showGenres,
     } = this.state;
-    const { genres } = this.props;
+    const {
+      genres, activeMode, activeGenre, actualPage, activeView, searchStr,
+    } = this.props;
     const genreList = genres.map((item) => (
       <button
+        key={item.id}
         type="button"
         className={
-          activeGenre === item.id
+          activeGenre === `${item.id}`
             ? classNames(style.genre, style.active)
             : style.genre
         }
-        onClick={() => this.setGenre(item.id)}
-        disabled={activeGenre === item.id}
+        onClick={this.displayGenres}
+        disabled={activeGenre === `${item.id}`}
       >
-        {item.name}
+        <Link
+          to={{
+            pathname: `/1/${activeView}/Genres/${item.id}`,
+            state: {
+              mode: activeView,
+              filter: 'Genres',
+              genre: item.id,
+            },
+          }}
+          className={style.link}
+        >
+          {item.name}
+        </Link>
       </button>
     ));
     return (
@@ -92,32 +78,65 @@ class TabPanel extends Component {
         <div className={style.tabs}>
           <button
             type="button"
-            className={activeTab === 'Trending' ? classNames(style.trending_tab, style.active) : style.trending_tab}
-            onClick={this.setTrending}
-            disabled={activeTab === 'Trending'}
+            className={activeMode === 'Trending' ? classNames(style.trending_tab, style.active) : style.trending_tab}
+            onClick={this.hideGenreList}
+            disabled={activeMode === 'Trending'}
           >
-            Trending
+            <Link
+              to={{
+                pathname: `/${actualPage}/${activeView}/Trending`,
+                state: {
+                  mode: activeView,
+                  filter: 'Trending',
+                },
+              }}
+              className={style.link}
+            >
+              Trending
+            </Link>
           </button>
           <button
             type="button"
-            className={activeTab === 'Top' ? classNames(style.top_tab, style.active) : style.top_tab}
-            onClick={this.setTop}
-            disabled={activeTab === 'Top'}
+            className={activeMode === 'Top' ? classNames(style.top_tab, style.active) : style.top_tab}
+            onClick={this.hideGenreList}
+            disabled={activeMode === 'Top'}
           >
-            Top rated
+            <Link
+              to={{
+                pathname: `/1/${activeView}/Top`,
+                state: {
+                  mode: activeView,
+                  filter: 'Top',
+                },
+              }}
+              className={style.link}
+            >
+              Top rated
+            </Link>
           </button>
           <button
             type="button"
-            className={activeTab === 'Coming' ? classNames(style.coming_tab, style.active) : style.coming_tab}
-            onClick={this.setComing}
-            disabled={activeTab === 'Coming'}
+            className={activeMode === 'Coming' ? classNames(style.coming_tab, style.active) : style.coming_tab}
+            onClick={this.hideGenreList}
+            disabled={activeMode === 'Coming'}
           >
-            Coming soon
+            <Link
+              to={{
+                pathname: `/1/${activeView}/Coming`,
+                state: {
+                  mode: activeView,
+                  filter: 'Coming',
+                },
+              }}
+              className={style.link}
+            >
+              Coming
+            </Link>
           </button>
           <div className={style.dropdown}>
             <button
               type="button"
-              className={activeTab === 'Genres' ? classNames(style.genres_tab, style.active) : style.genres_tab}
+              className={activeMode === 'Genres' ? classNames(style.genres_tab, style.active) : style.genres_tab}
               onClick={this.displayGenres}
             >
               Genre
@@ -136,30 +155,44 @@ class TabPanel extends Component {
           <button
             type="button"
             className={
-              activeViewMode
+              activeView === 'Block'
                 ? classNames(style.view__block, style.active)
                 : style.view__block
             }
             onClick={this.switchViewMode}
-            disabled={activeViewMode}
+            disabled={activeView === 'Block'}
           >
-            <svg className={style.svg_block}>
-              <use xlinkHref={table} className={style.svg_block_use} />
-            </svg>
+            <Link
+              to={!searchStr.length
+                ? `/${actualPage}/Block/${activeMode}${activeMode === 'Genres' ? `/${activeGenre}` : ''}`
+                : `/search/${searchStr}/${actualPage}/Block`}
+              className={style.link}
+            >
+              <svg className={style.svg_block}>
+                <use xlinkHref={table} className={style.svg_block_use} />
+              </svg>
+            </Link>
           </button>
           <button
             type="button"
             className={
-              !activeViewMode
+              activeView === 'List'
                 ? classNames(style.view__list, style.active)
                 : style.view__list
             }
             onClick={this.switchViewMode}
-            disabled={!activeViewMode}
+            disabled={activeView === 'List'}
           >
-            <svg className={style.svg_list}>
-              <use xlinkHref={list} className={style.svg_block_use} />
-            </svg>
+            <Link
+              to={!searchStr.length
+                ? `/${actualPage}/List/${activeMode}${activeMode === 'Genres' ? `/${activeGenre}` : ''}`
+                : `/search/${searchStr}/${actualPage}/List`}
+              className={style.link}
+            >
+              <svg className={style.svg_list}>
+                <use xlinkHref={list} className={style.svg_block_use} />
+              </svg>
+            </Link>
           </button>
         </div>
       </div>
@@ -169,17 +202,25 @@ class TabPanel extends Component {
 
 TabPanel.defaultProps = {
   genres: [],
-  switchMode: () => 'can\'t find switchMode function',
-  switchGenre: () => 'can\'t find switchGenre function',
-  switchView: () => 'can\'t find switchView function',
+  activeMode: '',
+  activeGenre: '0',
+  switchGenre: () => {},
+  updateActualView: () => {},
+  actualPage: 1,
+  activeView: 'Block',
+  searchStr: '',
 };
 
 TabPanel.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   genres: PropTypes.array,
-  switchMode: PropTypes.func,
+  activeMode: PropTypes.string,
+  activeGenre: PropTypes.string,
   switchGenre: PropTypes.func,
-  switchView: PropTypes.func,
+  updateActualView: PropTypes.func,
+  actualPage: PropTypes.number,
+  activeView: PropTypes.string,
+  searchStr: PropTypes.string,
 };
 
 export default TabPanel;

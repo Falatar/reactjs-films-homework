@@ -103,6 +103,12 @@
         }
     }
 
+    .link {
+        color: deepskyblue;
+        text-decoration: none;
+        cursor: default;
+    }
+
     .view__block:active, .view__list:active, .trending_tab:active, .top_tab:active, .coming_tab:active, .genres_tab:active, .genre:active {
         background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
         background-image: -moz-linear-gradient(bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));

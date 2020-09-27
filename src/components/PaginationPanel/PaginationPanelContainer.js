@@ -5,12 +5,18 @@ import {
   moveLeftToEnd,
   moveRightToEnd,
 } from '../../modules/filmListModule/filmListModuleActions';
-import { getNumberOfFilms, getCurrentPage } from '../../modules/filmListModule/filmListModuleSelector';
+import {
+  getNumberOfFilms, getCurrentPage, getActualMode, getActualGenre, getActiveView, getSearchStr,
+} from '../../modules/filmListModule/filmListModuleSelector';
 import PaginationPanel from './PaginationPanel';
 
 export const mapStateToProps = (store) => ({
   totalFilms: getNumberOfFilms(store),
   actualPage: getCurrentPage(store),
+  activeMode: getActualMode(store),
+  activeGenre: getActualGenre(store),
+  activeView: getActiveView(store),
+  searchStr: getSearchStr(store),
 });
 
 export const mapDispatchToProps = (dispatch) => ({

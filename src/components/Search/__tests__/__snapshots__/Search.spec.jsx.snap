@@ -2,32 +2,45 @@
 
 exports[`Search renders correctly 1`] = `
 <div
-  className="search"
+  className="search__line"
 >
-  <form
-    className="search_form"
+  <big
+    className="title"
   >
-    <input
-      className="search_text"
-      onChange={[Function]}
-      placeholder="Search here..."
-      type="text"
-      value=""
-    />
-    <button
-      className="search_button"
-      id="push"
-      onClick={[Function]}
-      type="button"
+    FILMS
+  </big>
+  <div
+    className="search"
+  >
+    <form
+      className="search_form"
     >
-      <svg
-        className="svg"
+      <input
+        className="search_text"
+        onChange={[Function]}
+        placeholder="Search here..."
+        type="text"
+        value=""
+      />
+      <button
+        className="search_button"
+        disabled={true}
+        id="push"
+        type="button"
       >
-        <use
-          xlinkHref="mocked-image"
-        />
-      </svg>
-    </button>
-  </form>
+        <Link
+          to="/1/Block/"
+        >
+          <svg
+            className="svg"
+          >
+            <use
+              xlinkHref="mocked-image"
+            />
+          </svg>
+        </Link>
+      </button>
+    </form>
+  </div>
 </div>
 `;

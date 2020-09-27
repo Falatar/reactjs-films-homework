@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilmList renders correctly 1`] = `
+<div
+  className="film__list"
+>
+  <div
+    className="poster"
+  >
+    <img
+      alt={0}
+      className="wall"
+      src="https://image.tmdb.org/t/p/w500url"
+    />
+  </div>
+  <div
+    className="description"
+  >
+    <FilmDescription
+      mode={true}
+      name="name"
+      rating={0}
+      tagList="tagList"
+    />
+    <p
+      className="overview"
+    >
+      overview
+    </p>
+  </div>
+  <div
+    className="play__button"
+  >
+    <button
+      className="play"
+      onClick={[Function]}
+      type="button"
+    >
+      <svg
+        className="svg"
+      >
+        <use
+          xlinkHref="mocked-image"
+        />
+      </svg>
+    </button>
+  </div>
+</div>
+`;

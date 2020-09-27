@@ -1,46 +1,68 @@
-.search {
-    .search_form {
-        position: relative;
-        width: 300px;
-        margin-right: 6vw;
-        margin-top: 1vh;
-    }
-    .search_text {
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-        width: 100%;
-        height: 42px;
-        padding-left: 10px;
-        border: 2px solid white;
-        border-radius: 10px;
-        outline: none;
-        background-color: transparent;
-        color: white;
-        outline:none;
-    }
-    .search_text::-webkit-input-placeholder { color: white; }
-    .search_text::-moz-placeholder { color: white; }
-    .search_button {
-        position: absolute; 
-        top: 0;
-        right: 0px;
-        width: 42px;
-        height: 42px;
-        border: none;
-        background: transparent;
-        border-radius: 10px;
-        cursor: pointer;
-        color: white;
-        font-size: 2em;
-        outline: none;
+.search__line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 
-        .svg {
+    .title {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        width: 10%;
+        color: white;
+        margin-left: 6%;
+        font-size: 1.5em;
+        padding: 0;
+        border: 0;
+    }
+
+    .search {
+        .search_form {
+            position: relative;
+            width: 300px;
+            margin-right: 6vw;
+            margin-top: 1vh;
+        }
+        .search_text {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             width: 100%;
-            height: 100%;
-            fill: white;
-            padding-left: 7%;
+            height: 42px;
+            padding-left: 10px;
+            border: 2px solid white;
+            border-radius: 10px;
+            outline: none;
+            background-color: transparent;
+            color: white;
+            outline:none;
+        }
+        .search_text::-webkit-input-placeholder { color: white; }
+        .search_text::-moz-placeholder { color: white; }
+        .search_button {
+            position: absolute; 
+            top: 0;
+            right: 0px;
+            width: 42px;
+            height: 42px;
+            border: none;
+            background: transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 2em;
+            outline: none;
+
+            .svg {
+                width: 100%;
+                height: 100%;
+                fill: white;
+                padding-left: 7%;
+            }
+        }
+
+        .search_button:active {
+            color: gray;
         }
     }
-    .search_button:active {
-        color: gray;
+
+    ::selection {
+        background-color: dimgray;
     }
 }
